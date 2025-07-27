@@ -1,0 +1,13 @@
+# Ignore node_modules from all folders
+**/node_modules
+
+# Ignore logs and env files
+*.log
+.env
+.DS_Store
+
+# Optional: ignore build or temp files
+build/
+dist/
+*.zip
+*.tar.gz
