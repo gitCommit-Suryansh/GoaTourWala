@@ -14,7 +14,7 @@ const planTripRoutes = require("./routes/planTrip");
 
 
 
-app.use(cors({ origin: ['http://localhost:3000', 'https://goa-tour-wala-frontend.vercel.app','https://slateblue-quetzal-573443.hostingersite.com'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000','http://goatourwala.com','http://admin.goatourwala.com'], credentials: true }));
 app.use(express.json());
 
 connectToDB();
