@@ -153,19 +153,25 @@ const AdminPanel = () => {
           {/* Enhanced Right Section */}
           <div className="flex items-center gap-5">
             {/* Quick Stats */}
-            <div className="hidden md:flex items-center gap-4 bg-gray-50 px-4 py-2 rounded-xl border">
-              <div className="text-center">
-                <p className="text-xs text-gray-500">Today's Bookings</p>
-                <p className="text-lg font-bold text-orange-600">{stats.totalBookings}</p>
+            {loadingStats ? (
+              <p>Loading stats...</p>
+            ) : (
+              <div className="hidden md:flex items-center gap-4 bg-gray-50 px-4 py-2 rounded-xl border">
+                <div className="text-center">
+                  <p className="text-xs text-gray-500">Today's Bookings</p>
+                  <p className="text-lg font-bold text-orange-600">
+                    {stats.totalBookings}
+                  </p>
+                </div>
+                <div className="w-px h-8 bg-gray-300"></div>
+                <div className="text-center">
+                  <p className="text-xs text-gray-500">Revenue</p>
+                  <p className="text-lg font-bold text-green-600">
+                    ₹{stats.revenue / 100}
+                  </p>
+                </div>
               </div>
-              <div className="w-px h-8 bg-gray-300"></div>
-              <div className="text-center">
-                <p className="text-xs text-gray-500">Revenue</p>
-                <p className="text-lg font-bold text-green-600">₹{stats.revenue/100}</p>
-              </div>
-            </div>
-
-            
+            )}
 
             {/* User Profile */}
             <div className="flex items-center gap-3 bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-2 rounded-2xl border hover:shadow-md transition-all duration-200">
