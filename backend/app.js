@@ -19,7 +19,7 @@ app.use(express.json());
 
 connectToDB();
 
-
+app.get('/api/health', (req, res) => {res.status(200).json({ status: 'ok', message: 'API is running' });});
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subcategoryRoutes);
 app.use('/api/phonepe',phonepeRoutes)
