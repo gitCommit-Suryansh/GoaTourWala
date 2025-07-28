@@ -20,7 +20,7 @@ const TermsAndConditions = () => {
         </p>
         <div className="mt-4 p-3 bg-blue-100 border-l-4 border-blue-500 rounded inline-block">
           <p className="text-blue-800 font-medium">
-            This Website is managed by Your Brand Journey
+            This Website is managed by Shree Shyam Holidays
           </p>
         </div>
       </div>
