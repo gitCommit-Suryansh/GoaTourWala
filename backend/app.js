@@ -15,7 +15,8 @@ const planTripRoutes = require("./routes/planTrip");
 
 
 app.use(cors({ origin: ['http://localhost:3000','https://goatourwala.com','https://admin.goatourwala.com'], credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 connectToDB();
 
