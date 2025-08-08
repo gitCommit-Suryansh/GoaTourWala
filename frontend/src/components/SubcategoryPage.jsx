@@ -140,8 +140,8 @@ const SubcategoryPage = () => {
       categorySlug,
       subSlug,
     };
-    console.log(payload)
-
+    
+    
     try {
       const res = await axios.post(
         `${REACT_APP_BACKEND_URL}/api/phonepe/pay`,
