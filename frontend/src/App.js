@@ -13,6 +13,7 @@ import TermsandCondition from './components/TermsAndConditions'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RefundPolicy from './components/RefundPolicy'
 import AboutUs from './components/AboutUs';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/adminpanel' element={<AdminPanel/>}/>

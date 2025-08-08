@@ -326,48 +326,50 @@ const Home = () => {
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {displayedCategories.map((category) => (
-                  <Link
+                  <div
                     key={category._id}
-                    to={`/${category.categorySlug}/${category.slug}`}
+                    // to={`/${category.categorySlug}/${category.slug}`}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                     style={{ scale: 0.9 }}
                   >
                     <div className="relative h-40 md:h-48 overflow-hidden">
-                      <img
-                        src={
-                          category.image ||
-                          category.bannerImage ||
-                          "/api/placeholder/400/300"
-                        }
-                        alt={category.name}
-                        className="w-full h-full object-cover"
-                      />
+                      <Link to={`/${category.categorySlug}/${category.slug}`}>
+                        <img
+                          src={
+                            category.image ||
+                            category.bannerImage ||
+                            "/api/placeholder/400/300"
+                          }
+                          alt={category.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </Link>
                     </div>
                     <div className="p-4 md:p-5">
-                      <div className="text-sm text-gray-600 mb-2">
-                        {category.duration || "6 days & 5 nights"}
-                      </div>
-                      <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
-                        {category.name}
-                      </h3>
-                      <div className="text-sm text-gray-600 mb-3 flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>
-                          {category.route || "Goa"}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-sm font-medium text-gray-700">
-                            {subcategoryStats[category._id]?.rating || "4.5"}
+                      <Link to={`/${category.categorySlug}/${category.slug}`}>
+                        <div className="text-sm text-gray-600 mb-2">
+                          {category.duration || "6 days & 5 nights"}
+                        </div>
+                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                          {category.name}
+                        </h3>
+                        <div className="text-sm text-gray-600 mb-3 flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{category.route || "Goa"}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span className="text-sm font-medium text-gray-700">
+                              {subcategoryStats[category._id]?.rating || "4.5"}
+                            </span>
+                          </div>
+                          <span className="text-sm text-gray-500">
+                            ({subcategoryStats[category._id]?.reviews || "1200"}{" "}
+                            reviews)
                           </span>
                         </div>
-                        <span className="text-sm text-gray-500">
-                          ({subcategoryStats[category._id]?.reviews || "1200"}{" "}
-                          reviews)
-                        </span>
-                      </div>
+                      </Link>
                       <div className="mb-4">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-base md:text-lg text-gray-400 line-through">
@@ -395,15 +397,16 @@ const Home = () => {
                         >
                           <Phone className="w-4 h-4" />
                         </a>
-                        <button
-                          className="flex-1 text-white py-2 px-4 rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
+                        <Link
+                          className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
                           style={{ backgroundColor: "#F37002" }}
+                          to={`/${category.categorySlug}/${category.slug}`}
                         >
                           Book Now
-                        </button>
+                        </Link>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </>
@@ -612,129 +615,187 @@ const Home = () => {
 
       {/* PLAN YOUR TRIP SECTION */}
       <section className="py-20 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 relative overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    {/* Decorative Elements (hidden on mobile) */}
-    <div className="absolute top-10 left-10 opacity-10 hidden sm:block">
-      <Compass className="w-32 h-32 text-orange-400" />
-    </div>
-    <div className="absolute bottom-10 right-10 opacity-10 hidden sm:block">
-      <Map className="w-24 h-24 text-yellow-400" />
-    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Decorative Elements (hidden on mobile) */}
+          <div className="absolute top-10 left-10 opacity-10 hidden sm:block">
+            <Compass className="w-32 h-32 text-orange-400" />
+          </div>
+          <div className="absolute bottom-10 right-10 opacity-10 hidden sm:block">
+            <Map className="w-24 h-24 text-yellow-400" />
+          </div>
 
-    {/* Section Content */}
-    <div className="text-center mb-16">
-      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
-        <Sparkles className="w-4 h-4" />
-        <span>Customize Your Experience</span>
-      </div>
+          {/* Section Content */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
+              <Sparkles className="w-4 h-4" />
+              <span>Customize Your Experience</span>
+            </div>
 
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}>
-        Can't Find What You're Looking For?
-        <br />
-        <span style={{ color: "#FFBA0A" }} className="text-3xl md:text-4xl">
-          Let's Plan Your Perfect Trip!
-        </span>
-      </h2>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}
+            >
+              Can't Find What You're Looking For?
+              <br />
+              <span
+                style={{ color: "#FFBA0A" }}
+                className="text-3xl md:text-4xl"
+              >
+                Let's Plan Your Perfect Trip!
+              </span>
+            </h2>
 
-      <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-        Every traveler is unique, and so should be your journey. Tell us your preferences, 
-        and our expert travel planners will create a personalized itinerary just for you.
-      </p>
-    </div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              Every traveler is unique, and so should be your journey. Tell us
+              your preferences, and our expert travel planners will create a
+              personalized itinerary just for you.
+            </p>
+          </div>
 
-    {/* Feature Cards Carousel */}
-    <div className="mb-16">
-      <div className="relative w-full overflow-hidden">
-        <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center transition-all duration-300">
-          {[{
-            icon: <Calendar className="w-8 h-8 text-white" />,
-            title: "Flexible Dates",
-            desc: "Travel on your schedule. We'll help you find the best times to visit based on weather, crowds, and your preferences."
-          }, {
-            icon: <Users className="w-8 h-8 text-white" />,
-            title: "Group Size",
-            desc: "Whether you're traveling solo, as a couple, with family, or in a large group, we'll customize the experience for your party size."
-          }, {
-            icon: <Compass className="w-8 h-8 text-white" />,
-            title: "Custom Activities",
-            desc: "From adventure sports to cultural experiences, food tours to Religious journeys - we'll include everything that interests you."
-          }].map((card, index) => (
-            <div key={index} className="flex-1 min-w-[280px] md:min-w-0 bg-white rounded-2xl shadow-lg p-6 text-center border-2 border-orange-100 hover:border-orange-300 transition-all duration-300 transform hover:-translate-y-2">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ backgroundColor: "#F37002" }}>
-                {card.icon}
+          {/* Feature Cards Carousel */}
+          <div className="mb-16">
+            <div className="relative w-full overflow-hidden">
+              <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center transition-all duration-300">
+                {[
+                  {
+                    icon: <Calendar className="w-8 h-8 text-white" />,
+                    title: "Flexible Dates",
+                    desc: "Travel on your schedule. We'll help you find the best times to visit based on weather, crowds, and your preferences.",
+                  },
+                  {
+                    icon: <Users className="w-8 h-8 text-white" />,
+                    title: "Group Size",
+                    desc: "Whether you're traveling solo, as a couple, with family, or in a large group, we'll customize the experience for your party size.",
+                  },
+                  {
+                    icon: <Compass className="w-8 h-8 text-white" />,
+                    title: "Custom Activities",
+                    desc: "From adventure sports to cultural experiences, food tours to Religious journeys - we'll include everything that interests you.",
+                  },
+                ].map((card, index) => (
+                  <div
+                    key={index}
+                    className="flex-1 min-w-[280px] md:min-w-0 bg-white rounded-2xl shadow-lg p-6 text-center border-2 border-orange-100 hover:border-orange-300 transition-all duration-300 transform hover:-translate-y-2"
+                  >
+                    <div
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6"
+                      style={{ backgroundColor: "#F37002" }}
+                    >
+                      {card.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {card.title}
+                    </h3>
+                    <p className="text-gray-600">{card.desc}</p>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{card.title}</h3>
-              <p className="text-gray-600">{card.desc}</p>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
+          </div>
 
-    {/* Main CTA Section */}
-    <div className="text-center">
-      <div className="inline-block bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-orange-200 px-6 py-8 sm:px-8 sm:py-12 max-w-4xl mx-auto" style={{ background: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(10px)", border: "2px solid #F37002", boxShadow: "0 20px 60px rgba(243, 112, 2, 0.15)" }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Ready to Start Planning Your Dream Trip?</h3>
-        <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-          Our travel experts are standing by to help you create an unforgettable Goa experience 
-          tailored specifically to your interests, budget, and timeline.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link to="/planyourtrip" className="inline-flex items-center gap-3 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300/40 text-lg tracking-wide" style={{ backgroundColor: "#F37002" }}>
-            <Map className="w-5 h-5" />
-            <span>Plan Your Custom Trip</span>
-            <ChevronRight className="w-5 h-5" />
-          </Link>
-          <div className="flex items-center gap-3 text-gray-600">
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm">Free consultation</span>
+          {/* Main CTA Section */}
+          <div className="text-center">
+            <div
+              className="inline-block bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-orange-200 px-6 py-8 sm:px-8 sm:py-12 max-w-4xl mx-auto"
+              style={{
+                background: "rgba(255, 255, 255, 0.7)",
+                backdropFilter: "blur(10px)",
+                border: "2px solid #F37002",
+                boxShadow: "0 20px 60px rgba(243, 112, 2, 0.15)",
+              }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                Ready to Start Planning Your Dream Trip?
+              </h3>
+              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                Our travel experts are standing by to help you create an
+                unforgettable Goa experience tailored specifically to your
+                interests, budget, and timeline.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/planyourtrip"
+                  className="inline-flex items-center gap-3 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300/40 text-lg tracking-wide"
+                  style={{ backgroundColor: "#F37002" }}
+                >
+                  <Map className="w-5 h-5" />
+                  <span>Plan Your Custom Trip</span>
+                  <ChevronRight className="w-5 h-5" />
+                </Link>
+                <div className="flex items-center gap-3 text-gray-600">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">Free consultation</span>
+                  </div>
+                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                  <div className="flex items-center gap-1">
+                    <Check className="w-4 h-4 text-green-500" />
+                    <span className="text-sm">No booking fees</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-orange-200">
+                <p className="text-sm text-gray-600">
+                  <strong className="text-gray-800">
+                    ✨ What happens next?
+                  </strong>
+                  <br />
+                  Fill out our simple form → Get matched with a travel expert →
+                  Receive your personalized itinerary within 24 hours
+                </p>
+              </div>
             </div>
-            <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-            <div className="flex items-center gap-1">
-              <Check className="w-4 h-4 text-green-500" />
-              <span className="text-sm">No booking fees</span>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-16">
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2">
+                {["A", "S", "R", "+"].map((char, i) => (
+                  <div
+                    key={i}
+                    className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-sm font-bold ${
+                      i === 0
+                        ? "bg-gradient-to-br from-blue-400 to-blue-600"
+                        : i === 1
+                        ? "bg-gradient-to-br from-green-400 to-green-600"
+                        : i === 2
+                        ? "bg-gradient-to-br from-purple-400 to-purple-600"
+                        : "bg-gradient-to-br from-orange-400 to-orange-600"
+                    }`}
+                  >
+                    {char}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="font-bold text-gray-900">
+                  500+ Happy Travelers
+                </div>
+                <div className="text-sm text-gray-600">
+                  Custom trips planned this month
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-5 h-5 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+              <div>
+                <div className="font-bold text-gray-900">4.9/5 Rating</div>
+                <div className="text-sm text-gray-600">
+                  From our custom trip clients
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mt-8 pt-6 border-t border-orange-200">
-          <p className="text-sm text-gray-600">
-            <strong className="text-gray-800">✨ What happens next?</strong>
-            <br />
-            Fill out our simple form → Get matched with a travel expert → Receive your personalized itinerary within 24 hours
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Trust Indicators */}
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-16">
-      <div className="flex items-center gap-3">
-        <div className="flex -space-x-2">
-          {["A", "S", "R", "+"].map((char, i) => (
-            <div key={i} className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-sm font-bold ${i === 0 ? "bg-gradient-to-br from-blue-400 to-blue-600" : i === 1 ? "bg-gradient-to-br from-green-400 to-green-600" : i === 2 ? "bg-gradient-to-br from-purple-400 to-purple-600" : "bg-gradient-to-br from-orange-400 to-orange-600"}`}>{char}</div>
-          ))}
-        </div>
-        <div>
-          <div className="font-bold text-gray-900">500+ Happy Travelers</div>
-          <div className="text-sm text-gray-600">Custom trips planned this month</div>
-        </div>
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-          ))}
-        </div>
-        <div>
-          <div className="font-bold text-gray-900">4.9/5 Rating</div>
-          <div className="text-sm text-gray-600">From our custom trip clients</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       <Footer />
 
