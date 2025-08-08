@@ -118,7 +118,7 @@ const SubcategoryPage = () => {
   }
 
   const totalPrice = (adults + children) * data.price;
-
+  console.log(name)
   const handleBooking = async () => {
     if (!mobileNumber || mobileNumber.length < 10) {
       alert("Please enter a valid mobile number.");
@@ -140,6 +140,7 @@ const SubcategoryPage = () => {
       categorySlug,
       subSlug,
     };
+    console.log(payload)
 
     try {
       const res = await axios.post(

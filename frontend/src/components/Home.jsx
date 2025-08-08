@@ -353,7 +353,7 @@ const Home = () => {
                       <div className="text-sm text-gray-600 mb-3 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
                         <span>
-                          {category.route || "Srinagar • Pahalgam • Srinagar"}
+                          {category.route || "Goa"}
                         </span>
                       </div>
                       <div className="flex items-center gap-2 mb-4">

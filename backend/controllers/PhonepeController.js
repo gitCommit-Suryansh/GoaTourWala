@@ -1,6 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const generateAccessToken = require("../utils/AccessTokenGenerator");
+const { eventNames } = require("../models/Payment");
 
 // Function to generate a shorter merchantOrderId
 const generateMerchantOrderId = () => {
@@ -13,7 +14,6 @@ const generateMerchantOrderId = () => {
 
 // Function to complete payment
 const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrderId,children,adults,date,subSlug,categorySlug) => {
-    
   try {
     const paymentResponse = await axios.post(
       `${process.env.CREATE_PAYMENT_URL}${process.env.CREATE_PAYMENT_ENDPOINT}`,
