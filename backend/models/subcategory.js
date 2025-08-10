@@ -14,6 +14,12 @@ const subcategorySchema = new mongoose.Schema(
     image: String,
     price: Number,
     duration: String,
+    packageType: {
+      type: String,
+      enum: ["Tour package", "Trip package"],
+      default: "Trip package",
+      required: true,
+    },
     features: [String],
     active: { type: Boolean, default: true },
     bannerImage: String, // Cloudinary URL

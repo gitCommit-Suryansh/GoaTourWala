@@ -14,9 +14,11 @@ exports.createSubcategory = async (req, res) => {
       description,
       price,
       duration,
+      packageType,
       features,
       details,
     } = req.body;
+    console.log(packageType)
 
     // Validate category
     const categoryExists = await Category.findById(categoryId);
@@ -41,6 +43,7 @@ exports.createSubcategory = async (req, res) => {
       description,
       price,
       duration,
+      packageType,
       features: parsedFeatures,
       details: parsedDetails,
       bannerImage,

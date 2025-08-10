@@ -27,6 +27,7 @@ const CreatePackage = () => {
     description: "",
     price: "",
     duration: "",
+    packageType: "Trip package",
     features: "",
   });
 
@@ -68,6 +69,7 @@ const CreatePackage = () => {
     formData.append("description", form.description);
     formData.append("price", form.price);
     formData.append("duration", form.duration);
+    formData.append("packageType", form.packageType);
     formData.append("features", JSON.stringify(form.features.split(",").map(f => f.trim())));
     formData.append("details", JSON.stringify(details));
     if (bannerImageFile) {
@@ -79,6 +81,7 @@ const CreatePackage = () => {
 
     setUploading(true);
     try {
+      console.log(formData)
       const res = await axios.post(
         `${REACT_APP_BACKEND_URL}/api/subcategories/createsubcategory`,
         formData,
@@ -87,7 +90,7 @@ const CreatePackage = () => {
       setUploading(false);
       setMessage({ text: res.data.message, type: "success" });
       // Reset form
-      setForm({ categoryId: "", name: "", description: "", price: "", duration: "", features: "" });
+      setForm({ categoryId: "", name: "", description: "", price: "", duration: "", packageType: "Trip package", features: "" });
       setDetails([{ title: "", content: "" }]);
       setBannerImageFile(null);
       setGalleryImageFiles([]);
@@ -183,6 +186,13 @@ const CreatePackage = () => {
                 <div>
                     <label htmlFor="duration" className={labelStyle}>Duration</label>
                     <input id="duration" name="duration" type="text" placeholder="e.g., 5 Days / 4 Nights" value={form.duration} onChange={handleFormChange} className={inputStyle} />
+                </div>
+                <div>
+                    <label htmlFor="packageType" className={labelStyle}>Package Type</label>
+                    <select id="packageType" name="packageType" value={form.packageType} onChange={handleFormChange} className={inputStyle}>
+                        <option value="Trip package">Trip package</option>
+                        <option value="Tour package">Tour package</option>
+                    </select>
                 </div>
                 <div className="md:col-span-2">
                     <label htmlFor="description" className={labelStyle}>Description</label>
