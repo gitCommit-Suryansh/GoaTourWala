@@ -20,8 +20,10 @@ import {
   AlertCircle,
   Download,
   Save,
+  MessageCircle,
 } from "lucide-react";
 import Header from "./Header";
+import Footer from "./Footer";
 import logo from "../assets/logo.png";
 import jsPDF from "jspdf";
 
@@ -44,7 +46,10 @@ const SubcategoryPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [hasSavedPayment, setHasSavedPayment] = useState(false);
+  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
 
   useEffect(() => {
     axios
@@ -58,6 +63,20 @@ const SubcategoryPage = () => {
       setActiveImageIndex(0);
     }
   }, [data, activeImageIndex]);
+
+  // Auto-slide carousel for gallery images
+  useEffect(() => {
+    if (!data?.galleryImages?.length) return;
+    if (isCarouselHovered || isModalOpen) return; // pause when hovered or modal open
+
+    const intervalId = setInterval(() => {
+      setActiveImageIndex((prevIndex) =>
+        (prevIndex + 1) % data.galleryImages.length
+      );
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [data?.galleryImages?.length, isCarouselHovered, isModalOpen]);
 
   useEffect(() => {
     const fetchPaymentStatus = async () => {
@@ -119,6 +138,10 @@ const SubcategoryPage = () => {
 
   const totalPrice = (adults + children) * data.price;
   console.log(name)
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/, "");
+  const whatsappMessage = encodeURIComponent(
+    `Hi, I'm interested in ${data.name} on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${typeof window !== 'undefined' ? window.location.href : ''}`
+  );
   const handleBooking = async () => {
     if (!mobileNumber || mobileNumber.length < 10) {
       alert("Please enter a valid mobile number.");
@@ -182,6 +205,19 @@ const SubcategoryPage = () => {
     );
   };
 
+  // Carousel controls
+  const nextCarouselImage = () => {
+    setActiveImageIndex((prevIndex) =>
+      (prevIndex + 1) % data.galleryImages.length
+    );
+  };
+
+  const prevCarouselImage = () => {
+    setActiveImageIndex((prevIndex) =>
+      (prevIndex - 1 + data.galleryImages.length) % data.galleryImages.length
+    );
+  };
+
   const shareLink = () => {
     const shareData = {
       title: data.name,
@@ -197,6 +233,11 @@ const SubcategoryPage = () => {
     } else {
       alert(`Share this link: ${window.location.href}`);
     }
+  };
+
+  const getTruncatedText = (text, limit) => {
+    if (!text) return "";
+    return text.length > limit ? `${text.slice(0, limit)}...` : text;
   };
 
   const generatePdfReceipt = async () => {
@@ -358,9 +399,28 @@ const SubcategoryPage = () => {
                   >
                     {data.name}
                   </h1>
-                  <p className="text-base md:text-lg text-gray-700 mb-4 leading-relaxed drop-shadow-md">
+                  {/* Desktop: full description */}
+                  <p className="hidden md:block text-base md:text-lg text-gray-700 mb-4 leading-relaxed drop-shadow-md">
                     {data.description}
                   </p>
+                  {/* Mobile: truncated with Read more/less */}
+                  <div className="block md:hidden mb-4">
+                    <p className="text-base text-gray-700 leading-relaxed drop-shadow-md">
+                      {isDescriptionExpanded
+                        ? data.description
+                        : getTruncatedText(data.description, 450)}
+                    </p>
+                    {data.description && data.description.length > 450 && (
+                      <button
+                        type="button"
+                        onClick={() => setIsDescriptionExpanded((v) => !v)}
+                        className="mt-1 text-blue-700 font-semibold underline underline-offset-2"
+                        aria-expanded={isDescriptionExpanded}
+                      >
+                        {isDescriptionExpanded ? "Read less" : "Read more"}
+                      </button>
+                    )}
+                  </div>
                   <div className="flex flex-wrap gap-2 md:gap-3 items-center">
                     <span className="flex items-center gap-1 px-2 md:px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full font-semibold text-xs md:text-sm">
                       <Clock className="w-3 h-3 md:w-4 md:h-4" />
@@ -402,29 +462,60 @@ const SubcategoryPage = () => {
                     More Moments
                   </h2>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                  {data.galleryImages.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => openModal(index)}
-                      className={`relative w-full h-32 md:h-40 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition-all duration-300 group ${
-                        index === activeImageIndex
-                          ? "ring-2 md:ring-3 ring-blue-500"
-                          : "ring-1 ring-transparent"
-                      }`}
-                    >
+
+                {/* Carousel */}
+                <div
+                  className="relative w-full h-40 md:h-64 lg:h-80 rounded-lg overflow-hidden shadow-md"
+                  onMouseEnter={() => setIsCarouselHovered(true)}
+                  onMouseLeave={() => setIsCarouselHovered(false)}
+                >
+                  <div className="relative w-full h-full">
+                    {data.galleryImages.map((image, index) => (
                       <img
+                        key={index}
                         src={image}
                         alt={`Gallery ${index + 1}`}
-                        className="w-full h-full object-cover"
+                        onClick={() => openModal(index)}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out cursor-pointer ${
+                          index === activeImageIndex
+                            ? "opacity-100"
+                            : "opacity-0 pointer-events-none"
+                        }`}
                       />
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span className="text-white font-semibold text-sm md:text-base">
-                          View
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+                    ))}
+                  </div>
+
+                  {/* Controls */}
+                  <button
+                    aria-label="Previous"
+                    onClick={prevCarouselImage}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full border border-white/60 bg-white/40 hover:bg-white/60 backdrop-blur-xl text-white shadow-lg hover:shadow-xl transition-all duration-200"
+                  >
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+                  <button
+                    aria-label="Next"
+                    onClick={nextCarouselImage}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full border border-white/60 bg-white/40 hover:bg-white/60 backdrop-blur-xl text-white shadow-lg hover:shadow-xl transition-all duration-200"
+                  >
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+
+                  {/* Dots */}
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 bg-black/20 px-2 py-1 rounded-full">
+                    {data.galleryImages.map((_, index) => (
+                      <button
+                        key={index}
+                        aria-label={`Go to slide ${index + 1}`}
+                        onClick={() => setActiveImageIndex(index)}
+                        className={`h-2.5 w-2.5 rounded-full transition-all duration-200 ${
+                          index === activeImageIndex
+                            ? "bg-white w-6"
+                            : "bg-white/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </section>
             )}
@@ -432,16 +523,13 @@ const SubcategoryPage = () => {
             {data.features && data.features.length > 0 && (
               <section className="space-y-4 md:space-y-6">
                 <h2 className="text-xl md:text-3xl font-extrabold text-gray-900 border-b-2 md:border-b-3 border-blue-500 pb-2 inline-block">
-                  What's Included
+                  Highlights
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-3.5">
                   {data.features.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-                    >
+                    <div key={index} className="flex items-start gap-2 md:gap-3">
                       <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base font-medium text-gray-800 capitalize leading-relaxed">
+                      <span className="text-sm md:text-base font-medium text-gray-800 leading-relaxed">
                         {feature}
                       </span>
                     </div>
@@ -653,6 +741,28 @@ const SubcategoryPage = () => {
             </div>
           </aside>
         </div>
+
+      {/* Floating contact actions */}
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="font-semibold">WhatsApp</span>
+        </a>
+        <a
+          href={`tel:${SUPPORT_PHONE}`}
+          className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
+          aria-label="Call now"
+        >
+          <Phone className="w-5 h-5" />
+          <span className="font-semibold">Call</span>
+        </a>
+      </div>
 
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
@@ -897,6 +1007,7 @@ const SubcategoryPage = () => {
           </div>
         )}
       </div>
+      <Footer/>
     </>
   );
 };

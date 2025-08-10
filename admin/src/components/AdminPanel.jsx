@@ -19,12 +19,78 @@ import axios from "axios";
 import logo from "../assets/logo.png";
 
 const AdminPanel = () => {
+  // Local storage based auth (12h expiry)
+  const ADMIN_EMAIL = "sushil@goatourwala.com";
+  const ADMIN_PASSWORD = "201407At@";
+  const SESSION_KEY = "adminSession";
+  const SESSION_DURATION_MS = 12 * 60 * 60 * 1000;
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [stats, setStats] = useState(null);
   const [loadingStats, setLoadingStats] = useState(true);
   const [recentPayments, setRecentPayments] = useState([]);
   const [loadingRecent, setLoadingRecent] = useState(true);
   const navigate = useNavigate();
+
+  // Check session on mount
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(SESSION_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed?.expiry && parsed.expiry > Date.now()) {
+          setIsAuthenticated(true);
+        } else {
+          localStorage.removeItem(SESSION_KEY);
+        }
+      }
+    } catch (_) {}
+    setAuthChecked(true);
+  }, []);
+
+  // Auto-logout when expired (poll every minute)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const id = setInterval(() => {
+      try {
+        const raw = localStorage.getItem(SESSION_KEY);
+        if (!raw) {
+          setIsAuthenticated(false);
+          return;
+        }
+        const parsed = JSON.parse(raw);
+        if (!parsed?.expiry || parsed.expiry <= Date.now()) {
+          localStorage.removeItem(SESSION_KEY);
+          setIsAuthenticated(false);
+        }
+      } catch (_) {
+        setIsAuthenticated(false);
+      }
+    }, 60000);
+    return () => clearInterval(id);
+  }, [isAuthenticated]);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (loginEmail.trim() === ADMIN_EMAIL && loginPassword === ADMIN_PASSWORD) {
+      const expiry = Date.now() + SESSION_DURATION_MS;
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ expiry }));
+      setIsAuthenticated(true);
+      setLoginError("");
+    } else {
+      setLoginError("Invalid email or password");
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem(SESSION_KEY);
+    setIsAuthenticated(false);
+  };
 
   // Admin routes configuration
   const adminRoutes = [
@@ -67,6 +133,7 @@ const AdminPanel = () => {
   ];
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     const fetchStats = async () => {
       try {
         const res = await axios.get(
@@ -80,9 +147,10 @@ const AdminPanel = () => {
       }
     };
     fetchStats();
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     const fetchRecent = async () => {
       try {
         const res = await axios.get(
@@ -96,17 +164,61 @@ const AdminPanel = () => {
       }
     };
     fetchRecent();
-  }, []);
+  }, [isAuthenticated]);
 
   const handleNavigation = (path) => {
     navigate(path);
   };
 
+  if (authChecked && !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-orange-100 p-6">
+          <div className="text-center mb-6">
+            <img src={logo} alt="GoaTourWala Logo" className="mx-auto h-14 w-14 rounded-xl shadow" />
+            <h2 className="mt-3 text-2xl font-bold text-gray-900">Admin Login</h2>
+            <p className="text-sm text-gray-600">Please sign in to continue</p>
+          </div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <input
+                id="email"
+                type="email"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                placeholder="sushil@goatourwala.com"
+                className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+              <input
+                id="password"
+                type="password"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                placeholder="••••••••"
+                className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+              />
+            </div>
+            {loginError && <p className="text-sm text-red-600">{loginError}</p>}
+            <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 border border-blue-700/30 transition">
+              Sign In
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-lg border-b-2 border-orange-200">
-        <div className="flex items-center justify-between px-6 py-5">
+        <div className="flex items-center justify-between px-4 md:px-6 py-4 md:py-5">
           <div className="flex items-center gap-6">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -120,9 +232,9 @@ const AdminPanel = () => {
             </button>
 
             {/* Enhanced Brand Section */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
               <div className="relative group">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
                   <span className="text-white font-bold text-xl">
                     <img
                       src={logo}
@@ -134,10 +246,10 @@ const AdminPanel = () => {
                 <div className="absolute -inset-1 bg-gradient-to-br from-orange-400 to-pink-400 rounded-2xl opacity-20 blur-sm group-hover:opacity-40 transition-all duration-300"></div>
               </div>
               <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text">
+                <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text">
                   Goa Tour Wala
                 </h1>
-                <div className="flex items-center gap-2">
+                <div className="hidden md:flex items-center gap-2">
                   <span className="text-sm text-gray-600 font-medium">
                     Admin Control Center
                   </span>
@@ -174,7 +286,7 @@ const AdminPanel = () => {
             )}
 
             {/* User Profile */}
-            <div className="flex items-center gap-3 bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-2 rounded-2xl border hover:shadow-md transition-all duration-200">
+            <div className="hidden sm:flex items-center gap-3 bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-2 rounded-2xl border hover:shadow-md transition-all duration-200">
               <div className="text-right">
                 <p className="text-sm font-bold text-gray-900">Admin User</p>
                 <p className="text-xs text-orange-600 font-medium">
@@ -187,6 +299,7 @@ const AdminPanel = () => {
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
               </div>
+              <button onClick={handleLogout} className="ml-3 text-xs font-medium text-red-600 hover:text-red-700 border border-red-200 rounded-lg px-3 py-1.5">Logout</button>
             </div>
           </div>
         </div>
@@ -232,12 +345,12 @@ const AdminPanel = () => {
         )}
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 md:p-6">
           {/* Welcome Section */}
           <div className="mb-8">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
-              <h2 className="text-2xl font-bold mb-2">Welcome back, Admin!</h2>
-              <p className="text-blue-100">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-4 md:p-6 text-white">
+              <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">Welcome back, Admin!</h2>
+              <p className="text-blue-100 text-sm md:text-base">
                 Here's what's happening with your travel business today.
               </p>
             </div>
@@ -302,16 +415,16 @@ const AdminPanel = () => {
 
           {/* Admin Routes Grid */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 md:mb-6">
               Admin Functions
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {adminRoutes.map((route, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="p-6">
+                  <div className="p-4 md:p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div
                         className={`p-3 rounded-lg ${route.color} text-white`}
@@ -320,10 +433,10 @@ const AdminPanel = () => {
                       </div>
                       <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
                     </div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h4 className="text-base md:text-lg font-semibold text-gray-900 mb-2">
                       {route.title}
                     </h4>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-600 text-sm mb-3 md:mb-4">
                       {route.description}
                     </p>
                     <div className="flex items-center justify-between">
