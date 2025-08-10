@@ -21,7 +21,7 @@ import logo from "../assets/logo.png";
 const AdminPanel = () => {
   // Local storage based auth (12h expiry)
   const ADMIN_EMAIL = "sushil@goatourwala.com";
-  const ADMIN_PASSWORD = "201407At@";
+  const ADMIN_PASSWORD = "201607At@";
   const SESSION_KEY = "adminSession";
   const SESSION_DURATION_MS = 12 * 60 * 60 * 1000;
 
