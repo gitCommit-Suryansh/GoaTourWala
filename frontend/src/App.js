@@ -38,11 +38,6 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/adminpanel' element={<AdminPanel/>}/>
-        <Route path='/CreatePackage' element={<CreatePackage/>}/>
-        <Route path='/seePayments' element={<SeePayments/>}/>
-        <Route path='/seePlanTrips' element={<ViewPlanTrips/>}/>
-        <Route path="/editSubcategories" element={<ExistingSubcategories/>}/>
         <Route path='/planYourTrip' element={<PlanTripForm/>}/>
         <Route path='/refundPolicy' element={<RefundPolicy />} />
         <Route path='/termsAndConditions' element={<TermsandCondition />} />
