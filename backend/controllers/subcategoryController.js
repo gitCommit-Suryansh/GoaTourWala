@@ -351,6 +351,16 @@ exports.updateSubcategory = async (req, res) => {
   }
 };
 
+exports.getByPackageType = async (req, res) => {
+  try {
+    const { packageType } = req.params;
+    const subcategories = await Subcategory.find({ packageType });
+    res.status(200).json(subcategories);
+  } catch (err) {
+    console.error("Get By Package Type Error:", err);
+    res.status(500).json({ error: "Failed to get subcategories by package type" });
+  }
+};
 
 
 

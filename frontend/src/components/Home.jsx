@@ -37,8 +37,11 @@ const Home = () => {
   const [categoriesWithSubcategories, setCategoriesWithSubcategories] =
     useState([]);
   const [categoryActiveSlide, setCategoryActiveSlide] = useState(0);
+  const [tourPage, setTourPage] = useState(0);
+  const [tripPage, setTripPage] = useState(0);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
 
   useEffect(() => {
     const handleLoad = () => setLoading(false);
@@ -89,6 +92,7 @@ const Home = () => {
 
     fetchData();
   }, []);
+  console.log(subcategories)
 
   // Add auto-carousel for categories
   useEffect(() => {
@@ -123,6 +127,33 @@ const Home = () => {
   const displayedCategories = showAllCategories
     ? subcategories
     : subcategories.slice(0, 6);
+
+  const pageSize = 8;
+  const tourPackages = subcategories.filter(
+    (s) => (s.packageType || "").toLowerCase() === "tour package"
+  );
+  const tripPackages = subcategories.filter(
+    (s) => (s.packageType || "").toLowerCase() === "trip package"
+  );
+
+  const tourTotalPages = Math.max(1, Math.ceil(tourPackages.length / pageSize));
+  const tripTotalPages = Math.max(1, Math.ceil(tripPackages.length / pageSize));
+
+  useEffect(() => {
+    if (tourPage >= tourTotalPages) setTourPage(0);
+  }, [tourTotalPages]);
+  useEffect(() => {
+    if (tripPage >= tripTotalPages) setTripPage(0);
+  }, [tripTotalPages]);
+
+  const tourDisplayed = tourPackages.slice(
+    tourPage * pageSize,
+    tourPage * pageSize + pageSize
+  );
+  const tripDisplayed = tripPackages.slice(
+    tripPage * pageSize,
+    tripPage * pageSize + pageSize
+  );
 
   return (
     <div className="relative">
@@ -282,34 +313,17 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SUBCATEGORIES SECTION */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* TOUR PACKAGES SECTION */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div
-            className="text-center mb-16"
-            style={{
-              fontFamily: '"Play","Edu NSW ACT Cursive", cursive',
-            }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Discover Amazing
-              <span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 ml-3"
-                style={{ color: "#FFBA0A" }}
-              >
-                Destinations
-              </span>
+          <div className="text-center mb-10" style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+              Trending holiday packages in Goa
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our handpicked collection of extraordinary travel
-              experiences that will create memories to last a lifetime
-            </p>
           </div>
-          {/* Loading State */}
           {loadingCategories ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[...Array(pageSize)].map((_, index) => (
                 <div key={index} className="animate-pulse">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div className="h-64 bg-gray-300"></div>
@@ -322,86 +336,61 @@ const Home = () => {
                 </div>
               ))}
             </div>
+          ) : tourPackages.length === 0 ? (
+            <p className="text-center text-gray-600">No tour packages available right now.</p>
           ) : (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {displayedCategories.map((category) => (
+            <div className="relative" style={{ overflowAnchor: 'none' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
+                {tourDisplayed.map((pkg) => (
                   <div
-                    key={category._id}
-                    // to={`/${category.categorySlug}/${category.slug}`}
+                    key={pkg._id}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-                    style={{ scale: 0.9 }}
+                    style={{ scale: 0.9}}
                   >
-                    <div className="relative h-40 md:h-48 overflow-hidden">
-                      <Link to={`/${category.categorySlug}/${category.slug}`}>
+                    <div className="relative md:h-44 overflow-hidden">
+                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <img
-                          src={
-                            category.image ||
-                            category.bannerImage ||
-                            "/api/placeholder/400/300"
-                          }
-                          alt={category.name}
-                          className="w-full h-full object-cover"
+                          src={pkg.image || pkg.bannerImage || "/api/placeholder/400/300"}
+                          alt={pkg.name}
+                          className="w-full h-full object-fit"
                         />
                       </Link>
                     </div>
-                    <div className="p-4 md:p-5">
-                      <Link to={`/${category.categorySlug}/${category.slug}`}>
-                        <div className="text-sm text-gray-600 mb-2">
-                          {category.duration || "6 days & 5 nights"}
-                        </div>
-                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
-                          {category.name}
-                        </h3>
-                        <div className="text-sm text-gray-600 mb-3 flex items-center gap-2">
+                    <div className="p-2 md:p-3">
+                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                        <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
+                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
-                          <span>{category.route || "Goa"}</span>
+                          <span>{pkg.route || "Goa"}</span>
                         </div>
-                        <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center gap-2 mb-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                            <span className="text-sm font-medium text-gray-700">
-                              {subcategoryStats[category._id]?.rating || "4.5"}
-                            </span>
+                            <span className="text-sm font-medium text-gray-700">{subcategoryStats[pkg._id]?.rating || "4.5"}</span>
                           </div>
-                          <span className="text-sm text-gray-500">
-                            ({subcategoryStats[category._id]?.reviews || "1200"}{" "}
-                            reviews)
-                          </span>
+                          <span className="text-sm text-gray-500">({subcategoryStats[pkg._id]?.reviews || "1200"} reviews)</span>
                         </div>
                       </Link>
-                      <div className="mb-4">
+                      <div className="mb-2">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-base md:text-lg text-gray-400 line-through">
-                            INR{" "}
-                            {category.price +
-                              (subcategoryStats[category._id]?.discount ||
-                                1000)}
+                            INR {pkg.price + (subcategoryStats[pkg._id]?.discount || 1000)}
                           </span>
                           <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
-                            SAVE INR{" "}
-                            {subcategoryStats[category._id]?.discount || 1000}
+                            SAVE INR {subcategoryStats[pkg._id]?.discount || 1000}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xl md:text-2xl font-bold text-gray-900">
-                            INR {category.price}
-                          </span>
+                          <span className="text-xl md:text-2xl font-bold text-gray-900">INR {pkg.price}</span>
                           <span className="text-sm text-gray-600">/Adult</span>
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <a
-                          href="tel:+1234567890"
-                          className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
-                        >
+                        <a href={`tel:${SUPPORT_PHONE}`} className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2">
                           <Phone className="w-4 h-4" />
                         </a>
-                        <Link
-                          className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
-                          style={{ backgroundColor: "#F37002" }}
-                          to={`/${category.categorySlug}/${category.slug}`}
-                        >
+                        <Link className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200" style={{ backgroundColor: "#F37002" }} to={`/${pkg.categorySlug}/${pkg.slug}`}>
                           Book Now
                         </Link>
                       </div>
@@ -409,7 +398,149 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-            </>
+
+              {tourPackages.length > pageSize && (
+                <div className="flex justify-between items-center mt-6">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTourPage((p) => (p - 1 + tourTotalPages) % tourTotalPages);
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    <ArrowLeft className="w-5 h-5" /> Prev
+                  </button>
+                  <div className="text-sm text-gray-600">Page {tourPage + 1} of {tourTotalPages}</div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTourPage((p) => (p + 1) % tourTotalPages);
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    Next <ArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* TRIP PACKAGES SECTION */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10" style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+              Goa trip packages
+            </h2>
+          </div>
+          {loadingCategories ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[...Array(pageSize)].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div className="h-64 bg-gray-300"></div>
+                    <div className="p-6">
+                      <div className="h-6 bg-gray-300 rounded mb-4"></div>
+                      <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : tripPackages.length === 0 ? (
+            <p className="text-center text-gray-600">No trip packages available right now.</p>
+          ) : (
+            <div className="relative" style={{ overflowAnchor: 'none' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+                {tripDisplayed.map((pkg) => (
+                  <div
+                    key={pkg._id}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                    style={{ scale: 0.9 }}
+                  >
+                    <div className="relative  md:h-44 overflow-hidden">
+                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                        <img
+                          src={pkg.image || pkg.bannerImage || "/api/placeholder/400/300"}
+                          alt={pkg.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </Link>
+                    </div>
+                    <div className="p-2 md:p-3">
+                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                        <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
+                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{pkg.route || "Goa"}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span className="text-sm font-medium text-gray-700">{subcategoryStats[pkg._id]?.rating || "4.5"}</span>
+                          </div>
+                          <span className="text-sm text-gray-500">({subcategoryStats[pkg._id]?.reviews || "1200"} reviews)</span>
+                        </div>
+                      </Link>
+                      <div className="mb-2">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-base md:text-lg text-gray-400 line-through">
+                            INR {pkg.price + (subcategoryStats[pkg._id]?.discount || 1000)}
+                          </span>
+                          <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
+                            SAVE INR {subcategoryStats[pkg._id]?.discount || 1000}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl md:text-2xl font-bold text-gray-900">INR {pkg.price}</span>
+                          <span className="text-sm text-gray-600">/Adult</span>
+                        </div>
+                      </div>
+                      <div className="flex gap-3">
+                        <a href={`tel:${SUPPORT_PHONE}`} className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2">
+                          <Phone className="w-4 h-4" />
+                        </a>
+                        <Link className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200" style={{ backgroundColor: "#F37002" }} to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                          Book Now
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {tripPackages.length > pageSize && (
+                <div className="flex justify-between items-center mt-6">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTripPage((p) => (p - 1 + tripTotalPages) % tripTotalPages);
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    <ArrowLeft className="w-5 h-5" /> Prev
+                  </button>
+                  <div className="text-sm text-gray-600">Page {tripPage + 1} of {tripTotalPages}</div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTripPage((p) => (p + 1) % tripTotalPages);
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    Next <ArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </section>

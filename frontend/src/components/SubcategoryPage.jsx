@@ -26,6 +26,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import logo from "../assets/logo.png";
 import jsPDF from "jspdf";
+import { Link } from "react-router-dom";
 
 const SubcategoryPage = () => {
   const { subSlug, categorySlug } = useParams();
@@ -48,15 +49,57 @@ const SubcategoryPage = () => {
   const [hasSavedPayment, setHasSavedPayment] = useState(false);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [otherActivities, setOtherActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [packageType, setpackageType] = useState(null);
+
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
 
   useEffect(() => {
     axios
       .get(`${REACT_APP_BACKEND_URL}/api/subcategories/get-by-slug/${subSlug}`)
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data);
+        setpackageType(res.data.packageType);
+      })
       .catch((err) => console.error("Error loading subcategory:", err));
   }, [subSlug]);
+
+  useEffect(() => {
+    const fetchOtherActivities = async () => {
+      try {
+        const response = await axios.get(
+          `${REACT_APP_BACKEND_URL}/api/categories/all-with-subcategories`
+        );
+        const categories = response.data;
+
+        // Filter subpackages based on the current packageType
+        const matchingSubpackages = categories.flatMap((category) =>
+          category.subcategories
+            .filter((sub) => sub.packageType === packageType)
+            .map((sub) => ({
+              ...sub, // Spread existing subpackage details
+              categorySlug: category.slug, // Add categorySlug to each subpackage
+            }))
+        );
+
+        // Shuffle and select 6 random subpackages
+        const shuffled = matchingSubpackages.sort(() => 0.5 - Math.random());
+        const selectedSubpackages = shuffled.slice(0, 6);
+
+        setOtherActivities(selectedSubpackages);
+      } catch (error) {
+        console.error("Error fetching other activities:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOtherActivities();
+  }, [packageType]);
+
+  console.log(otherActivities);
 
   useEffect(() => {
     if (data && activeImageIndex >= data.galleryImages.length) {
@@ -70,8 +113,8 @@ const SubcategoryPage = () => {
     if (isCarouselHovered || isModalOpen) return; // pause when hovered or modal open
 
     const intervalId = setInterval(() => {
-      setActiveImageIndex((prevIndex) =>
-        (prevIndex + 1) % data.galleryImages.length
+      setActiveImageIndex(
+        (prevIndex) => (prevIndex + 1) % data.galleryImages.length
       );
     }, 3000);
 
@@ -100,7 +143,7 @@ const SubcategoryPage = () => {
 
     fetchPaymentStatus();
   }, [merchantOrderId]);
-  
+
   useEffect(() => {
     const savePaymentToDB = async () => {
       if (!paymentStatus || !data || hasSavedPayment) return;
@@ -119,7 +162,6 @@ const SubcategoryPage = () => {
     savePaymentToDB();
   }, [paymentStatus, data, hasSavedPayment]);
 
-
   if (!data) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -137,10 +179,17 @@ const SubcategoryPage = () => {
   }
 
   const totalPrice = (adults + children) * data.price;
-  console.log(name)
-  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/, "");
+  console.log(name);
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(
+    /^0+/,
+    ""
+  );
   const whatsappMessage = encodeURIComponent(
-    `Hi, I'm interested in ${data.name} on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${typeof window !== 'undefined' ? window.location.href : ''}`
+    `Hi, I'm interested in ${
+      data.name
+    } on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${
+      typeof window !== "undefined" ? window.location.href : ""
+    }`
   );
   const handleBooking = async () => {
     if (!mobileNumber || mobileNumber.length < 10) {
@@ -163,8 +212,7 @@ const SubcategoryPage = () => {
       categorySlug,
       subSlug,
     };
-    
-    
+
     try {
       const res = await axios.post(
         `${REACT_APP_BACKEND_URL}/api/phonepe/pay`,
@@ -207,14 +255,15 @@ const SubcategoryPage = () => {
 
   // Carousel controls
   const nextCarouselImage = () => {
-    setActiveImageIndex((prevIndex) =>
-      (prevIndex + 1) % data.galleryImages.length
+    setActiveImageIndex(
+      (prevIndex) => (prevIndex + 1) % data.galleryImages.length
     );
   };
 
   const prevCarouselImage = () => {
-    setActiveImageIndex((prevIndex) =>
-      (prevIndex - 1 + data.galleryImages.length) % data.galleryImages.length
+    setActiveImageIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + data.galleryImages.length) % data.galleryImages.length
     );
   };
 
@@ -386,7 +435,7 @@ const SubcategoryPage = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-6 md:py-12 grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-12">
+        <div className="max-w-7xl mx-auto px-2 py-6 md:py-12 grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-12">
           <div className="lg:col-span-2 space-y-8 md:space-y-12">
             <div className="relative">
               <div className="max-w-7xl mx-auto flex flex-col gap-4">
@@ -520,6 +569,38 @@ const SubcategoryPage = () => {
               </section>
             )}
 
+            {/* Itenary Section */}
+
+            {data.details && data.details.length > 0 && (
+              <section className="space-y-4 md:space-y-6">
+                <h2 className="text-xl md:text-3xl font-extrabold text-gray-900 border-b-2 md:border-b-3 border-blue-500 pb-2 inline-block">
+                  Itenary Included
+                </h2>
+                <ul className="space-y-2 md:space-y-3">
+                  {data.details.map((detail, index) => {
+                    const textContent = Array.isArray(detail.content)
+                      ? detail.content.join(", ")
+                      : detail.content || "";
+                    const title = detail.title || "";
+                    return (
+                      <li
+                        key={index}
+                        className="flex items-start gap-2 md:gap-3"
+                      >
+                        <Check className="w-4 h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm md:text-base text-gray-800 leading-relaxed">
+                          <span className="font-bold">{`${title}`}</span>
+                          {`: ${textContent}`}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            )}
+
+            {/* Highlights Section */}
+
             {data.features && data.features.length > 0 && (
               <section className="space-y-4 md:space-y-6">
                 <h2 className="text-xl md:text-3xl font-extrabold text-gray-900 border-b-2 md:border-b-3 border-blue-500 pb-2 inline-block">
@@ -527,7 +608,10 @@ const SubcategoryPage = () => {
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-3.5">
                   {data.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-2 md:gap-3">
+                    <div
+                      key={index}
+                      className="flex items-start gap-2 md:gap-3"
+                    >
                       <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       <span className="text-sm md:text-base font-medium text-gray-800 leading-relaxed">
                         {feature}
@@ -538,40 +622,72 @@ const SubcategoryPage = () => {
               </section>
             )}
 
-            <section className="space-y-4 md:space-y-6">
-              <h2 className="text-xl md:text-3xl font-extrabold text-gray-900 border-b-2 md:border-b-3 border-blue-500 pb-2 inline-block">
-                Experience Details
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-                {data.details.map((detail, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-xl p-4 md:p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 capitalize flex items-center gap-2">
-                      <Check className="w-4 h-4 md:w-5 md:h-5 bg-green-500 text-white flex-shrink-0 mt-0.5 rounded-md" />
-                      {detail.title}
-                    </h3>
-                    {Array.isArray(detail.content) ? (
-                      <ul className="space-y-2 md:space-y-3 list-none pl-0">
-                        {detail.content.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <Check className="w-3 h-3 md:w-4 md:h-4 text-blue-500 mt-1 flex-shrink-0" />
-                            <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                              {item}
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                        {detail.content}
-                      </p>
-                    )}
+            {/* Other Activities Section */}
+
+            {otherActivities.length > 0 && (
+              <section className="py-8 md:py-12 bg-slate-50">
+                <div className="container mx-auto px-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
+                    <span style={{color:"#FFBA0A"}}> Discover</span> Other Activities
+                  </h2>
+                  <p className="text-center text-lg text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto">
+                    Expand your horizons with our curated selection of unique
+                    and exciting experiences.
+                  </p>
+
+                  {/* Grid for the activity cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-3 md:gap-2">
+                    {otherActivities.map((activity) => (
+                      // NEW: Added 'group' to enable hover effects on child elements
+                      <div
+                        key={activity.slug} // Use a unique slug or id for the key instead of index
+                        className="group block bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 overflow-hidden"
+                      >
+                        <Link
+                          to={`/${activity.categorySlug}/${activity.slug}`}
+                          className="block"
+                        >
+                          <div className="relative overflow-hidden">
+                            <img
+                              src={activity.galleryImages[0]}
+                              alt={activity.name}
+                              use className="w-full h-44 md:h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                            />
+                            {/* NEW: Optional gradient overlay for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          </div>
+
+                          <div className="p-2">
+                            <h3 className="text-md font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-300 truncate">
+                              {activity.name}
+                            </h3>
+
+                            {/* NEW: Cleaner styling for the feature tags */}
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {activity.features
+                                .slice(0, 3)
+                                .map((feature, index) => (
+                                  <span
+                                    key={index}
+                                    className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full"
+                                  >
+                                    {feature}
+                                  </span>
+                                ))}
+                              {activity.features.length > 3 && (
+                                <span className="inline-block bg-slate-100 text-slate-600 text-xs font-semibold px-3 py-1 rounded-full">
+                                  +{activity.features.length - 3} more
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </section>
+                </div>
+              </section>
+            )}
           </div>
 
           <aside
@@ -740,29 +856,31 @@ const SubcategoryPage = () => {
               </div>
             </div>
           </aside>
+
+          
         </div>
 
-      {/* Floating contact actions */}
-      <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
-        <a
-          href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
-          aria-label="Chat on WhatsApp"
-        >
-          <MessageCircle className="w-5 h-5" />
-          <span className="font-semibold">WhatsApp</span>
-        </a>
-        <a
-          href={`tel:${SUPPORT_PHONE}`}
-          className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
-          aria-label="Call now"
-        >
-          <Phone className="w-5 h-5" />
-          <span className="font-semibold">Call</span>
-        </a>
-      </div>
+        {/* Floating contact actions */}
+        <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+          <a
+            href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span className="font-semibold">WhatsApp</span>
+          </a>
+          <a
+            href={`tel:${SUPPORT_PHONE}`}
+            className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
+            aria-label="Call now"
+          >
+            <Phone className="w-5 h-5" />
+            <span className="font-semibold">Call</span>
+          </a>
+        </div>
 
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
@@ -1007,7 +1125,7 @@ const SubcategoryPage = () => {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

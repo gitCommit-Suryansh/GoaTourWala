@@ -11,6 +11,6 @@ router.get('/all',subcategoryController.all)
 router.get('/:categoryId', subcategoryController.getSubcategoriesByCategory);
 router.get('/get-by-slug/:slug', subcategoryController.getBySlugName);
 router.put('/update/:id',upload.fields([{ name: 'bannerImage', maxCount: 1 },{ name: 'newGalleryImages', maxCount: 10 },]),subcategoryController.updateSubcategory);
-  
+router.get('/get-by-package-type/:packageType', subcategoryController.getByPackageType);
 
 module.exports=router
