@@ -34,8 +34,7 @@ const Home = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [subcategoryStats, setSubcategoryStats] = useState({});
-  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =
-    useState([]);
+  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =useState([]);
   const [categoryActiveSlide, setCategoryActiveSlide] = useState(0);
   const [tourPage, setTourPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
@@ -92,7 +91,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(subcategories)
 
   // Add auto-carousel for categories
   useEffect(() => {
@@ -242,7 +240,6 @@ const Home = () => {
                 delay={500}
                 cursorChar="_"
                 cursorBlink={true}
-                onComplete={() => console.log("Typing complete!")}
                 pauseOnHover={true}
                 style={{ color: "white" }}
               />
@@ -359,7 +356,7 @@ const Home = () => {
                     <div className="p-2 md:p-3">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
-                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
                         <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
                           <span>{pkg.route || "Goa"}</span>
@@ -475,7 +472,7 @@ const Home = () => {
                     <div className="p-2 md:p-3">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
-                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
                         <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
                           <span>{pkg.route || "Goa"}</span>
