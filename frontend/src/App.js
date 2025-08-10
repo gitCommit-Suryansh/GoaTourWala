@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Home from './components/Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AdminPanel from './components/AdminPanel';
 import SubcategoryPage from './components/SubcategoryPage'
-import ExistingSubcategories from './components/ExistingSubcategories';
 import ExploreCategory from './components/ExploreCategory';
-import SeePayments from './components/SeePayments';
-import CreatePackage from './components/CreatePackage'
 import PlanTripForm from './components/PlanTripForm'
-import ViewPlanTrips from './components/ViewPlanTrips';
 import TermsandCondition from './components/TermsAndConditions'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RefundPolicy from './components/RefundPolicy'
