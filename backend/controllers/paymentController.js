@@ -3,8 +3,6 @@ const Payment = require("../models/Payment");
 exports.createPayment = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data)
-
     const meta = data.metaInfo || {};
     const [adultsStr, childrenStr] = meta?.udf5.split("|") || ["", ""];
 
@@ -15,16 +13,6 @@ exports.createPayment = async (req, res) => {
     const children = childrenStr?.split(":")[1] || "0";
     const tripPackage = req.body.tripPackage || "N/A";
 
-    // const meta = data.metaInfo || {};
-    // const name = meta.udf0?.split(":")[1] || "N/A";
-    // const mobileNumber = meta.udf1?.split(":")[1] || "N/A";
-    // const tripDate = meta.udf3?.split(":")[1] || "N/A";
-    // const adults = meta.udf4?.split(":")[1] || "0";
-    // const children = meta.udf5?.split(":")[1] || "0";
-    // const tripPackage = req.body.tripPackage || "N/A";
-
-    // Perform atomic upsert to avoid duplicate error
-    
     const result = await Payment.updateOne(
       { orderId: data.orderId }, // filter
       {

@@ -13,18 +13,7 @@ const generateMerchantOrderId = () => {
 };
 
 // Function to complete payment
-const complete_payment = async (
-  accessToken,
-  name,
-  mobileNumber,
-  amount,
-  merchantOrderId,
-  children,
-  adults,
-  date,
-  subSlug,
-  categorySlug
-) => {
+const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrderId,children,adults,date,subSlug,categorySlug) => {
   try {
     const paymentResponse = await axios.post(
       `${process.env.CREATE_PAYMENT_URL}${process.env.CREATE_PAYMENT_ENDPOINT}`,
