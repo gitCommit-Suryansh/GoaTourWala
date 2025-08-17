@@ -6,7 +6,7 @@ exports.createPayment = async (req, res) => {
     console.log(data)
 
     const meta = data.metaInfo || {};
-    const [adultsStr, childrenStr] = udf5.split("|");
+    const [adultsStr, childrenStr] = meta?.udf5.split("|") || ["", ""];
 
     const name = meta.udf1?.split(":")[1] || "N/A";
     const mobileNumber = meta.udf2?.split(":")[1] || "N/A";
