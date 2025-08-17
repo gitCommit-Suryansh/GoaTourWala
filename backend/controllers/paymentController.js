@@ -1,4 +1,6 @@
 const Payment = require("../models/Payment");
+const sendBookingNotification = require("../services/mailer");
+
 
 exports.createPayment = async (req, res) => {
   try {
@@ -38,6 +40,15 @@ exports.createPayment = async (req, res) => {
     );
 
     if (result.upsertedCount > 0) {
+      await sendBookingNotification({
+        name,
+        email: "info@goatourwala.com", // you don’t collect customer email now, so using your official one
+        phone: mobileNumber,
+        package: tripPackage,
+        amount: data.amount,
+        Adults:adults,
+        Children:children
+      });
       return res.status(201).json({ message: "Payment saved successfully" });
     } else {
       return res.status(200).json({ message: "Payment already exists" });

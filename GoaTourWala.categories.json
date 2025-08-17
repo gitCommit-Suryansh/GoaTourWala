@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Cruise in goa",
+  "slug": "cruise-in-goa",
+  "createdAt": {
+    "$date": "2025-08-10T15:55:12.160Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T15:55:12.160Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c0e64cbdfe3ab358092a"
+  },
+  "name": "Sightseen",
+  "slug": "sightseen",
+  "createdAt": {
+    "$date": "2025-08-10T15:55:18.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T15:55:18.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Adventure sports",
+  "slug": "adventure-sports",
+  "createdAt": {
+    "$date": "2025-08-10T15:55:40.411Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T15:55:40.411Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c1414cbdfe3ab3580930"
+  },
+  "name": "Scuba with watersports",
+  "slug": "scuba-with-watersports",
+  "createdAt": {
+    "$date": "2025-08-10T15:56:49.024Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T15:56:49.024Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Tour packages",
+  "slug": "tour-packages",
+  "createdAt": {
+    "$date": "2025-08-10T15:56:57.726Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T15:56:57.726Z"
+  },
+  "__v": 0
+}]

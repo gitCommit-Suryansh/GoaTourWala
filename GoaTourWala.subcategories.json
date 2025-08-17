@@ -1,0 +1,2186 @@
+[{
+  "_id": {
+    "$oid": "6898c488c983c3d97db5b532"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Adventure cruise",
+  "slug": "adventure-cruise",
+  "description": "This 4-hour trip on a double-deck catamaran departs from the boat jetty in Panjim. It includes activities like kayaking, snorkeling, fishing, and dolphin spotting. You'll also enjoy a Goan meal with snacks, chilled soft drinks, and the option of beer. The trip includes sightseeing of popular spots such as Adil Shah Palace and the Mandovi Bridge.",
+  "price": 1500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Adventure Boat Trip",
+    "Pickup and Drop",
+    "Food",
+    "Drinks",
+    "15 Min. Road Journey",
+    "Life Jacket",
+    "Dolphin Sight Seeing",
+    "Fort Aguada Sight Seeing",
+    "Kayaking"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1754842244/GOA-TOUR-WALA/puzno2uhwv66dnhnm7vk.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842246/GOA-TOUR-WALA/lo99hte0ryibshyja8ig.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842246/GOA-TOUR-WALA/jsf1qlpjajlapo0xwbxy.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842248/GOA-TOUR-WALA/wdzck1rhlsyax1qejp4i.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842248/GOA-TOUR-WALA/b5olxdtgyb0pzmc7rpzm.png"
+  ],
+  "details": [
+    {
+      "title": "Trip Timing:",
+      "content": "2 pm – 6 PM",
+      "_id": {
+        "$oid": "6898c488c983c3d97db5b533"
+      }
+    },
+    {
+      "title": "Food:",
+      "content": "Veg, Non Veg, Buffet.",
+      "_id": {
+        "$oid": "6898c488c983c3d97db5b534"
+      }
+    },
+    {
+      "title": "Pick Up:",
+      "content": "Pick Up from famouse palace like Baga ,Colanguate,Condolim,Arpora and go to panjim jatty for boarding cruise.",
+      "_id": {
+        "$oid": "6898c488c983c3d97db5b535"
+      }
+    },
+    {
+      "title": "Drinks",
+      "content": "Water, Softdrink, beer",
+      "_id": {
+        "$oid": "6898c488c983c3d97db5b536"
+      }
+    },
+    {
+      "title": "Activities",
+      "content": "Kayking, Snorking, Subboard Fishing and Dolphin Sightseen.",
+      "_id": {
+        "$oid": "6898c488c983c3d97db5b537"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-10T16:10:48.873Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T16:10:48.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c5ddc983c3d97db5b548"
+  },
+  "category": {
+    "$oid": "6898c0e64cbdfe3ab358092a"
+  },
+  "name": "North Goa Sightseen",
+  "slug": "north-goa-sightseen",
+  "description": "This tour will enable you to see all the north Goa attractions without any hassle. The main attraction in north Goa is the Fort Aguada which was built by the Portuguese. This fort has a lot of history behind it and is definitely worth a visit in Goa. Other than that, there are many beaches in north Goa which are very famous among the local and international tourists for relaxation and its scenic beauty. Some of these beaches include Calangute beach, Anjuna beach, and Baga beach.The Snow Park at Baga is another activity that guests can enjoy at an additional cost. While enjoying all the activities don’t forget to keep your camera ready to capture all the experiences. Our tour doesn’t include lunch or breakfast, However for lunch break we will wait at one of the best hotels for 30 to 40 minutes, where you can enjoy a delicious meal. The tour will end at the main road of North Goa where you had onboarded in the morning. There’s plenty to see and do in North Goa, from exploring the region’s vibrant markets and temples to taking in its stunning natural scenery. Most of the popular tourist attractions for international tourists include the flea market, casino’s, watersports,, and nightlife. Therefore we have curated a special package that includes all the main spots at an affordable price. Also, we offer a private car booking service that is exclusively reserved for a group of family or friends on booking and not shared.",
+  "price": 350,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "Fort Aguada",
+    "Aguada jail",
+    "Sinquerin Beech",
+    "Baga Beech",
+    "Anjana Beech",
+    "Vagator Beech",
+    "Musium SnowPark",
+    "thandur world"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1754842586/GOA-TOUR-WALA/l8qq5aoiqu1o1kpx3hmd.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842587/GOA-TOUR-WALA/fwsev4fawjrnzrxuyar7.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842587/GOA-TOUR-WALA/p7yrh6iybsj2qxyntl2o.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842589/GOA-TOUR-WALA/cplw2uod0vgitc9vxpmd.png"
+  ],
+  "details": [
+    {
+      "title": "Trip Timing",
+      "content": "9AM - 6 PM",
+      "_id": {
+        "$oid": "6898c5ddc983c3d97db5b549"
+      }
+    },
+    {
+      "title": "Food",
+      "content": "Veg, Non Veg, Buffet.",
+      "_id": {
+        "$oid": "6898c5ddc983c3d97db5b54a"
+      }
+    },
+    {
+      "title": "Pick up ",
+      "content": "Pick Up from famouse palace like Baga ,Colanguate,Condolim,Arpora and go to panjim jatty for boarding cruise.",
+      "_id": {
+        "$oid": "6898c5ddc983c3d97db5b54b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-10T16:16:29.920Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T16:16:29.920Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898c757c983c3d97db5b553"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Scuba Diving",
+  "slug": "scuba-diving",
+  "description": "Scuba diving in Goa is a fantastic experience! Goa Tour Wala is a well-known tour operator that offers various water sports activities, including scuba diving, in the beautiful waters of Goa. They usually provide professional instructors, top-notch equipment, and ensure safety measures are in place so you can have a memorable and safe diving experience. Whether you're a beginner or an experienced diver, exploring the underwater world in Goa is something you shouldn't miss!:",
+  "price": 1500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "15 Min. Road Journey",
+    "Life Jacket",
+    "Dolphin Sight Seeing",
+    "Fort Aguada",
+    "Sight Seeing",
+    "Unlimited Lunch(veg/nonveg)",
+    "Mineral Water",
+    "Scuba Diving",
+    "Fishing",
+    "Swimming & Sun Bathing",
+    "Scuba Diving Kits",
+    "Soft Drinks",
+    "Free Diving Video"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1754842962/GOA-TOUR-WALA/ar9crnbhxl1afix9k7vf.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842963/GOA-TOUR-WALA/mhyrf5hmszud1sxswh79.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842963/GOA-TOUR-WALA/zrg9drsz4pqn4w2z37ja.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842965/GOA-TOUR-WALA/hsxyyecfj4um9fyo2nid.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754842966/GOA-TOUR-WALA/hgdeampbwadiqvu3canq.png"
+  ],
+  "details": [
+    {
+      "title": "Trip Timing",
+      "content": "8 am – 4 PM",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b554"
+      }
+    },
+    {
+      "title": "Food",
+      "content": "Veg, Non Veg.",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b555"
+      }
+    },
+    {
+      "title": "Drink",
+      "content": "Water, Softdrink.",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b556"
+      }
+    },
+    {
+      "title": "Activities",
+      "content": "Scuba Diving, Swiming, Fishing, Snorkiling, Dolphin Sightseen, Aguada jail, Light house, Jimmy House.",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b557"
+      }
+    },
+    {
+      "title": "Boat Features",
+      "content": " Changing Rooms, Siting Palace.",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b558"
+      }
+    },
+    {
+      "title": "Pick Up",
+      "content": " Pick Up from famous palace like Baga ,Colanguate,Condolim,Arpora and go to For Bording.",
+      "_id": {
+        "$oid": "6898c757c983c3d97db5b559"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-10T16:22:47.309Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T16:22:47.309Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898ca99c983c3d97db5b561"
+  },
+  "category": {
+    "$oid": "6898c1414cbdfe3ab3580930"
+  },
+  "name": "Scuba Combo Tour at Grand Island",
+  "slug": "scuba-combo-tour-at-grand-island",
+  "description": "Best Scuba Diving & Watersports Package at Malvan Beach – Book with Goa Tour Wala\r\nLooking for the ultimate adventure in Goa? Dive into excitement with Goa Tour Wala's Best Scuba Diving and Watersports Package at Malvan Beach! Perfect for thrill-seekers, families, and nature lovers, our all-in-one package offers a once-in-a-lifetime underwater experience combined with five adrenaline-pumping water sports activities.\r\n\r\nScuba Diving in Malvan – Explore the Underwater World\r\nDiscover the vibrant marine life and coral reefs with a 15 to 20-minute scuba dive, guided by certified instructors. Capture your underwater memories with HD photos and videos – all included in the package!",
+  "price": 2500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "Life Jacket",
+    "Unlimited Lunch(veg-non-veg)",
+    "Jet Sky Banana Ride",
+    "Bumper Ride",
+    "Scuba Diving",
+    "Scuba Diving Kits",
+    "Free Diving Video",
+    "Speed Boat",
+    "Pairasailing"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1754843797/GOA-TOUR-WALA/fwvnap6np2pdjhrrgwbu.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754843799/GOA-TOUR-WALA/stgbek1konl1mdliq2wl.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754843799/GOA-TOUR-WALA/n9uevqiic0sljfrxyfen.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754843800/GOA-TOUR-WALA/kchezysrkh0kns8mreah.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754843800/GOA-TOUR-WALA/bgvzgvae4o3js6bhgtqd.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754843800/GOA-TOUR-WALA/eiuyvsvp4ury4jgynyfu.png"
+  ],
+  "details": [
+    {
+      "title": "Parasailing ",
+      "content": "– Soar high and enjoy panoramic views of the Malvan coastline.",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b562"
+      }
+    },
+    {
+      "title": "Jet Ski Ride",
+      "content": "Speed across the sparkling sea for a rush of pure adrenaline.",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b563"
+      }
+    },
+    {
+      "title": "Banana Ride ",
+      "content": "A fun and bumpy ride for groups and families.",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b564"
+      }
+    },
+    {
+      "title": "Bumper Ride & Sleeping Bumper",
+      "content": "Hang on tight as you bounce over the waves.",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b565"
+      }
+    },
+    {
+      "title": "Speed Boat Ride",
+      "content": "Glide over the waters and soak in scenic coastal views.",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b566"
+      }
+    },
+    {
+      "title": "Pick up and Drop",
+      "content": "Baga, Calangute, Candolim, Arpora, Mapusa",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b567"
+      }
+    },
+    {
+      "title": "Food",
+      "content": "Breakfast Included",
+      "_id": {
+        "$oid": "6898ca99c983c3d97db5b568"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-10T16:36:41.556Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T16:36:41.556Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6898cbd3c983c3d97db5b56b"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Goa Honeymoon Package",
+  "slug": "goa-honeymoon-package",
+  "description": "Nestled at the western coast of the country, Goa provides a totally different experience with its alluring beaches and crazy nightlife. Celebrate the start to your new journey and experience complete bliss with our customizable 3 nights and 4 days Goa honeymoon tour package. With this romantic Goa trip itinerary, you will visit the mesmerizing attractions of North and South Goa. Relish a delicious slice of leisure in the loving company of your soulmate in this nature kissed land. For a visit to conventional market and cafes, head to North Goa, while South Goa is all about lazing around the golden beaches in your leisure time. With our customizable honeymoon package for Goa, we provide you with all the amazing experiences that make your trip a memorable one.",
+  "price": 15000,
+  "duration": "3 Nights/4 Days",
+  "packageType": "Tour package",
+  "features": [
+    "Welcome Drinks",
+    "Sightseeing",
+    "3 Night Accomodation",
+    "Airport/Railway Station Transfers",
+    "Meal",
+    "Breakfast and Dinner",
+    "Floral bed decoration",
+    "Honeymoon Cake",
+    "& Candlelight Dinner",
+    "Government Taxes"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1754844110/GOA-TOUR-WALA/xzybzhkr3ofkac28irvm.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754844111/GOA-TOUR-WALA/fmevkuslg2pbbskwzweg.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754844113/GOA-TOUR-WALA/usj8fxxnhz3lz1hbyenv.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754844112/GOA-TOUR-WALA/qdwl9jkfoz90bdly4k0x.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754844113/GOA-TOUR-WALA/wkzontdxvqir8efhuq56.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1754844114/GOA-TOUR-WALA/wxkz1i8ych0i75oscmtd.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755141498/GOA-TOUR-WALA/pe6kgeqqsezhvndfenee.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755141598/GOA-TOUR-WALA/u04agauzpnlmwgn1twfx.jpg"
+  ],
+  "details": [
+    {
+      "title": "(Day-1) Welcome to Goa",
+      "content": "The first day of your Goa honeymoon itinerary welcomes you to the scintillating land of Goa. Your journey begins Upon arrival at Goa airport/railway station, an agent’s representative will pick you up and escort you to the hotel. Register yourself at the hotel’s reception and relax for a while. Enjoy the first day of your romantic trip leisurely. Enjoy a long walk with your partner at the sandy beaches of Goa or experience the vibrant nightlife on your Goa honeymoon. Towards the end of the day, come back to the hotel and stay for the night.",
+      "_id": {
+        "$oid": "689d55defd968e05855da641"
+      }
+    },
+    {
+      "title": "(Day-2) North Goa sightseeing",
+      "content": "This day, embark on a North Goa sightseeing tour and experience the best part of your Goa holiday Wake up early and head out together for a fun-filled dolphin sightseeing tour. Watch dolphins dancing in the sea waves. Come back to the hotel and have breakfast. Later, set out for North Goa sightseeing tour. Explore Coco Beach, Calangute Annexe, Calangute Beach, Baga Beach, and Anjuna Beach with this Goa tour package for couples. After an entertaining day, come back to the hotel and have a goodnight’s sleep. Optional: Water activities (charges extra)",
+      "_id": {
+        "$oid": "689d55defd968e05855da642"
+      }
+    },
+    {
+      "title": "(Day-3) South Goa sightseeing",
+      "content": "Witness the calm and serene South Goa with your better half on your honeymoon in Goa Kickstart the day with a nutritious breakfast and head out for a romantic sightseeing tour of South Goa. The first attraction to be visited on the third day of your Goa itinerary is the Shri Shantadurga Temple at Kavlem. Also, seek blessings for your newly-wed life at Shri Manguesh Temple in Priol. Visit the sightseeing attractions of Old Goa, such as Basilica of Bom Jesus and Se Cathedral, dating back to the Portuguese Era. Spend some quality time together at the Dona Paula Bay while enjoying mesmerising views of the Panjim city. Sip a cup of hot coffee at any of the beach shacks at Miramar Beach with your beloved. In the evening, come back to the hotel and rest. followed by a restful sleep.",
+      "_id": {
+        "$oid": "689d55defd968e05855da643"
+      }
+    },
+    {
+      "title": "(Day-4)Departure back home",
+      "content": " Depart from Goa with a treasure trove of memories Post breakfast, check-out from the hotel and get transferred to the airport/railway station. From here, board your flight/train back home.",
+      "_id": {
+        "$oid": "689d55defd968e05855da644"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-10T16:41:55.191Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-14T03:19:58.965Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ee286fd968e05855da6ae"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Adventure cruise with WaterSports",
+  "slug": "adventure-cruise-with-watersports",
+  "description": "Goa Tour Wala offers a popular adventure trip to Grand Island, combining a range of water sports and activities. During the trip, participants can enjoy snorkeling, dolphin spotting, swimming, and a delicious lunch with both vegetarian and non-vegetarian options. Additionally, the package includes exciting water sports such as parasailing, jet ski rides, banana boat rides, speedboat rides, and bumper boat rides:\r\n\r\nAdventure Boat Trip: This 4-hour trip on a double-deck catamaran departs from the boat jetty in Panjim. It includes activities like kayaking, snorkeling, fishing, and dolphin spotting. You'll also enjoy a Goa meal with snacks, chilled soft drinks, and the option of beer. The trip includes sightseeing of popular spots such as Adil Shah Palace and the Mandovi Bridge.",
+  "price": 2500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "15 Min. Road Journey",
+    "Life Jacket",
+    "Dolphin Sight Seeing",
+    "Fort Aguada Sight Seeing",
+    "Kayaking",
+    "Unlimited Lunch (veg-non-veg)",
+    "Mineral Water",
+    "Jet ski",
+    "Banana Ride",
+    "Bumper Ride",
+    "Speed Boat Kaya King",
+    "Soft Drinks",
+    "Snacks"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755243137/GOA-TOUR-WALA/g41s7czm6mkdk2cux3eq.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243139/GOA-TOUR-WALA/bgylqdksg4vynvujrrkq.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243140/GOA-TOUR-WALA/hinbp4tanblnny6vzozh.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243140/GOA-TOUR-WALA/c40cphgpk4niz5gddpr6.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243141/GOA-TOUR-WALA/rxabal32cfkfsf8bgp5h.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243141/GOA-TOUR-WALA/epwmfklxwg91tadapza5.png"
+  ],
+  "details": [
+    {
+      "title": "Pick up",
+      "content": "Pick Up from famouse palace like Baga ,Colanguate,Condolim,Arpora and go to panjim jatty for boarding cruise.",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6af"
+      }
+    },
+    {
+      "title": "Boat Features",
+      "content": " Hop on to the Adventure Trips in Goaand enjoy a vast range of activities as you sail in Goan waters. Explore enthralling activities like kayaking, Sup Boardsailing, swimming, Snorkeling. Enjoy the music all throughout your journey. Let yourself loose and dance with your friends or better half on our Party adventure boat trip. As you sail along the coast, get the chance to play in the water, hop off to swim, or enjoy sunbathing.",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6b0"
+      }
+    },
+    {
+      "title": "Trip Timing",
+      "content": "2 pm – 6 PM",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6b1"
+      }
+    },
+    {
+      "title": "Food",
+      "content": "Veg, Non Veg, Buffet.  ",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6b2"
+      }
+    },
+    {
+      "title": "Drink",
+      "content": "Water, Softdrink, beer. ",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6b3"
+      }
+    },
+    {
+      "title": " Activities:",
+      "content": " Kayking, Jetski, Banana Ride, Bumper Ride and Speed Boat.",
+      "_id": {
+        "$oid": "689ee286fd968e05855da6b4"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T07:32:22.687Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T07:32:22.687Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ee42bfd968e05855da6c4"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Dinner cruise",
+  "slug": "dinner-cruise",
+  "description": "Goa Tour Wala offers a populardinner cruise A dinner cruise in Goa offers a captivating blend of scenic river views, cultural entertainment, delicious cuisine, and a relaxing atmosphere — all set aboard a gently gliding boat on the tranquil Mandovi River.As the sun sets over the Goan skyline, guests are welcomed aboard with music and a refreshing drink. The cruise typically begins in Panjim, sailing past the city’s colonial facades, vibrant casinos, and twinkling waterfront lights. Soft waves and cool breezes set the tone for a magical evening.\r\n\r\nDinner Cruise:\r\nThis 3-hour cruise on a double-deck catamaran departs from the cruise jetty in Panjim. It includes activities like bollywood music, Entertainment, games. You'll also enjoy a Goan meal with snacks, chilled soft drinks, and the option of beer and Whisky. The cruise includes sightseeing of popular spots such as Adil Shah Palace and the Mandovi Bridge.",
+  "price": 1500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "15 Min. Road Journey",
+    "3 Hours Cruising",
+    "Fun Game and Entertainment",
+    "Bollywood DJ Party",
+    "Music",
+    "Unlimited Dinner Table For Celebration",
+    "Whisky and Beer Soft Drinks",
+    "Snacks",
+    "Mineral Water"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755243560/GOA-TOUR-WALA/yoayjrmc8ld15zyeyytv.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243561/GOA-TOUR-WALA/sklte8ewgohrf09f3dqm.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243561/GOA-TOUR-WALA/mhjfk6kgb7vt1g1rzz2d.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243563/GOA-TOUR-WALA/ijbngfzcdt3wg9xifgvs.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243563/GOA-TOUR-WALA/w8jrowlhrv19fyos7hjt.png"
+  ],
+  "details": [
+    {
+      "title": "Pick Up",
+      "content": "Pick Up from famouse palace like Baga ,Colanguate,Condolim,Arpora and go to panjim jatty for boarding cruise.",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6c5"
+      }
+    },
+    {
+      "title": " Cruise Features: ",
+      "content": "Hop on to the dinner cruises in Goa and enjoy a vast range of activities as you sail in Goa waters. Explore enthralling activities like bollywood music, Entertainment, games. Enjoy the music all throughout your journey. Let yourself loose and dance with your friends or better half on our Party dinner cruise. As you sail along the coast, get the chance to play in the dance.  ",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6c6"
+      }
+    },
+    {
+      "title": "Cruise Timing: ",
+      "content": "9 pm – 12 PM ",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6c7"
+      }
+    },
+    {
+      "title": "Food",
+      "content": "1veg/1nonveg starter, mixed veg gravy, dal tadka and veg manchurian, goa chicken xacuti, veg pulao , salad and pickle, bread and dessert. ",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6c8"
+      }
+    },
+    {
+      "title": "Drink",
+      "content": "Water, Softdrink, beer and Whisky.",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6c9"
+      }
+    },
+    {
+      "title": " Activities:",
+      "content": " Bollywood music, Entertainment, games, selfi",
+      "_id": {
+        "$oid": "689ee42bfd968e05855da6ca"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T07:39:23.942Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T07:39:23.942Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ee5affd968e05855da6cd"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Sunset Cruise",
+  "slug": "sunset-cruise",
+  "description": "This cruise takes you along the Mandovi River, offering scenic views of the sunset over the Arabian Sea. The cruise typically lasts for an hour and includes live DJ music, traditional dance performances, and the chance to see iconic landmarks such as the Atal Setu bridge and river casinos. Another option on the Mandovi River, this cruise features a triple-deck boat, providing ample space for relaxation and sightseeing. Highlights include views of Fort Aguada, Adil Shah’s Summer Palace, and Miramar Beach, along with dance performances and a live DJ.",
+  "price": 2500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Kunji Dance",
+    "Group Dance",
+    "DJ Music",
+    "Dekhni Dance",
+    "Portuguese Dance",
+    "Cruising",
+    "Sightseen"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755243947/GOA-TOUR-WALA/sax8zii7o1gy8rydwixx.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243949/GOA-TOUR-WALA/xx2vstryig1pmwrw1u1d.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243949/GOA-TOUR-WALA/ipkrwhpsfnrpwsnm2beg.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243951/GOA-TOUR-WALA/tioxy32mtlysm7e7tcfw.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243950/GOA-TOUR-WALA/u7mgpcxovkagevafvnnr.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755243950/GOA-TOUR-WALA/hpalghxtkytulaeoxkzf.png"
+  ],
+  "details": [
+    {
+      "title": "Kunji Dance",
+      "content": "5:00PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6ce"
+      }
+    },
+    {
+      "title": "Group Dance",
+      "content": "5:00PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6cf"
+      }
+    },
+    {
+      "title": "DJ Music",
+      "content": "6:00PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6d0"
+      }
+    },
+    {
+      "title": "Dekhni Dance",
+      "content": "6:30PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6d1"
+      }
+    },
+    {
+      "title": "Portuguese Dance",
+      "content": "7:00PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6d2"
+      }
+    },
+    {
+      "title": "Cruising",
+      "content": "7:30PM",
+      "_id": {
+        "$oid": "689ee5affd968e05855da6d3"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T07:45:51.698Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T07:45:51.698Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ee711fd968e05855da6e4"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Yacht on Rent",
+  "slug": "yacht-on-rent",
+  "description": "Renting a yacht in Goa is a luxurious and memorable way to enjoy the state's stunning coastline and explore its beautiful beaches and islands. A yacht rental allows you to cruise the Arabian Sea in style, offering breathtaking views of the coastline and a range of on-board amenities. Whether you're looking for a private getaway, a romantic cruise, or a special event like a party or celebration, there are various yacht options to suit your needs.\r\n\r\nYachts in Goa come in different sizes and styles, from small, intimate vessels to larger, more lavish yachts with multiple decks and spacious cabins. Many yachts include air-conditioned lounges, sun decks, and on-board dining facilities, providing you with a comfortable and indulgent experience. You can also find yachts equipped with water sports equipment such as snorkeling gear, paddleboards, and fishing equipment.\r\n\r\nBooking a yacht can be done through travel agencies, online rental platforms, or directly with yacht charter companies. Prices depend on factors such as the size of the yacht, duration of the rental, and any additional services you may choose, such as catering or water sports activities. For a smooth experience, book your yacht rental in advance and communicate your preferences and requirements to the rental company.",
+  "price": 10000,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Water",
+    "1 AC Room",
+    "Soft drink",
+    "Music",
+    "Space for Gathering",
+    "Photoshoot",
+    "Bird watching",
+    "Cruising"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755244302/GOA-TOUR-WALA/ckgknd8n1ts7zwgez0qw.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244303/GOA-TOUR-WALA/qqbpzbyitiih8jwkk31o.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244303/GOA-TOUR-WALA/ob5ftr55ijpefyaewtom.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244304/GOA-TOUR-WALA/luyamxfjwmecbfpwkmjg.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244304/GOA-TOUR-WALA/adiq5tadooauvnmhnpfg.png"
+  ],
+  "details": [
+    {
+      "title": "Cruising",
+      "content": "10000/hr",
+      "_id": {
+        "$oid": "689ee711fd968e05855da6e5"
+      }
+    },
+    {
+      "title": "Anchoring",
+      "content": "5000/hr",
+      "_id": {
+        "$oid": "689ee711fd968e05855da6e6"
+      }
+    },
+    {
+      "title": "Capacity",
+      "content": "10-12 Persons",
+      "_id": {
+        "$oid": "689ee711fd968e05855da6e7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T07:51:45.481Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T07:51:45.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ee80efd968e05855da6ea"
+  },
+  "category": {
+    "$oid": "6898c0e04cbdfe3ab3580927"
+  },
+  "name": "Cruise on Rent",
+  "slug": "cruise-on-rent",
+  "description": "Renting a cruise in Goa allows you to explore the picturesque rivers and coastline at your own pace while enjoying the beauty and culture of the region. Cruises on rent can cater to various needs, from intimate gatherings and family outings to larger events like parties or corporate functions.\r\n\r\nYou can choose from a variety of vessels, including traditional wooden boats, catamarans, or modern motor yachts. These cruises often come with amenities such as air-conditioned lounges, sun decks, and comfortable seating areas. Some may also offer on-board entertainment such as live music or DJs.\r\n\r\nWhen you rent a cruise, you can customize your itinerary to include sightseeing spots along the Mandovi or Zuari rivers, as well as popular destinations like Old Goa and various islands. Meal options can vary from simple snacks to full meals prepared by on-board chefs. Most cruises also provide drinks, and some offer a fully stocked bar.",
+  "price": 20000,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Open",
+    "Terrace Water",
+    "Soft drink",
+    "DJ Floor",
+    "Space for photo shoot",
+    "Bird watching",
+    "Cruising"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755244555/GOA-TOUR-WALA/mft0vdb9cljhrwavevn7.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244557/GOA-TOUR-WALA/rkskr54hqgcgwikutvcj.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244556/GOA-TOUR-WALA/okdzhnk508wndkpgdvty.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755244558/GOA-TOUR-WALA/xgbbmpns5pq3fptamdwt.png"
+  ],
+  "details": [
+    {
+      "title": "Cruising",
+      "content": "20000/hr",
+      "_id": {
+        "$oid": "689ee80efd968e05855da6eb"
+      }
+    },
+    {
+      "title": "Anchoring",
+      "content": "10000/hr",
+      "_id": {
+        "$oid": "689ee80efd968e05855da6ec"
+      }
+    },
+    {
+      "title": "Capacity",
+      "content": "25-30 persons",
+      "_id": {
+        "$oid": "689ee80efd968e05855da6ed"
+      }
+    },
+    {
+      "title": "Cruise Features",
+      "content": "Open terrace ,Ac Disco track , Lobby for Gathering",
+      "_id": {
+        "$oid": "689ee80efd968e05855da6ee"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T07:55:58.791Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T07:55:58.791Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689eec0ffd968e05855da703"
+  },
+  "category": {
+    "$oid": "6898c0e64cbdfe3ab358092a"
+  },
+  "name": "South Goa Sightseen",
+  "slug": "south-goa-sightseen",
+  "description": "If you’re planning to visit South Goa, our South Goa Tour by AC Coach is the ideal way to explore the region in comfort and style! This guided tour takes you to the most popular attractions of South Goa, including beautiful beaches, historic churches, sacred temples, and much more — all while enjoying the luxury of air-conditioned travel. Whether you’re traveling solo or with a group, our tour is designed to offer a hassle-free and memorable experience.",
+  "price": 400,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Miramar Beach",
+    "St. Augustine Tower",
+    "Old Goa Churches",
+    "Mangueshi Temple",
+    "Comfortable AC coach for a relaxing journey",
+    "Expert Hindi-speaking guide"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755245579/GOA-TOUR-WALA/iezqquvr2ruog1zmfsbr.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245580/GOA-TOUR-WALA/rs7amfdvjyiognxedbt4.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245580/GOA-TOUR-WALA/jgprxw4wjaywmwyjervn.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245582/GOA-TOUR-WALA/v697b9hweakuhejdy9ww.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245582/GOA-TOUR-WALA/crff8vqoccvbe3iefr3l.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245582/GOA-TOUR-WALA/nbvqzzixf5leckkugfge.png"
+  ],
+  "details": [
+    {
+      "title": "Trip Timing:",
+      "content": " 9 Am - 6 PM",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da704"
+      }
+    },
+    {
+      "title": "Pick Up: ",
+      "content": "Pick Up from famous place like Baga ,Colanguate,Condolim,Arpura.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da705"
+      }
+    },
+    {
+      "title": "Pickup Timing",
+      "content": "08:30 AM: Depart from your hotel in an AC coach for an exciting day of sightseeing.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da706"
+      }
+    },
+    {
+      "title": "1 . Miramar Beach & Dolphin Trip",
+      "content": "(₹350 extra for Dolphin trip, seasonal) Known for its calm waters and scenic views, Miramar Beach is perfect for a relaxing stroll. You can also enjoy a memorable dolphin-watching trip to make the experience even more special.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da707"
+      }
+    },
+    {
+      "title": "2 . St. Augustine Tower",
+      "content": "A historical site, the ruins of St. Augustine’s Church were abandoned in 1835. Today, the tower stands as a beautiful and haunting reminder of Goa’s past, featured in Bollywood movies like Gumnaam and Singham.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da708"
+      }
+    },
+    {
+      "title": "3 . Old Goa Churches",
+      "content": "Basilica of Bom Jesus: A UNESCO World Heritage Site, Bom Jesus Basilica is home to the body of St. Francis Xavier, preserved in a silver casket. It also houses an art gallery showcasing works by Goan artist Dom Martin. Se Cathedral de Santa Catarina: One of India’s largest churches, it boasts stunning Corinthian-style interiors and majestic Tuscan architecture",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da709"
+      }
+    },
+    {
+      "title": "4 . Mangueshi Temple",
+      "content": "A tranquil temple dedicated to Lord Mangueshi, it features an elegant seven-storeyed lamp tower and a serene water body, offering peace and spiritual solace.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da70a"
+      }
+    },
+    {
+      "title": "5.Tirupati Balaji Temple",
+      "content": "Situated amidst lush lawns, the Tirupati Balaji Temple is dedicated to Lord Venkateshwara, Lord Ganesha, and Goddess Padmavati. It’s a serene place of worship, where you can learn more about the temple’s rich mythology.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da70b"
+      }
+    },
+    {
+      "title": "6 . Sunset Boat Cruise (₹500 extra):",
+      "content": "Enjoy a relaxing and adventurous sunset cruise on the Mandovi River, complete with traditional Goan and Portuguese dance performances and live music. It’s the perfect way to end your day in Goa, with a stunning view of the sunset. 07:30 PM: Return to the meeting point after an enriching day of exploring South Goa.",
+      "_id": {
+        "$oid": "689eec0ffd968e05855da70c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T08:13:03.372Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T08:13:03.372Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689eed27fd968e05855da70f"
+  },
+  "category": {
+    "$oid": "6898c0e64cbdfe3ab358092a"
+  },
+  "name": "Dolphin Sightseen Tour",
+  "slug": "dolphin-sightseen-tour",
+  "description": "A Dolphin Sightseeing Tour in Goa offers an enchanting experience where you can witness playful dolphins in their natural habitat amidst the serene waters of the Arabian Sea. These tours are popular among tourists seeking a blend of adventure and marine life exploration.",
+  "price": 400,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "One hour Boat ride",
+    "Dolphin spotting",
+    "Fort Aguada sighting",
+    "Millionaire Palace",
+    "Light house"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755245860/GOA-TOUR-WALA/s0jzssdexapdxy6s9h16.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245861/GOA-TOUR-WALA/obc6otnizu4bqacysoh4.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245861/GOA-TOUR-WALA/utfbbe40iufcfdf0kzej.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245862/GOA-TOUR-WALA/ulr43zlrbqajbyzcunhy.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755245863/GOA-TOUR-WALA/yswtielb1hw90srkwp8n.png"
+  ],
+  "details": [
+    {
+      "title": "Candolim Beach",
+      "content": "One of the most popular spots, offering several tour operators who organize dolphin watching trips.",
+      "_id": {
+        "$oid": "689eed27fd968e05855da710"
+      }
+    },
+    {
+      "title": " Sinquerim Beach",
+      "content": "A quieter option with excellent dolphin watching opportunities.",
+      "_id": {
+        "$oid": "689eed27fd968e05855da711"
+      }
+    },
+    {
+      "title": "Coco Beach",
+      "content": " A quieter option with excellent dolphin watching opportunities.",
+      "_id": {
+        "$oid": "689eed27fd968e05855da712"
+      }
+    },
+    {
+      "title": "Duration",
+      "content": "Typically, dolphin sighting tours last about 0-1 hours.",
+      "_id": {
+        "$oid": "689eed27fd968e05855da713"
+      }
+    },
+    {
+      "title": "Types of Dolphins",
+      "content": "The Indo-Pacific Humpback Dolphins and Finless Porpoises are commonly seen around Goa.",
+      "_id": {
+        "$oid": "689eed27fd968e05855da714"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T08:17:43.634Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T08:17:43.634Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ef38bfd968e05855da73e"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "WaterSports",
+  "slug": "watersports",
+  "description": "Goa Tour Wala is a popular tour operator in Goa that offers a wide range of water sports activities. Here's an overview of the water sports you can enjoy with Goa Tour Wala:",
+  "price": 1500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Jetsking",
+    "Parasailing",
+    "Banana Boat ride",
+    "Bumper ride",
+    "Speed Boat ride"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755247495/GOA-TOUR-WALA/lsw7ebxlqqtanrdgizrk.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247498/GOA-TOUR-WALA/pgfextbfo9ubhzhjlp6q.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247498/GOA-TOUR-WALA/rag68rvgxbpokxhnbasg.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247499/GOA-TOUR-WALA/rz3utf8vcqwgdy3wypt4.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247499/GOA-TOUR-WALA/swndayhfxsumw5c0u3or.png"
+  ],
+  "details": [
+    {
+      "title": "Locations",
+      "content": "Baga Beach, Calangute Beach, Candolim Beach",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da73f"
+      }
+    },
+    {
+      "title": "1-Jet Skiing",
+      "content": "a high-speed jet ski on the Arabian Sea.Thrilling and fast-paced, suitable for adrenaline seekers.",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da740"
+      }
+    },
+    {
+      "title": "2-Parasailing",
+      "content": " Fly high above the sea while being towed by a speedboat. Offers a bird's eye view of the coastline, exhilarating experience.",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da741"
+      }
+    },
+    {
+      "title": "3-Banana Boat Ride",
+      "content": " Ride on an inflatable banana-shaped boat pulled by a speedboat.Fun for groups, exciting twists and turns in the water.",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da742"
+      }
+    },
+    {
+      "title": "4-Bumper Ride",
+      "content": "A bumper ride involves sitting on an inflatable tube that is securely attached to a speedboat. .Fun for groups, exciting twists and turns in the water.",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da743"
+      }
+    },
+    {
+      "title": "5-Speed Boat Ride",
+      "content": "Speed boat rides are known for their exhilarating speeds. . Fun for groups, exciting twists and turns in the water.",
+      "_id": {
+        "$oid": "689ef38bfd968e05855da744"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T08:44:59.969Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T08:44:59.969Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ef517fd968e05855da747"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Flyboarding",
+  "slug": "flyboarding",
+  "description": "Would you like to fly up in the air just like the superhero you see in Marvel comics and then within a span of a few minutes swim like a dolphin? Well as incredible and dreamy as it sounds, you surely can do that in your very own Goa. Flyboarding in Goa is a new set of innovation in extreme water sports that takes adventure to a whole new level.\r\n\r\nLocation of Flyboarding in Goa:\r\nThis thriller activity is done in the beautiful Chapora River, which is considered the famous destination for the Flyboarding in Goa. River Chapora’s water is calm and Serene which is suitable for flyboarding activity.\r\nYour adrenaline will come rushing as never before and you will feel the butterflies in your stomach while you perform the superhero stunts which you have always seen or heard of. Come fly up in the sky and feel one with nature. Witness the surreal scenes around you when doing this adventure from an aerial height that will give you goosebumps and then dive deep into the waters and soar yet again in the air feeling free-spirited.",
+  "price": 3500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "The Flyboard is a board with straps so as to secure your feet",
+    "Beneath each foot a cold water jetpack is fixed.",
+    "A long tube and an adapter are used to attach the flyboard to a Jet Ski. Those jetpacks get water from this Jet Ski and it is the propulsion that makes you fly in the air and then you dive under the water.",
+    "You go as high as up to 30 ft. in the air and dive under the water and then shoot up and swim like a dolphin.",
+    "All transportation in destination location",
+    "Be rest assured when it comes to your safety as you will be taken care of by professional and well-qualified team..",
+    "Competent instructor will be assigned to you who will give you an insight into the sport",
+    "train you and inform about the safety instructions you need to take into consideration.",
+    "Children below 13 years cannot take up this sport.",
+    "Rental equipment",
+    "life jackets and 5 minutes of instructions and training provided by professional instructors are included in the package."
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755247888/GOA-TOUR-WALA/olwr7afekrqlueguihh7.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247890/GOA-TOUR-WALA/hakm9dinuwsktkrz23fg.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247890/GOA-TOUR-WALA/g9afdspprf8rzi0jw5rk.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247891/GOA-TOUR-WALA/kwzwidqwz4qaj2wadifh.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247894/GOA-TOUR-WALA/g0qo66wqp7ca2glo14kb.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247893/GOA-TOUR-WALA/igxosjtkq6qdeas5czrq.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755247893/GOA-TOUR-WALA/hfgmds9pb9iiihnxycgm.png"
+  ],
+  "details": [
+    {
+      "title": "Activity duration",
+      "content": "1-2 hr",
+      "_id": {
+        "$oid": "689ef517fd968e05855da748"
+      }
+    },
+    {
+      "title": "Activity Involved",
+      "content": "FlyBoarding",
+      "_id": {
+        "$oid": "689ef517fd968e05855da749"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T08:51:35.721Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T08:51:35.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ef698fd968e05855da75d"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Bungee Jumping",
+  "slug": "bungee-jumping",
+  "description": "Enjoy the thrilling bungee jumping adventure at Mayem Lake, which is a charming tiny village located in North Goa and is enclosed by a thick forest.\r\nEnjoy the spine-tingling activity under the proper guidance of instructors and jumpmasters, who will make your experience worth remembering.\r\nThe bungee jumping spot is recognized by the Goa Tourism Development Corporation (GTDC).\r\nThe adventurous activity has a duration of about an hour, during which you will also get a proper briefing from the professionals.\r\nYou will be provided with all the safety measures and equipment to ensure a hassle-free experience.\r\nGet this enthralling experience captured in a video to store the memories for a lifetime.\r\n",
+  "price": 3500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Feel like a bird as you jump from Goa's highest bungee jumping spot which is at a height of 71 m with all the safety measures",
+    "Delve into an exhilarating experience  with all the safety and harness checks done according to Australia and New Zealand safety standards.",
+    "The spine-chilling activity will be performed under the supervision of professionally trained instructors with Bungee Jumping In Goa tickets",
+    "With your Bungee Jumping in Goa tickets get the opportunity of capturing the jump on camera as a beautiful memory.",
+    "You can also book a thrilling jumping experience at India's highest Bungee Jumping point in Goa at a height of 71 meters. Booking Form Per Person ₹3500  Booking Date 15-Aug-2025 Adults Age 18+ 0 Children Age 4-8 0 Total: ₹ 0.00"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755248277/GOA-TOUR-WALA/u4l5h6gitzmofcdmq0z9.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755248278/GOA-TOUR-WALA/jfeklrwdjqpzcjlzztac.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755248278/GOA-TOUR-WALA/bujry670xwkkeaxnbnsy.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755248279/GOA-TOUR-WALA/m1yqjiqvgjztzlpiaw1f.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755248279/GOA-TOUR-WALA/r9smxicuoecetrlosrsl.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755248280/GOA-TOUR-WALA/ybult7lwylq2tzh8kw9j.png"
+  ],
+  "details": [
+    {
+      "title": "Location",
+      "content": "Shal, Bicholim district, Goa",
+      "_id": {
+        "$oid": "689ef698fd968e05855da75e"
+      }
+    },
+    {
+      "title": "Activity Timing",
+      "content": "Between 09:30 AM to 4:00 PM (The activity is closed on Tuesday)",
+      "_id": {
+        "$oid": "689ef698fd968e05855da75f"
+      }
+    },
+    {
+      "title": "Activity Duration",
+      "content": "15 min ( Including preparation Time )",
+      "_id": {
+        "$oid": "689ef698fd968e05855da760"
+      }
+    },
+    {
+      "title": "Reporting Time",
+      "content": "09:30 AM to 12:00 AM",
+      "_id": {
+        "$oid": "689ef698fd968e05855da761"
+      }
+    },
+    {
+      "title": "Jumping Height",
+      "content": "71 Meters",
+      "_id": {
+        "$oid": "689ef698fd968e05855da762"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T08:58:00.749Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T08:58:00.749Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689ef9a9fd968e05855da76f"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Dudhsagar Waterfall Tour",
+  "slug": "dudhsagar-waterfall-tour",
+  "description": "A WildEscapades Nature Tour in Goa is an immersive experience that allows you to explore the natural beauty and rich biodiversity of Goa. The state is home to a variety of ecosystems, including lush forests, rivers, waterfalls, and wildlife sanctuaries. Here's what you can expect from a nature tour in Goa:",
+  "price": 3500,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick & Drop from hotel by AC Coach",
+    "Jeep safari",
+    "Wildlife sanctuary entry fee",
+    "Trekking and Hiking",
+    "Nature Walks and Ecotourism",
+    "Life jackets",
+    "​ Enjoy swimming in the Dudhsagar Waterfall",
+    "01 Hour Buffet lunch at Spice Plantation",
+    "Guided Tour of Spice Plantation",
+    "Old Goa Churches visit",
+    "Driver cum guide"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755249058/GOA-TOUR-WALA/dcvkdys233p07a9yhtfc.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249060/GOA-TOUR-WALA/fdv3gfqifd0h78y10jjq.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249060/GOA-TOUR-WALA/atraxocdhqfaf4dbd00f.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249061/GOA-TOUR-WALA/ni4avo8gljs5qzrnutap.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249062/GOA-TOUR-WALA/gvht2dmxalrevnwgbtlm.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249063/GOA-TOUR-WALA/ivfblwgiyxe3kmwiotgt.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249064/GOA-TOUR-WALA/adrgzsq0n9yenzc2bolh.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249064/GOA-TOUR-WALA/qy1efvusdp1klxjeqwzd.png"
+  ],
+  "details": [
+    {
+      "title": "Timing",
+      "content": "6:30 AM to 5 PM",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da770"
+      }
+    },
+    {
+      "title": "Bhagwan Mahavir Wildlife Sanctuary:",
+      "content": "Located in the Western Ghats, this sanctuary is the largest in Goa. It features diverse flora and fauna, including leopards, deer, and a wide variety of birds. The famous Dudhsagar Waterfall is also within the sanctuary.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da771"
+      }
+    },
+    {
+      "title": "Cotigao Wildlife Sanctuary:",
+      "content": "Situated in South Goa, this sanctuary is known for its dense forests and tall trees. Visitors can spot animals such as deer and monkeys, as well as various bird species.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da772"
+      }
+    },
+    {
+      "title": " Bondla Wildlife Sanctuary: ",
+      "content": " A popular destination for nature lovers, Bondla offers lush forests, botanical gardens, and a mini zoo. It is a great spot for birdwatching and observing local wildlife.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da773"
+      }
+    },
+    {
+      "title": "Western Ghats(Trekking)",
+      "content": "The Western Ghats offer a variety of trekking opportunities with beautiful views of hills, forests, and waterfalls. Popular trails include those to Dudhsagar Waterfall and Tambdi Surla Temple.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da774"
+      }
+    },
+    {
+      "title": "Waterfall Treks(Trekking)",
+      "content": "Trekking to waterfalls such as Dudhsagar, Tambdi Surla, and Arvalem provides stunning views and the chance to take a refreshing dip in the water.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da775"
+      }
+    },
+    {
+      "title": "Nature Trails",
+      "content": "Many nature tours include guided walks through Goa's forests and reserves, where you can learn about the local flora and fauna.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da776"
+      }
+    },
+    {
+      "title": "Plantation Visits",
+      "content": "Visit spice plantations to learn about the cultivation of spices such as cardamom, black pepper, and cinnamon. Some plantations offer guided tours and tasting experiences.",
+      "_id": {
+        "$oid": "689ef9a9fd968e05855da777"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T09:11:05.460Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T09:11:05.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689efaaafd968e05855da783"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Crocodile Trip In Goa",
+  "slug": "crocodile-trip-in-goa",
+  "description": "Explore the different facet of Goa, by taking a trip in the backwaters of the Cambarjua Canal. Here, you will not only see crocodiles but a diverse variety of birds which you wouldn’t see easily along the seaside. It is considered as a perfect family outing. Any nature lover would fall in love with this side of Goa. Departure and Location:\r\nThe trip is of two and a half hours beginning at 9:00 am, the meeting point being Old Goa Jetty so as to be transported to Cortalim jetty in the South via boat. The South pick-up is scheduled at 10:00 am. The boat will take you upwards through the Zuari River to Cumbarjua Canal.\r\n",
+  "price": 4000,
+  "duration": "1 Day",
+  "packageType": "Trip package",
+  "features": [
+    "Mineral water",
+    "Soft drinks",
+    "Snacks",
+    "Crocodile Safari",
+    "Bird Watching"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755249319/GOA-TOUR-WALA/gj5abup0hdicsugjusjq.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249320/GOA-TOUR-WALA/tpkhueqb7eqw3ylfuc2i.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249320/GOA-TOUR-WALA/v5pwdypw4tfy9uciezqm.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249322/GOA-TOUR-WALA/j83q8tcwqxm3srtq4cpy.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249322/GOA-TOUR-WALA/dx7ru8bcyxghy2clqmf6.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755249322/GOA-TOUR-WALA/cyxru139wu6lemgtratx.png"
+  ],
+  "details": [
+    {
+      "title": "Time of the Activity::",
+      "content": "1st Trip 9:00am, 2nd Trip 12:00pm, 3rd Trip 02:00pm & 4th Trip 04:00pm",
+      "_id": {
+        "$oid": "689efaaafd968e05855da784"
+      }
+    },
+    {
+      "title": "Zuari River:",
+      "content": "Zuari River, being 92 kilometers long is considered as the largest river in the state of Goa. The river originates at Hemad-Barshem in the Western Ghats and flows through the Talukas of Tiswadi, Ponda, Marmagoa, Salcette, Sanguem and Quepem in the south-west direction.",
+      "_id": {
+        "$oid": "689efaaafd968e05855da785"
+      }
+    },
+    {
+      "title": "Cumbarjua Canal:",
+      "content": "The Cumbarjua Canal connects the Zuari River along with the Mandovi River. You will see the fisherman doing various activities as you cruise down the canal.",
+      "_id": {
+        "$oid": "689efaaafd968e05855da786"
+      }
+    },
+    {
+      "title": "Mangroves Sighting:",
+      "content": "You will find a line of Mangroves on the banks of the Cambarjua Canal. This area is considered to be the home for variety of fish, mollusk and crabs. The mangroves helps in the prevention of soil erosion and makes sure that the land is protected from tidal surges. The wood of mangroves is ideal for fuel and the buildings, thereby, not prone to rotting.",
+      "_id": {
+        "$oid": "689efaaafd968e05855da787"
+      }
+    },
+    {
+      "title": "Crocodile Safari:",
+      "content": "The Cambarjua canal is considered as the main crocodile station in Goa. The mugger crocodile which is a broad-snouted marsh crocodile and can grow as large as 4-5 meters in length has its home in Cambarjua. The males are heavier than females. They are skilled predators but they are not known to attack humans. The third membrane in their eyes enables them to see things and keep water out of their sight. Holes are dug by female crocodiles to lay eggs and the temperature of the nest determines the sex of the crocodile. If the temperature is around 32.5 Celsius then the crocodile will be a male and it will be a female if the temperature is between 28-31 Celsius.",
+      "_id": {
+        "$oid": "689efaaafd968e05855da788"
+      }
+    },
+    {
+      "title": "Bird Watching Safari:",
+      "content": "The scenery of the backwaters is made even more beautiful with the different kinds of birds that you will spot. It is a two-hour trip. The various birds are the white-breasted kingfisher, the drongo, the pied kingfisher, pariah kites, the sandpiper, kingfisher being black-capped, egrets, cormorants, terns and so on.",
+      "_id": {
+        "$oid": "689efaaafd968e05855da789"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T09:15:22.935Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T09:15:22.935Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689f3582fd968e05855da90e"
+  },
+  "category": {
+    "$oid": "6898c1414cbdfe3ab3580930"
+  },
+  "name": "Scuba with Watersports At malvan",
+  "slug": "scuba-with-watersports-at-malvan",
+  "description": "Best Scuba Diving & Watersports Package at Malvan Beach – Book with Goa Tour Wala\r\nLooking for the ultimate adventure in Goa? Dive into excitement with Goa Tour Wala's Best Scuba Diving and Watersports Package at Malvan Beach! Perfect for thrill-seekers, families, and nature lovers, our all-in-one package offers a once-in-a-lifetime underwater experience combined with five adrenaline-pumping water sports activities.\r\n\r\nScuba Diving in Malvan – Explore the Underwater World\r\nDiscover the vibrant marine life and coral reefs with a 15 to 20-minute scuba dive, guided by certified instructors. Capture your underwater memories with HD photos and videos – all included in the package!",
+  "price": 2500,
+  "duration": "1 day",
+  "packageType": "Trip package",
+  "features": [
+    "Pick Up & Drop",
+    "Life Jacket",
+    "Unlmited Lunch(veg-non-veg)",
+    "Jet Ski",
+    "Banana Ride",
+    "Bumper Ride",
+    "Scuba Diving",
+    "Scuba Diving Kits",
+    "Free Diving Video",
+    "Speed Boat",
+    "Pairasailing"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755264381/GOA-TOUR-WALA/mmug43d9coceg6bi6rne.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264382/GOA-TOUR-WALA/bbxy2hfnoznuls7w8pvt.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264383/GOA-TOUR-WALA/qh1vfvshynb4vacvobbc.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264383/GOA-TOUR-WALA/ir6z4d6xb73uxksgq1kh.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264384/GOA-TOUR-WALA/pqgu9ugzfz8qhszjbl6f.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264384/GOA-TOUR-WALA/kiw9fr5ayfbyqclhpykq.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264385/GOA-TOUR-WALA/oq0ns59v54pr9elgabf6.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755264385/GOA-TOUR-WALA/clsybyaerjetsar2dhi1.jpg"
+  ],
+  "details": [
+    {
+      "title": "Parasailing",
+      "content": "Soar high and enjoy panoramic views of the Malvan coastline.",
+      "_id": {
+        "$oid": "689f3582fd968e05855da90f"
+      }
+    },
+    {
+      "title": "Jet Ski Ride",
+      "content": "Speed across the sparkling sea for a rush of pure adrenaline.",
+      "_id": {
+        "$oid": "689f3582fd968e05855da910"
+      }
+    },
+    {
+      "title": "Banana Ride",
+      "content": "A fun and bumpy ride for groups and families.",
+      "_id": {
+        "$oid": "689f3582fd968e05855da911"
+      }
+    },
+    {
+      "title": "Bumper Ride & Sleeping Bumper",
+      "content": "Hang on tight as you bounce over the waves.",
+      "_id": {
+        "$oid": "689f3582fd968e05855da912"
+      }
+    },
+    {
+      "title": "Speed Boat Ride",
+      "content": "Glide over the waters and soak in scenic coastal views.",
+      "_id": {
+        "$oid": "689f3582fd968e05855da913"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T13:26:26.389Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T13:26:26.389Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689f395cfd968e05855da93a"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Goa tour Packages",
+  "slug": "goa-tour-packages",
+  "description": "Goa is a popular destination for tourists due to its beautiful beaches, vibrant culture, and rich history. Tour packages in Goa are designed to help visitors make the most of their stay by offering curated experiences and convenient itineraries. Here's what you can expect from a Goa tour package: Accommodation: Tour packages often include a range of accommodation options, from budget hotels to luxury resorts. You can choose the type of stay that suits your preferences and budget. Sightseeing Tours: Packages typically include guided tours to some of Goa's most famous attractions such as the Basilica of Bom Jesus, Se Cathedral, Aguada Fort, and the Latin quarter of Fontainhas.",
+  "price": 8000,
+  "duration": "4 Days/ 3 Nights",
+  "packageType": "Trip package",
+  "features": [
+    "Pickup and Drop From Airport Railway Station",
+    "3 Nights Hotel Accomodation",
+    "Tour Guide",
+    "2 Days Sightseening",
+    "All Transeport Private car",
+    "Mel Plan Breakfast"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755265368/GOA-TOUR-WALA/wjgqjw4svr2270oxwckt.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265369/GOA-TOUR-WALA/qrzgd9f2cqnjoaxunxi4.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265369/GOA-TOUR-WALA/qeesyvpfx32phyfxlm2h.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265370/GOA-TOUR-WALA/a7ih6u7grm56yepidxj1.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265370/GOA-TOUR-WALA/cxloys0cywfbmyygvskj.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265371/GOA-TOUR-WALA/jhvreykajymjanqqehk0.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755265371/GOA-TOUR-WALA/om5yfjjqc538rfsgrqot.jpg"
+  ],
+  "details": [
+    {
+      "title": "(Day-1) Arrival in Goa:",
+      "content": "Resplendent beaches, colonial structures, and vibrant nightlife welcome you to the sun-kissed Goa Upon arrival at Goa airport/railway station, an agent’s representative will greet you and guide you to the hotel. Check-in at the hotel and relax for a while. You can spend this entire first day of your Goa family holiday as per your convenience. Stroll on the local streets, try out Goan delicacies or explore Goa’s glittering nightlife. At the end of the day, come back to the hotel and stay for the night.",
+      "_id": {
+        "$oid": "689f395cfd968e05855da93b"
+      }
+    },
+    {
+      "title": "(Day-2) South Goa sightseeing tour:",
+      "content": "The second day of your Goa family trip is reserved for a fun-filled sightseeing tour of Goa Post breakfast, embark on a South Goa sightseeing tour. Start with a visit to Shri Shantadurga Temple at Kavlem and Shri Manguesh Temple at Priol. Admire the Portuguese architectural buildings belonging to the colonial era like Basilica of Bom Jesus and Se Cathedral. Next, on your Goa family tour, explore the Dona Paula Bay and Miramar Beach. After an entertaining day of sightseeing in Goa, come back to the hotel and have a sound sleep. Optional: Water activities (charges extra)",
+      "_id": {
+        "$oid": "689f395cfd968e05855da93c"
+      }
+    },
+    {
+      "title": "(Day-3) North Goa sightseeing tour:",
+      "content": "Your Goa family tour takes an exciting turn on this day as you explore the calm and serene side of Goa Today, leave for a Dolphin sightseeing tour. Spot dolphins dancing in the waves of the sea. Come back to the hotel and have breakfast. Next, on your family holiday of Goa, head out for a sightseeing tour of North Goa. Visit Fort Aguada, Coco Beach, Calangute Annexe, Calangute Beach, Baga Beach and Anjuna Beach. Towards the end of the second day of your Goa family vacation, return to the hotel and stay for the night. Optional: You can request you concerned tour agent to include watersports in your Goa family tour package In the evening, come back to the hotel and rest. followed by a restful sleep.",
+      "_id": {
+        "$oid": "689f395cfd968e05855da93d"
+      }
+    },
+    {
+      "title": "(Day-4)Departure:",
+      "content": "It’s time to bid goodbye to this paradise with nostalgic memories Have a sumptuous breakfast and check-out from the hotel. Proceed to airport/railway station to board the flight back to your home destination.",
+      "_id": {
+        "$oid": "689f395cfd968e05855da93e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T13:42:52.435Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T13:42:52.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689f3c2efd968e05855da94b"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Business Tour Package",
+  "slug": "business-tour-package",
+  "description": "Business tour packages are designed for corporate travelers who need to visit Goa for work-related purposes, such as attending meetings, conferences, or events. These packages aim to provide convenience and comfort to business travelers, allowing them to focus on their work while enjoying their stay in Goa. Here's what you can expect from a business tour package in Goa.\r\n\r\nAccommodation: Business tour packages often include stays at high-quality hotels with business amenities such as high-speed internet, workspaces, and conference facilities. These hotels are typically located near major business districts or conference centers.",
+  "price": 8000,
+  "duration": "4 Days/ 3 Nights ",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop From Airport/Railway Station",
+    "3 Nights Hotel Accomodation",
+    "Tour Guide",
+    "Conference Hall",
+    "Meal Breakfast",
+    "2 sightseeng"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755266088/GOA-TOUR-WALA/ab9mxhvqvsyeom14f6zk.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266089/GOA-TOUR-WALA/ectitwxudorwvjxlohsh.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266089/GOA-TOUR-WALA/ljde6bgjgtztky5wxgsh.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266091/GOA-TOUR-WALA/jc4xy4jgdwttzmw3vyrz.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266091/GOA-TOUR-WALA/lwgmcqfhgi96rqjybx2e.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266092/GOA-TOUR-WALA/dlr93nhwzt2ent8bzbcm.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266093/GOA-TOUR-WALA/jl3d7xluh2me2ehc7xol.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755266094/GOA-TOUR-WALA/aj9ofv1aionw8reqyavk.png"
+  ],
+  "details": [
+    {
+      "title": "(Day-1) Arrival in Goa:",
+      "content": "Resplendent beaches, colonial structures, and vibrant nightlife welcome you to the sun-kissed Goa Upon arrival at Goa airport/railway station, an agent’s representative will greet you and guide you to the hotel. Check-in at the hotel and relax for a while. You can spend this entire first day of your Goa family holiday as per your convenience. Stroll on the local streets, try out Goan delicacies or explore Goa’s glittering nightlife. At the end of the day, come back to the hotel and make a meeting in confrense holl with party charges will be extra.",
+      "_id": {
+        "$oid": "689f3d96fd968e05855da9fa"
+      }
+    },
+    {
+      "title": "(Day-2) South Goa sightseeing tour:",
+      "content": "The second day of your Goa family trip is reserved for a fun-filled sightseeing tour of Goa Post breakfast, embark on a South Goa sightseeing tour. Start with a visit to Shri Shantadurga Temple at Kavlem and Shri Manguesh Temple at Priol. Admire the Portuguese architectural buildings belonging to the colonial era like Basilica of Bom Jesus and Se Cathedral. Next, on your Goa family tour, explore the Dona Paula Bay and Miramar Beach. After an entertaining day of sightseeing in Goa, come back to the hotel and have a sound sleep. Optional: Water activities (charges extra)",
+      "_id": {
+        "$oid": "689f3d96fd968e05855da9fb"
+      }
+    },
+    {
+      "title": "(Day-3) North Goa sightseeing tour:",
+      "content": "Your Goa family tour takes an exciting turn on this day as you explore the calm and serene side of Goa Today, leave for a Dolphin sightseeing tour. Spot dolphins dancing in the waves of the sea. Come back to the hotel and have breakfast. Next, on your family holiday of Goa, head out for a sightseeing tour of North Goa. Visit Fort Aguada, Coco Beach, Calangute Annexe, Calangute Beach, Baga Beach and Anjuna Beach. Towards the end of the second day of your Goa family vacation, return to the hotel and stay for the night. Optional: You can request you concerned tour agent to include watersports in your Goa family tour package In the evening, come back to the hotel and rest. followed by a restful sleep.",
+      "_id": {
+        "$oid": "689f3d96fd968e05855da9fc"
+      }
+    },
+    {
+      "title": "(Day-4)Departure:",
+      "content": "It’s time to bid goodbye to this paradise with nostalgic memories Have a sumptuous breakfast and check-out from the hotel. Proceed to airport/railway station to board the flight back to your home destination.",
+      "_id": {
+        "$oid": "689f3d96fd968e05855da9fd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T13:54:54.680Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T14:00:54.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689f3fe6fd968e05855daa98"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Family tour Package ",
+  "slug": "family-tour-package",
+  "description": "Admire the immaculate beauty of Goa with our customizable 4 nights and 5 days Goa family tour package. Your tour itinerary will start with the exploration of sightseeing attractions of North Goa and finally, you will dig out the gems of South Goa. Famed for its architectural splendors of Old Portuguese and breathtaking natural beauty, this potpourri of distinct cultures and traditions is going to amaze you as soon as you land here with our family packages for Goa.\r\nThe common notion that Goa is not tailor-made for family holidays is only a notion. There are several adventures and experiences in Goa await travelers of all interests. Whether you’re looking to indulge in local seafood, want to try adrenaline-pumping water sports, or to learn about Goa’s colonial past, our Goa package gives you an opportunity to explore this destination at your own pace. Make your family holidays in Goa special by exploring temples, white-washed churches, weekly markets, and beach shacks in Goa.",
+  "price": 8000,
+  "duration": "4 Days/ 3 Nights ",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop From Airport Railway Station",
+    "3 Nights Hotel Accomodation",
+    "Tour Guide",
+    "2 Days Sightseening",
+    "All Transport Private car",
+    "Meal Plan Breakfast"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755267040/GOA-TOUR-WALA/anwzl8rmmbctwz42zrox.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267042/GOA-TOUR-WALA/lufmzynmfmpepowl1cso.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267042/GOA-TOUR-WALA/mozyzxwqdnc26dcrcchp.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267043/GOA-TOUR-WALA/ywvix9den2cpdxqrc2m9.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267043/GOA-TOUR-WALA/is0wjnbc9qja0sygitg7.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267043/GOA-TOUR-WALA/fjox2fnfjbpaof5sjbr3.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267045/GOA-TOUR-WALA/xj8kgsaufpricagm0lkd.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267044/GOA-TOUR-WALA/ynlgvtrhmupcu4l4jy09.png"
+  ],
+  "details": [
+    {
+      "title": "(Day-1) Arrival in Goa:",
+      "content": "Resplendent beaches, colonial structures, and vibrant nightlife welcome you to the sun-kissed Goa Upon arrival at Goa airport/railway station, an agent’s representative will greet you and guide you to the hotel. Check-in at the hotel and relax for a while. You can spend this entire first day of your Goa family holiday as per your convenience. Stroll on the local streets, try out Goan delicacies or explore Goa’s glittering nightlife. At the end of the day, come back to the hotel and stay for the night.",
+      "_id": {
+        "$oid": "689f3fe6fd968e05855daa99"
+      }
+    },
+    {
+      "title": "(Day-2) South Goa sightseeing tour:",
+      "content": "The second day of your Goa family trip is reserved for a fun-filled sightseeing tour of Goa Post breakfast, embark on a South Goa sightseeing tour. Start with a visit to Shri Shantadurga Temple at Kavlem and Shri Manguesh Temple at Priol. Admire the Portuguese architectural buildings belonging to the colonial era like Basilica of Bom Jesus and Se Cathedral. Next, on your Goa family tour, explore the Dona Paula Bay and Miramar Beach. After an entertaining day of sightseeing in Goa, come back to the hotel and have a sound sleep. Optional: Water activities (charges extra)",
+      "_id": {
+        "$oid": "689f3fe6fd968e05855daa9a"
+      }
+    },
+    {
+      "title": "(Day-3) North Goa sightseeing tour:",
+      "content": "Your Goa family tour takes an exciting turn on this day as you explore the calm and serene side of Goa Today, leave for a Dolphin sightseeing tour. Spot dolphins dancing in the waves of the sea. Come back to the hotel and have breakfast. Next, on your family holiday of Goa, head out for a sightseeing tour of North Goa. Visit Fort Aguada, Coco Beach, Calangute Annexe, Calangute Beach, Baga Beach and Anjuna Beach. Towards the end of the second day of your Goa family vacation, return to the hotel and stay for the night. Optional: You can request you concerned tour agent to include watersports in your Goa family tour package In the evening, come back to the hotel and rest. followed by a restful sleep.",
+      "_id": {
+        "$oid": "689f3fe6fd968e05855daa9b"
+      }
+    },
+    {
+      "title": "(Day-4)Departure:",
+      "content": "It’s time to bid goodbye to this paradise with nostalgic memories Have a sumptuous breakfast and check-out from the hotel. Proceed to airport/railway station to board the flight back to your home destination.",
+      "_id": {
+        "$oid": "689f3fe6fd968e05855daa9c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T14:10:46.160Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T14:10:46.160Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689f4272fd968e05855daab1"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Adventure tour package ",
+  "slug": "adventure-tour-package",
+  "description": "Adventure tour packages are designed for travelers seeking thrilling and unique experiences in Goa. These packages offer a variety of activities that allow you to explore Goa's natural beauty and diverse landscapes. Here's an overview of what you might find in an adventure tour package in Goa.\r\n\r\nWater Sports: Enjoy a variety of water sports such as jet skiing, parasailing, windsurfing, kayaking, and banana boat rides. These activities are available at popular beaches like Baga, Calangute, and Anjuna. Scuba Diving and Snorkeling: Discover the vibrant marine life of Goa with scuba diving and snorkeling excursions. Dive to explore coral reefs and shipwrecks, or snorkel to observe colorful fish and other underwater wonders. River Rafting: Experience the thrill of river rafting on the Mhadei River, especially during the monsoon season when the rapids are most exciting.",
+  "price": 10000,
+  "duration": "4 Days/ 3 Nights ",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop from airport or Railway station",
+    "Two Sightseeng",
+    "Advanture activity Scuba Diving Water Sports",
+    "3 Night Accomandation",
+    "Meal Breakfast"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755267692/GOA-TOUR-WALA/wddejpoj3dasf2b1tqje.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267693/GOA-TOUR-WALA/bivkoiyc7asfusjmgwfu.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267693/GOA-TOUR-WALA/nil6rpr2yl9ffijbw7kc.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267695/GOA-TOUR-WALA/uhrrueuryua03m9ev1q1.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267695/GOA-TOUR-WALA/tdgghbmtlbfv12n5o3yx.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267696/GOA-TOUR-WALA/nliatz2lfztgi0zf6vve.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267697/GOA-TOUR-WALA/nhbvdejoj7fzkyfxm1gk.png",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755267698/GOA-TOUR-WALA/qwy7g1fewhfv2yec3nqq.png"
+  ],
+  "details": [
+    {
+      "title": "(Day-1) Arrival in Goa:",
+      "content": "Resplendent beaches, colonial structures, and vibrant nightlife welcome you to the sun-kissed Goa Upon arrival at Goa airport/railway station, an agent’s representative will greet you and guide you to the hotel. Check-in at the hotel and relax for a while. You can spend this entire first day of your Goa family holiday as per your convenience. Stroll on the local streets, try out Goan delicacies or explore Goa’s glittering nightlife. At the end of the day, come back to the hotel and stay for the night.",
+      "_id": {
+        "$oid": "689f4272fd968e05855daab2"
+      }
+    },
+    {
+      "title": "(Day-2) Scuba Diving with Water Sports:",
+      "content": "The second day of your Goa family trip is reserved for a fun-filled sightseeing tour of Goa Post breakfast, embark on a scuba diving and five watersports jet sky ride banana ride bumper ride speed boat ride pairasaily dolfin sightseeng boat ride .",
+      "_id": {
+        "$oid": "689f4272fd968e05855daab3"
+      }
+    },
+    {
+      "title": "(Day-3) North Goa sightseeing tour:",
+      "content": "After Breakfast Visit Fort Aguada, Coco Beach, Calangute Annexe, Calangute Beach, Baga Beach and Anjuna Beach. Towards the end of the second day of your Goa family vacation, return to the hotel and stay for the night. come back to the hotel and rest. followed by a restful sleep.",
+      "_id": {
+        "$oid": "689f4272fd968e05855daab4"
+      }
+    },
+    {
+      "title": "(Day-4)Departure:",
+      "content": "It’s time to bid goodbye to this paradise with nostalgic memories Have a sumptuous breakfast and check-out from the hotel. Proceed to airport/railway station to board the flight back to your home destination.",
+      "_id": {
+        "$oid": "689f4272fd968e05855daab5"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-15T14:21:38.845Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-15T14:21:38.845Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a09c53fd968e05855dacac"
+  },
+  "category": {
+    "$oid": "6898c0fc4cbdfe3ab358092d"
+  },
+  "name": "Dudh sagar waterfall ",
+  "slug": "dudh-sagar-waterfall",
+  "description": "Dudhsagar Waterfall, meaning “Sea of Milk”, is one of India’s tallest and most breathtaking waterfalls, located on the Goa–Karnataka border inside the Bhagwan Mahavir Wildlife Sanctuary. Cascading from a height of 1017 feet, this four-tiered marvel creates a spectacular sight, especially during the monsoon, when it roars in full glory.",
+  "price": 2000,
+  "duration": "7 am to 5 pm",
+  "packageType": "Trip package",
+  "features": [
+    "Pic up and drop from hotel",
+    "pic up from calanguate candolim arpura baga nearby hotel only",
+    "Jeep safari",
+    "spicy plantation",
+    "lunch"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755356243/GOA-TOUR-WALA/rqdayykkphhwantvyb3h.jpg",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755356243/GOA-TOUR-WALA/cogr8lsvtul5ajnmqfep.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755356243/GOA-TOUR-WALA/qazkcf8xx1fadjpsefft.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755356243/GOA-TOUR-WALA/bkoarfqchorxxaodmnyp.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755356243/GOA-TOUR-WALA/byi9lfvk0glxiixutu1x.jpg"
+  ],
+  "details": [
+    {
+      "title": "7 am",
+      "content": "Pickup from your hotel in North calanguate candolim arpura baga",
+      "_id": {
+        "$oid": "68a09c53fd968e05855dacad"
+      }
+    },
+    {
+      "title": "8:30 am",
+      "content": "Arrive at Mollem ",
+      "_id": {
+        "$oid": "68a09c53fd968e05855dacae"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-16T14:57:23.990Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-16T14:57:23.990Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a1843bfd968e05855daf8b"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Goa Hampi Tour",
+  "slug": "goa-hampi-tour",
+  "description": "A Goa-Hampi tour combines the coastal beauty of Goa with the historical and architectural wonders of Hampi. This type of tour offers a unique experience, allowing you to explore two distinct destinations in one trip. Here's what you can expect from a Goa-Hampi tour:",
+  "price": 2000,
+  "duration": "2 Days | 1 Night",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop from airport or Railway station",
+    "3 Nights Hotel Accomodation",
+    "1 Night Hotel Hampi",
+    "2 Sightseen Goa",
+    "Hampi All Sightseen By Car",
+    "Goa Hampi by Car",
+    "Guide in Hampi",
+    "Entry Fees Exclude",
+    "Meal",
+    "Breakfast"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755415607/GOA-TOUR-WALA/zbrbe7xorvazxwlfp95f.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415608/GOA-TOUR-WALA/svlsqnotlpg4c4gqc1bg.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415608/GOA-TOUR-WALA/olb73y4kkbqtx56bm8fq.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415608/GOA-TOUR-WALA/yaipfjh0kq3dy2ok8c69.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415610/GOA-TOUR-WALA/c2fb8xrfpsk3isjukci3.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415609/GOA-TOUR-WALA/anzw2dqiag5aqzc5tmkf.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415609/GOA-TOUR-WALA/muj41miscqyaopcrjttu.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755415610/GOA-TOUR-WALA/nxccmluo826bli4vyo6h.jpg"
+  ],
+  "details": [
+    {
+      "title": "Beaches",
+      "content": "Start your tour with Goa's beautiful beaches, such as Baga, Calangute, Anjuna, and Palolem. Enjoy water sports, sunbathing, or simply relaxing on the sand.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf8c"
+      }
+    },
+    {
+      "title": "Cultural and Historical Sites",
+      "content": " Visit iconic landmarks like the Basilica of Bom Jesus, Se Cathedral, and Aguada Fort to learn about Goa's rich history and culture.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf8d"
+      }
+    },
+    {
+      "title": "Water Sports and Adventure:",
+      "content": " Try activities like parasailing, jet skiing, and snorkeling for an adventurous experience.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf8e"
+      }
+    },
+    {
+      "title": "Nightlife:",
+      "content": " Explore Goa's vibrant nightlife with its many clubs, beach parties, and bars.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf8f"
+      }
+    },
+    {
+      "title": "Local Cuisine",
+      "content": " Taste Goan cuisine, including seafood dishes like prawn curry, fish thali, and vindaloo.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf90"
+      }
+    },
+    {
+      "title": "Travel to Hampi",
+      "content": "The journey from Goa to Hampi is around 8 to 9 hours by road. Alternatively, you can take a train from Goa to Hospet, which is the nearest major railway station to Hampi, and then drive about 13 km to Hampi.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf91"
+      }
+    },
+    {
+      "title": "Historical and Architectural Wonders",
+      "content": " Hampi is a UNESCO World Heritage Site known for its incredible ruins and temples. Visit landmarks such as the Virupaksha Temple, Vittala Temple, and the stone chariot.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf92"
+      }
+    },
+    {
+      "title": "Boulders and Landscapes:",
+      "content": " Hampi is known for its stunning boulder-strewn landscapes. Explore the boulders and unique rock formations around the region.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf93"
+      }
+    },
+    {
+      "title": "Riverboat Rides:",
+      "content": " Take a coracle ride on the Tungabhadra River, providing a peaceful and scenic experience.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf94"
+      }
+    },
+    {
+      "title": " Local Markets",
+      "content": "Discover local arts and crafts at Hampi's markets, such as stone carvings, jewelry, and textiles.",
+      "_id": {
+        "$oid": "68a1843bfd968e05855daf95"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-17T07:26:51.465Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-17T07:26:51.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a186fffd968e05855dafa9"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Goa murudeshwar",
+  "slug": "goa-murudeshwar",
+  "description": "A Goa-Gokarna Murudeshwar tour combines the beaches and vibrant culture of Goa with the spiritual and natural beauty of Gokarna and Murudeshwar. These destinations are located along the Karnataka coast, making it easy to visit all three in one trip. Here's what you can expect from a Goa-Gokarna Murudeshwar tour:\r\n",
+  "price": 15000,
+  "duration": "1 Day",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop from airport or Railway station",
+    "3 Nights Hotel Accomodation",
+    "1 Day Tour Gokarna Murudeshwar",
+    "2 Sightseen Goa",
+    "All Temple Sightseen in Murudeswar",
+    "All Sightseen in Gokarna",
+    "Goa Murudeshwar by Car",
+    "All Entry fees",
+    "Meal",
+    "Breakfast"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755416316/GOA-TOUR-WALA/n4ckn5mktbga8rpbeeze.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416317/GOA-TOUR-WALA/vyvcsd2kmdqgpd10rlbu.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416318/GOA-TOUR-WALA/bbza0qelgf2dtpzw8wk4.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416318/GOA-TOUR-WALA/dvex5hinrbm328ubstrj.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416318/GOA-TOUR-WALA/kzjnu9hyjcwfmas11f6k.jpg"
+  ],
+  "details": [
+    {
+      "title": "Beaches",
+      "content": "Begin your tour by exploring Goa's stunning beaches, such as Baga, Calangute, Anjuna, and Palolem. Enjoy water sports, sunbathing, and beach activities.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafaa"
+      }
+    },
+    {
+      "title": "Cultural and Historical Sites: ",
+      "content": "Visit landmarks like the Basilica of Bom Jesus, Se Cathedral, and Aguada Fort to learn about Goa's rich history and culture.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafab"
+      }
+    },
+    {
+      "title": "Water Sports and Adventure: ",
+      "content": "Try activities like parasailing, jet skiing, and snorkeling for an adventurous experience.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafac"
+      }
+    },
+    {
+      "title": "Nightlife:",
+      "content": " Explore Goa's vibrant nightlife with its many clubs, beach parties, and bars.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafad"
+      }
+    },
+    {
+      "title": "Local Cuisine: ",
+      "content": "Taste Goan cuisine, including seafood dishes like prawn curry, fish thali, and vindaloo.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafae"
+      }
+    },
+    {
+      "title": "Travel to Gokarna: ",
+      "content": "Gokarna is located about 150 km south of Goa, and you can travel by car, bus, or train. The journey takes around 3 to 4 hours by road.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafaf"
+      }
+    },
+    {
+      "title": "Beaches: ",
+      "content": "Gokarna is known for its pristine and less crowded beaches, such as Om Beach, Kudle Beach, Half Moon Beach, and Paradise Beach.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafb0"
+      }
+    },
+    {
+      "title": "Spiritual Sites: ",
+      "content": "Visit the Mahabaleshwar Temple, one of the most important Shiva temples in India. The town has a spiritual and peaceful atmosphere, making it a great place to relax and reflect.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafb1"
+      }
+    },
+    {
+      "title": "Local Markets:",
+      "content": " Explore Gokarna's local markets for souvenirs, clothing, and local handicrafts.",
+      "_id": {
+        "$oid": "68a186fffd968e05855dafb2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-17T07:38:39.177Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-17T07:38:39.177Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a18911fd968e05855dafb5"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Wildernest Nature trip",
+  "slug": "wildernest-nature-trip",
+  "description": "Explore the Best View of the Valley from the Cottages that provide you a an experience to uplug, unwind, relax and recharge. We welcome you to live close to nature and spend time to understand nature with a more deeper perspective.\r\n\r\nWelcome to Wildernest Nature Resort, at Chorla Ghats (Goa- Maharastra - Karnataka borders), where we offer best deals for your stay in the Valley / Forest or Plunge Pool Cottages and host variety of nature activities for you, your family and close ones, that will take you back to the nature. Stay + Taste Authentic Goan / Maharastrian cuisine + Trekking + Birdwatching + Nature Activities + Slope Train. So much to do, Just Come!\r\n",
+  "price": 12000,
+  "duration": "2 Days | 1 Night",
+  "packageType": "Tour package",
+  "features": [
+    "Pickup and Drop from Hotel",
+    "1 Night Stay Cottage Wildernest",
+    "Wildernest All Sightseen",
+    "Goa Wildernest by Car",
+    "Guide in Wildernest",
+    "Entry Fee",
+    "Meal",
+    "Breakfast",
+    "Lunch",
+    "Dinner At Wildernest"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755416847/GOA-TOUR-WALA/ouy8ihkq6vr9kcvahyev.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416848/GOA-TOUR-WALA/fkwmegvg6fg8jnldtiyl.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416848/GOA-TOUR-WALA/ffblgcgaym2iwlzzl194.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416849/GOA-TOUR-WALA/rm8hcxl34xtfzplgbomk.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416849/GOA-TOUR-WALA/rf1dyi99dswss5ehmad9.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416849/GOA-TOUR-WALA/w9l8w6arlorni2ugccry.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755416849/GOA-TOUR-WALA/rpflw5il4phpot1rsz9w.jpg"
+  ],
+  "details": [
+    {
+      "title": "Waterfall Treks: ",
+      "content": "Walk to the waterfall from Wildernest is an amazing experience especially if you love nature. Its a must do activity when you stay here.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafb6"
+      }
+    },
+    {
+      "title": "Bird Watching Trails:",
+      "content": " Watch different types of birds and experience the nature in true self. Best for Photographers and those who are bird watching fans.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafb7"
+      }
+    },
+    {
+      "title": "Infinity Swimming Pool:",
+      "content": " Take a dip in our infinity view swimming pool and immerse into a serenity with a gorgeous panaromic view of the Swapnagandha Valley..",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafb8"
+      }
+    },
+    {
+      "title": "Trekking At The Highest Point: ",
+      "content": "Adventurous trip to the highest point in the evening would give you a thorough experience of being in the lap of nature in different landscapes.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafb9"
+      }
+    },
+    {
+      "title": "Foot Trails: ",
+      "content": "Walk along the terrains of variety of flora and fauna at the spreadout areas in the wilderness of nature. It's a guided walk across the property.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafba"
+      }
+    },
+    {
+      "title": "Bio Diversity Show: ",
+      "content": "Our team does a lot of research to understand the wildlife and its habitat. The experts share their study with you to give you a glimpse.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafbb"
+      }
+    },
+    {
+      "title": "Botanical Tour: ",
+      "content": "A tour, especially favorite of the children is an excellent way to understand nature and its forms of life. Experts accompany you for this tour.",
+      "_id": {
+        "$oid": "68a18911fd968e05855dafbc"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-17T07:47:29.768Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-17T07:47:29.768Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a18a15fd968e05855dafbf"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "Houseboat",
+  "slug": "houseboat",
+  "description": "Goa is famous for its pristine and serene blue waters and glorious yet mesmerizing sunsets. To enhance your Goa trip with everlasting memories go for an overnight stay in a houseboat cruise at Mandovi River so as to enrich your vacation experience. The Mandovi River is considered as the lifeline of Goa. This Luxury Premium overnight cruise begins near Britona Jetty in Panjim. From Britona you sail from the Mandovi River to reach the Zuari River. Then head back towards Britona.\r\n\r\nExplore the hidden gems of Goa in the luxurious and spacious houseboat cruise and get awestruck with the breathtaking and never seen the beauty of nature. This is the most pleasant river cruise than the adrenalin adventure which puts your life at risk.",
+  "price": 8000,
+  "duration": "1 Night",
+  "packageType": "Tour package",
+  "features": [
+    "Breakfast",
+    "Fishing / Crab Catching",
+    "Sunset Goa cuisine",
+    "Brunch / Lunch",
+    "Pickup / Drop off (Calangute",
+    "Baga",
+    "Candolim)",
+    "Beer",
+    "whisky",
+    "Vodka",
+    "Mineral Water",
+    "Soft Drink (Coke & Sprite)"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755417105/GOA-TOUR-WALA/cavg2s4tpersllnjppye.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417106/GOA-TOUR-WALA/l7ttibdwrfajl0c3j7kp.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417106/GOA-TOUR-WALA/nzvtawej0ctnw9ywlb8b.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417106/GOA-TOUR-WALA/zlo1e28qt1elpgikmvty.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417107/GOA-TOUR-WALA/scoq2i4nvvw4q4po2ltz.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417107/GOA-TOUR-WALA/qj9mhbsvbdcctbbbxosq.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417107/GOA-TOUR-WALA/ucoqpixb1nsnmpu4rsp2.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417108/GOA-TOUR-WALA/dhezeakymivm5omgdakb.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417109/GOA-TOUR-WALA/cjqtl1rgpzifvbi3iqmp.jpg",
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755417108/GOA-TOUR-WALA/qzimqfhxtf6uyrxh8qmx.jpg"
+  ],
+  "details": [
+    {
+      "title": "Departure & Return Location:",
+      "content": " Britona Jetty (Google Map).",
+      "_id": {
+        "$oid": "68a18a15fd968e05855dafc0"
+      }
+    },
+    {
+      "title": "Duration: ",
+      "content": "Overnight Trip",
+      "_id": {
+        "$oid": "68a18a15fd968e05855dafc1"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-17T07:51:49.665Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-17T07:51:49.665Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a1c62345d002add48ff685"
+  },
+  "category": {
+    "$oid": "6898c1494cbdfe3ab3580933"
+  },
+  "name": "test",
+  "slug": "test",
+  "description": "test package",
+  "price": 1,
+  "duration": "test",
+  "packageType": "Tour package",
+  "features": [
+    "test"
+  ],
+  "active": true,
+  "bannerImage": "https://res.cloudinary.com/drx9likbv/image/upload/v1755432481/GOA-TOUR-WALA/ok3yghdneyxdjeirpiwc.png",
+  "galleryImages": [
+    "https://res.cloudinary.com/drx9likbv/image/upload/v1755432483/GOA-TOUR-WALA/pzyw8rycv3obetcldcss.png"
+  ],
+  "details": [
+    {
+      "title": "test",
+      "content": "test",
+      "_id": {
+        "$oid": "68a1c62345d002add48ff686"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-08-17T12:08:03.986Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-17T12:08:03.986Z"
+  },
+  "__v": 0
+}]
