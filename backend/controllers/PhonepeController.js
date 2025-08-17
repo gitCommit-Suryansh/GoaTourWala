@@ -13,7 +13,18 @@ const generateMerchantOrderId = () => {
 };
 
 // Function to complete payment
-const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrderId,children,adults,date,subSlug,categorySlug) => {
+const complete_payment = async (
+  accessToken,
+  name,
+  mobileNumber,
+  amount,
+  merchantOrderId,
+  children,
+  adults,
+  date,
+  subSlug,
+  categorySlug
+) => {
   try {
     const paymentResponse = await axios.post(
       `${process.env.CREATE_PAYMENT_URL}${process.env.CREATE_PAYMENT_ENDPOINT}`,
@@ -22,12 +33,11 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
         amount: amount,
         expireAfter: 1200,
         metaInfo: {
-          udf0: `name:${name}`,
-          udf1: `mobileNumber:${mobileNumber}`,
-          udf2: `merchantOrderId:${merchantOrderId}`,
-          udf3: `TravelDate:${date}`,
-          udf4: `Adults:${adults}`,
-          udf5: `children:${children}`,
+          udf1: `name:${name}`,
+          udf2: `mobileNumber:${mobileNumber}`,
+          udf3: `merchantOrderId:${merchantOrderId}`,
+          udf4: `TravelDate:${date}`,
+          udf5: `Adults:${adults}|children:${children}`,
         },
         paymentFlow: {
           type: "PG_CHECKOUT",
@@ -64,7 +74,8 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
 
 exports.pay = async (req, res) => {
   try {
-    const { name,amount, mobileNumber, adults, children, date ,subSlug,categorySlug} = req.body;
+    const {name,amount,mobileNumber,adults,children,date,subSlug,categorySlug,} = req.body;
+    
     const merchantOrderId = generateMerchantOrderId();
 
     // Get access token using the new function
@@ -83,7 +94,9 @@ exports.pay = async (req, res) => {
       merchantOrderId,
       children,
       adults,
-      date,subSlug,categorySlug
+      date,
+      subSlug,
+      categorySlug
     );
 
     res.status(200).json({
@@ -105,7 +118,6 @@ exports.pay = async (req, res) => {
 };
 
 exports.checkPaymentStatus = async (req, res) => {
-
   const { merchantOrderId } = req.body;
 
   const tokenResult = await generateAccessToken();
