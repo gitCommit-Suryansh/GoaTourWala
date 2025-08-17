@@ -247,10 +247,7 @@ const SubcategoryPage = () => {
 
   const totalPrice = (adults + children) * data.price;
 
-  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(
-    /^0+/,
-    ""
-  );
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,"");
   const whatsappMessage = encodeURIComponent(
     `Hi, I'm interested in ${
       data.name
@@ -724,71 +721,71 @@ const SubcategoryPage = () => {
             {/* Other Activities Section */}
 
             {otherActivities.length > 0 && (
-              <section className="py-8 md:py-12 bg-slate-50">
-                <div className="container mx-auto px-4">
-                  <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
-                    <span style={{ color: "#FFBA0A" }}> Discover</span> Other
-                    Activities
-                  </h2>
-                  <p className="text-center text-lg text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto">
-                    Expand your horizons with our curated selection of unique
-                    and exciting experiences.
-                  </p>
-
-                  {/* Grid for the activity cards */}
-                  <div className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-3 md:gap-2">
-                    {otherActivities.map((activity) => (
-                      // NEW: Added 'group' to enable hover effects on child elements
-                      <div
-                        key={activity.slug} // Use a unique slug or id for the key instead of index
-                        className="group block bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 overflow-hidden"
+  <section className="py-8 md:py-12 bg-slate-50">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
+        <span style={{ color: "#FFBA0A" }}> Discover</span> Other
+        Activities
+      </h2>
+      <p className="text-center text-lg text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto">
+        Expand your horizons with our curated selection of unique
+        and exciting experiences.
+      </p>
+       
+      {/* Grid for the activity cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-3 md:gap-2">
+        {otherActivities.map((activity) => (
+          // NEW: Added 'group' to enable hover effects on child elements
+          <div
+            key={activity.slug} // Use a unique slug or id for the key instead of index
+            className="group block bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 overflow-hidden"
+          >
+            <Link
+              to={`/${activity.categorySlug}/${activity.slug}`}
+              className="block"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={activity.galleryImages[0]}
+                  alt={activity.name}
+                  className="w-full h-44 md:h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                />
+                {/* NEW: Optional gradient overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+               
+              <div className="p-2">
+                <h3 className="text-md font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-300 truncate">
+                  {activity.name}
+                </h3>
+                 
+                {/* NEW: Cleaner styling for the feature tags with truncation */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {activity.features
+                    .slice(0, 3)
+                    .map((feature, index) => (
+                      <span
+                        key={index}
+                        className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full"
+                        title={feature.length > 20 ? feature : undefined} // Show full text on hover if truncated
                       >
-                        <Link
-                          to={`/${activity.categorySlug}/${activity.slug}`}
-                          className="block"
-                        >
-                          <div className="relative overflow-hidden">
-                            <img
-                              src={activity.galleryImages[0]}
-                              alt={activity.name}
-                              use
-                              className="w-full h-44 md:h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                            />
-                            {/* NEW: Optional gradient overlay for better text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                          </div>
-
-                          <div className="p-2">
-                            <h3 className="text-md font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-300 truncate">
-                              {activity.name}
-                            </h3>
-
-                            {/* NEW: Cleaner styling for the feature tags */}
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {activity.features
-                                .slice(0, 3)
-                                .map((feature, index) => (
-                                  <span
-                                    key={index}
-                                    className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full"
-                                  >
-                                    {feature}
-                                  </span>
-                                ))}
-                              {activity.features.length > 3 && (
-                                <span className="inline-block bg-slate-100 text-slate-600 text-xs font-semibold px-3 py-1 rounded-full">
-                                  +{activity.features.length - 3} more
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
+                        {feature.length > 20 ? `${feature.slice(0, 20)}...` : feature}
+                      </span>
                     ))}
-                  </div>
+                  {activity.features.length > 3 && (
+                    <span className="inline-block bg-slate-100 text-slate-600 text-xs font-semibold px-3 py-1 rounded-full">
+                      +{activity.features.length - 3} more
+                    </span>
+                  )}
                 </div>
-              </section>
-            )}
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
           </div>
 
           <aside

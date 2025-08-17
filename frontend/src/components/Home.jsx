@@ -34,13 +34,18 @@ const Home = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [subcategoryStats, setSubcategoryStats] = useState({});
-  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =useState([]);
+  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =
+    useState([]);
   const [categoryActiveSlide, setCategoryActiveSlide] = useState(0);
   const [tourPage, setTourPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,"");
+  const whatsappMessage = encodeURIComponent(
+    `Hi, I visited GoaTourWala and would like to talk to an expert about my trip.`
+  );
 
   useEffect(() => {
     const handleLoad = () => setLoading(false);
@@ -262,12 +267,19 @@ const Home = () => {
 
             {/* CTA Button */}
             <div className="mb-3 md:mb-6">
-              <button
-                className="bg-[#F37002] text-white font-bold px-5 md:px-7 py-2 md:py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300/40 text-sm md:text-lg tracking-wide"
-                style={{ backgroundColor: "#F37002" }}
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
               >
-                Connect With An Expert
-              </button>
+                <button
+                  className="bg-[#F37002] text-white font-bold px-5 md:px-7 py-2 md:py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300/40 text-sm md:text-lg tracking-wide"
+                  style={{ backgroundColor: "#F37002" }}
+                >
+                  Connect With An Expert
+                </button>
+              </a>
             </div>
 
             {/* Trust Indicators */}
@@ -294,26 +306,16 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Slide Buttons (bottom left) */}
-        <div className="absolute bottom-0 left-0 w-full z-20 flex justify-center md:justify-start space-x-4 bg-black bg-opacity-30 px-8 py-4">
-          {slideOptions.map((slide, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveSlide(idx)}
-              className={`px-4 py-2 uppercase text-sm tracking-wider ${
-                idx === activeSlide ? "bg-white text-black" : "text-white"
-              }`}
-            >
-              {slide}
-            </button>
-          ))}
-        </div>
+      
       </section>
 
       {/* TOUR PACKAGES SECTION */}
       <section className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-10" style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}>
+          <div
+            className="text-center mb-10"
+            style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}
+          >
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
               Trending holiday packages in Goa
             </h2>
@@ -334,20 +336,26 @@ const Home = () => {
               ))}
             </div>
           ) : tourPackages.length === 0 ? (
-            <p className="text-center text-gray-600">No tour packages available right now.</p>
+            <p className="text-center text-gray-600">
+              No tour packages available right now.
+            </p>
           ) : (
-            <div className="relative" style={{ overflowAnchor: 'none' }}>
+            <div className="relative" style={{ overflowAnchor: "none" }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
                 {tourDisplayed.map((pkg) => (
                   <div
                     key={pkg._id}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-                    style={{ scale: 0.9}}
+                    style={{ scale: 0.9 }}
                   >
                     <div className="relative md:h-44 overflow-hidden">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <img
-                          src={pkg.image || pkg.bannerImage || "/api/placeholder/400/300"}
+                          src={
+                            pkg.image ||
+                            pkg.bannerImage ||
+                            "/api/placeholder/400/300"
+                          }
                           alt={pkg.name}
                           className="w-full h-full object-fit"
                         />
@@ -355,8 +363,12 @@ const Home = () => {
                     </div>
                     <div className="p-2 md:p-3">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
-                        <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
-                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <div className="text-sm text-gray-600 mb-1">
+                          {pkg.duration || "6 days & 5 nights"}
+                        </div>
+                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">
+                          {pkg.name}
+                        </h3>
                         <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
                           <span>{pkg.route || "Goa"}</span>
@@ -364,30 +376,47 @@ const Home = () => {
                         <div className="flex items-center gap-2 mb-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                            <span className="text-sm font-medium text-gray-700">{subcategoryStats[pkg._id]?.rating || "4.5"}</span>
+                            <span className="text-sm font-medium text-gray-700">
+                              {subcategoryStats[pkg._id]?.rating || "4.5"}
+                            </span>
                           </div>
-                          <span className="text-sm text-gray-500">({subcategoryStats[pkg._id]?.reviews || "1200"} reviews)</span>
+                          <span className="text-sm text-gray-500">
+                            ({subcategoryStats[pkg._id]?.reviews || "1200"}{" "}
+                            reviews)
+                          </span>
                         </div>
                       </Link>
                       <div className="mb-2">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-base md:text-lg text-gray-400 line-through">
-                            INR {pkg.price + (subcategoryStats[pkg._id]?.discount || 1000)}
+                            INR{" "}
+                            {pkg.price +
+                              (subcategoryStats[pkg._id]?.discount || 1000)}
                           </span>
                           <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
-                            SAVE INR {subcategoryStats[pkg._id]?.discount || 1000}
+                            SAVE INR{" "}
+                            {subcategoryStats[pkg._id]?.discount || 1000}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xl md:text-2xl font-bold text-gray-900">INR {pkg.price}</span>
+                          <span className="text-xl md:text-2xl font-bold text-gray-900">
+                            INR {pkg.price}
+                          </span>
                           <span className="text-sm text-gray-600">/Adult</span>
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <a href={`tel:${SUPPORT_PHONE}`} className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2">
+                        <a
+                          href={`tel:${SUPPORT_PHONE}`}
+                          className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
+                        >
                           <Phone className="w-4 h-4" />
                         </a>
-                        <Link className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200" style={{ backgroundColor: "#F37002" }} to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                        <Link
+                          className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
+                          style={{ backgroundColor: "#F37002" }}
+                          to={`/${pkg.categorySlug}/${pkg.slug}`}
+                        >
                           Book Now
                         </Link>
                       </div>
@@ -402,13 +431,17 @@ const Home = () => {
                     type="button"
                     onClick={(e) => {
                       e.currentTarget.blur();
-                      setTourPage((p) => (p - 1 + tourTotalPages) % tourTotalPages);
+                      setTourPage(
+                        (p) => (p - 1 + tourTotalPages) % tourTotalPages
+                      );
                     }}
                     className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
                   >
                     <ArrowLeft className="w-5 h-5" /> Prev
                   </button>
-                  <div className="text-sm text-gray-600">Page {tourPage + 1} of {tourTotalPages}</div>
+                  <div className="text-sm text-gray-600">
+                    Page {tourPage + 1} of {tourTotalPages}
+                  </div>
                   <button
                     type="button"
                     onClick={(e) => {
@@ -429,7 +462,10 @@ const Home = () => {
       {/* TRIP PACKAGES SECTION */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-10" style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}>
+          <div
+            className="text-center mb-10"
+            style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}
+          >
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
               Goa trip packages
             </h2>
@@ -450,9 +486,11 @@ const Home = () => {
               ))}
             </div>
           ) : tripPackages.length === 0 ? (
-            <p className="text-center text-gray-600">No trip packages available right now.</p>
+            <p className="text-center text-gray-600">
+              No trip packages available right now.
+            </p>
           ) : (
-            <div className="relative" style={{ overflowAnchor: 'none' }}>
+            <div className="relative" style={{ overflowAnchor: "none" }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
                 {tripDisplayed.map((pkg) => (
                   <div
@@ -463,7 +501,11 @@ const Home = () => {
                     <div className="relative  md:h-44 overflow-hidden">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <img
-                          src={pkg.image || pkg.bannerImage || "/api/placeholder/400/300"}
+                          src={
+                            pkg.image ||
+                            pkg.bannerImage ||
+                            "/api/placeholder/400/300"
+                          }
                           alt={pkg.name}
                           className="w-full h-full object-cover"
                         />
@@ -471,8 +513,12 @@ const Home = () => {
                     </div>
                     <div className="p-2 md:p-3">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
-                        <div className="text-sm text-gray-600 mb-1">{pkg.duration || "6 days & 5 nights"}</div>
-                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">{pkg.name}</h3>
+                        <div className="text-sm text-gray-600 mb-1">
+                          {pkg.duration || "6 days & 5 nights"}
+                        </div>
+                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">
+                          {pkg.name}
+                        </h3>
                         <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
                           <MapPin className="w-4 h-4" />
                           <span>{pkg.route || "Goa"}</span>
@@ -480,30 +526,47 @@ const Home = () => {
                         <div className="flex items-center gap-2 mb-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                            <span className="text-sm font-medium text-gray-700">{subcategoryStats[pkg._id]?.rating || "4.5"}</span>
+                            <span className="text-sm font-medium text-gray-700">
+                              {subcategoryStats[pkg._id]?.rating || "4.5"}
+                            </span>
                           </div>
-                          <span className="text-sm text-gray-500">({subcategoryStats[pkg._id]?.reviews || "1200"} reviews)</span>
+                          <span className="text-sm text-gray-500">
+                            ({subcategoryStats[pkg._id]?.reviews || "1200"}{" "}
+                            reviews)
+                          </span>
                         </div>
                       </Link>
                       <div className="mb-2">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-base md:text-lg text-gray-400 line-through">
-                            INR {pkg.price + (subcategoryStats[pkg._id]?.discount || 1000)}
+                            INR{" "}
+                            {pkg.price +
+                              (subcategoryStats[pkg._id]?.discount || 1000)}
                           </span>
                           <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
-                            SAVE INR {subcategoryStats[pkg._id]?.discount || 1000}
+                            SAVE INR{" "}
+                            {subcategoryStats[pkg._id]?.discount || 1000}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xl md:text-2xl font-bold text-gray-900">INR {pkg.price}</span>
+                          <span className="text-xl md:text-2xl font-bold text-gray-900">
+                            INR {pkg.price}
+                          </span>
                           <span className="text-sm text-gray-600">/Adult</span>
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <a href={`tel:${SUPPORT_PHONE}`} className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2">
+                        <a
+                          href={`tel:${SUPPORT_PHONE}`}
+                          className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
+                        >
                           <Phone className="w-4 h-4" />
                         </a>
-                        <Link className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200" style={{ backgroundColor: "#F37002" }} to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                        <Link
+                          className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
+                          style={{ backgroundColor: "#F37002" }}
+                          to={`/${pkg.categorySlug}/${pkg.slug}`}
+                        >
                           Book Now
                         </Link>
                       </div>
@@ -518,13 +581,17 @@ const Home = () => {
                     type="button"
                     onClick={(e) => {
                       e.currentTarget.blur();
-                      setTripPage((p) => (p - 1 + tripTotalPages) % tripTotalPages);
+                      setTripPage(
+                        (p) => (p - 1 + tripTotalPages) % tripTotalPages
+                      );
                     }}
                     className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
                   >
                     <ArrowLeft className="w-5 h-5" /> Prev
                   </button>
-                  <div className="text-sm text-gray-600">Page {tripPage + 1} of {tripTotalPages}</div>
+                  <div className="text-sm text-gray-600">
+                    Page {tripPage + 1} of {tripTotalPages}
+                  </div>
                   <button
                     type="button"
                     onClick={(e) => {
