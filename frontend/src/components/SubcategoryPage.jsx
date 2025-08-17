@@ -32,7 +32,6 @@ import seoData from "../seoData";
 
 const SubcategoryPage = () => {
   const { subSlug, categorySlug } = useParams();
-  // normalize slug (lowercase, replace spaces if your slug rules differ adjust accordingly)
   const key = subSlug ? subSlug.toLowerCase() : "";
   const seo = seoData[key] || seoData.default;
 
@@ -210,8 +209,6 @@ const SubcategoryPage = () => {
     fetchPaymentStatus();
   }, [merchantOrderId]);
 
-  console.log(paymentStatus)
-
   useEffect(() => {
     const savePaymentToDB = async () => {
       if (!paymentStatus || !data || hasSavedPayment) return;
@@ -248,16 +245,9 @@ const SubcategoryPage = () => {
 
   const totalPrice = (adults + children) * data.price;
 
-  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(
-    /^0+/,
-    ""
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,""
   );
-  const whatsappMessage = encodeURIComponent(
-    `Hi, I'm interested in ${
-      data.name
-    } on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${
-      typeof window !== "undefined" ? window.location.href : ""
-    }`
+  const whatsappMessage = encodeURIComponent(`Hi, I'm interested in ${data.name} on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${typeof window !== "undefined" ? window.location.href : ""}`
   );
   const handleBooking = async () => {
     if (!mobileNumber || mobileNumber.length < 10) {
@@ -357,111 +347,122 @@ const SubcategoryPage = () => {
     return text.length > limit ? `${text.slice(0, limit)}...` : text;
   };
 
-  const generatePdfReceipt = async () => {
+    const generatePdfReceipt = async () => {
     if (!paymentStatus) return;
-
+  
     const doc = new jsPDF();
-
-    // Import logo image
+  
+    // Logo
     const img = new Image();
     img.src = logo;
-
-    // Wait for logo to load
-    await new Promise((resolve) => {
-      img.onload = resolve;
-    });
-
-    // Calculate centered logo position with proper height
+    await new Promise((resolve) => (img.onload = resolve));
+  
     const pageWidth = doc.internal.pageSize.getWidth();
     const logoWidth = 40;
     const logoHeight = (img.height / img.width) * logoWidth;
     const logoX = (pageWidth - logoWidth) / 2;
-
-    // Add logo
+  
     doc.addImage(img, "PNG", logoX, 10, logoWidth, logoHeight);
-
-    // Move Y below logo
-    let y = 10 + logoHeight + 8;
-
-    // Header
-    doc.setFontSize(16);
+  
+    let y = 10 + logoHeight + 10;
+  
+    // Title
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("GoaTourWala Booking Receipt", pageWidth / 2, y, {
-      align: "center",
-    });
-
-    y += 8;
-
+    doc.text("GoaTourWala Booking Receipt", pageWidth / 2, y, { align: "center" });
+  
+    y += 12;
     doc.setDrawColor(0);
-    doc.setLineWidth(0.5);
+    doc.setLineWidth(0.6);
     doc.line(20, y, pageWidth - 20, y);
-
+    y += 10;
+  
+    // Section heading style
+    const addSectionHeading = (title) => {
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0, 102, 204); // blue highlight
+      doc.text(title, 20, y);
+      y += 6;
+      doc.setLineWidth(0.3);
+      doc.line(20, y, pageWidth - 20, y);
+      y += 8;
+      doc.setTextColor(0, 0, 0);
+    };
+  
+    // Key-value line style
+    const addLine = (label, value, highlight = false) => {
+      doc.setFont("helvetica", "bold");
+      doc.text(`${label}:`, 30, y);
+      doc.setFont("helvetica", "normal");
+      if (highlight) {
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(200, 0, 0); // red highlight
+        doc.setFontSize(13);
+      }
+      doc.text(value, 75, y);
+      if (highlight) {
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+      }
+      y += 8;
+    };
+  
     // Extract values
     const name = paymentStatus.metaInfo?.udf1?.split(":")[1] || "N/A";
     const mobile = paymentStatus.metaInfo?.udf2?.split(":")[1] || "N/A";
+    const tripName = data.name;
     const tripDate = paymentStatus.metaInfo?.udf4?.split(":")[1] || "N/A";
-    const adults = paymentStatus.metaInfo?.udf5?.split('|')[0].split(":")[1] || "0";
-    const children = paymentStatus.metaInfo?.udf5?.split('|')[1].split(":")[1] || "0";
+    const adults = paymentStatus.metaInfo?.udf5?.split("|")[0].split(":")[1] || "0";
+    const children = paymentStatus.metaInfo?.udf5?.split("|")[1].split(":")[1] || "0";
     const amount = (paymentStatus.amount / 100).toFixed(2);
     const orderId = paymentStatus.orderId;
     const txnId = paymentStatus.paymentDetails?.[0]?.transactionId || "N/A";
     const status = paymentStatus.state;
-
-    // Body content
-    y += 15;
-    const lineSpacing = 10;
-
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-
-    const addLine = (label, value) => {
-      doc.setFont("helvetica", "bold");
-      doc.text(`${label}:`, 30, y);
-      doc.setFont("helvetica", "normal");
-      doc.text(value, 75, y);
-      y += lineSpacing;
-    };
-
+  
+    // Booking Details
+    addSectionHeading("Booking Details");
     addLine("Customer Name", name);
     addLine("Mobile Number", mobile);
+    addLine("Package Name", tripName);
     addLine("Trip Date", tripDate);
     addLine("Adults", adults);
     addLine("Children", children);
+  
+    // Payment Details
+    y += 5;
+    addSectionHeading("Payment Details");
     addLine("Order ID", orderId);
     addLine("Transaction ID", txnId);
     addLine("Payment Status", status);
-    addLine("Amount Paid", `₹${amount}`);
+    addLine("Amount Paid", `INR ${amount}`, true);
     addLine("Receipt Generated", new Date().toLocaleString());
-
-    // Bottom line
+  
+    // Footer
+    y += 10;
     doc.setLineWidth(0.3);
     doc.line(20, y, pageWidth - 20, y);
-    y += 12;
-
-    // Footer Notes
+    y += 8;
+  
     doc.setFontSize(10);
     doc.setTextColor(50);
-
-    doc.text("✅ Save this receipt for your reference.", 30, y);
+    doc.text("Save this receipt for your reference.", pageWidth / 2, y, { align: "center" });
     y += 6;
-    doc.text(
-      "📞 Our team will contact you shortly to confirm your trip.",
-      30,
-      y
-    );
+    doc.text("Our team will contact you shortly to confirm your trip.", pageWidth / 2, y, { align: "center" });
+    y += 12;
+  
+    doc.setFontSize(11);
+    doc.setTextColor(0, 102, 0);
+    doc.text("Thank you for booking with GoaTourWala!", pageWidth / 2, y, { align: "center" });
+  
     y += 10;
-
-    // Thank you footer
     doc.setFontSize(9);
     doc.setTextColor(120);
-    doc.text("Thank you for booking with GoaTourWala!", pageWidth / 2, y, {
-      align: "center",
-    });
-
-    // Save the PDF
+    doc.text("www.goatourwala.com | info@goatourwala.com  | +91-8999732703",pageWidth / 2, y, { align: "center" });
+      
     doc.save(`GoaTourWala_Receipt_${orderId}.pdf`);
   };
-
+  
   const getStatusIcon = (state) => {
     switch (state) {
       case "COMPLETED":

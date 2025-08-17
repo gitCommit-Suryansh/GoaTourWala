@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import adventurevideo from "../assets/adventure.mp4";
 import Header from "./Header";
 import Footer from "./Footer"; // 👈 Add this import
@@ -27,6 +27,7 @@ const slideOptions = ["Wildlife", "Heritage", "Religious", "Nature"];
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [showIntro, setShowIntro] = useState(true);
+  const introShownRef = useRef(false); // stays alive until page reload
   const [step, setStep] = useState(0);
   const [hideIntro, setHideIntro] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -34,8 +35,7 @@ const Home = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [subcategoryStats, setSubcategoryStats] = useState({});
-  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =
-    useState([]);
+  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =useState([]);
   const [categoryActiveSlide, setCategoryActiveSlide] = useState(0);
   const [tourPage, setTourPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
@@ -96,6 +96,8 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  
 
   // Add auto-carousel for categories
   useEffect(() => {

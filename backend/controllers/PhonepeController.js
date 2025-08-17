@@ -73,6 +73,7 @@ exports.pay = async (req, res) => {
       throw new Error(tokenResult.error);
     }
     const accessToken = tokenResult.accessToken;
+    console.log(accessToken)
 
     // Call complete_payment function
     const paymentResponse = await complete_payment(
