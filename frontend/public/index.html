@@ -1,29 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Discover the best tours and experiences in Goa with Goa Tour Wala. Book your adventure today!">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
 
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Michroma&family=Play:wght@400;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    
-    <title>Goa Tour Wala | Explore the Best Tours in Goa</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    
-  </body>
+  <!-- Primary Meta Tags -->
+  <title>Goa Tour Wala | Cruises, Sightseeing, Water Sports & Holiday Packages in Goa</title>
+  <meta name="description" content="Goa Tour Wala offers adventure cruises, sunset cruises, yacht rentals, North & South Goa sightseeing, dolphin tours, scuba diving, bungee jumping, Dudhsagar waterfall trips, honeymoon & family packages, and more. Book your Goa adventure now!" />
+  <meta name="keywords" content="Goa cruises, Goa adventure cruise, Goa dinner cruise, sunset cruise Goa, yacht rental Goa, sightseeing Goa, dolphin trip Goa, scuba diving Goa, bungee jumping Goa, Dudhsagar waterfall Goa, honeymoon package Goa, family package Goa, business tour Goa, Hampi tour from Goa, Murudeshwar tour Goa, Wildernest nature trip Goa, Goa tour packages" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Goa Tour Wala | Explore Goa's Best Cruises, Sightseeing & Water Sports" />
+  <meta property="og:description" content="From adventure cruises to scuba diving, Dudhsagar trips, dolphin watching, honeymoon packages, and more — Goa Tour Wala is your trusted travel agent for unforgettable Goa experiences." />
+  <meta property="og:url" content="https://GoaTourWala.com" />
+  <meta property="og:image" content="%PUBLIC_URL%/seo-preview.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Goa Tour Wala | Explore Goa's Best Cruises, Sightseeing & Water Sports" />
+  <meta name="twitter:description" content="From adventure cruises to scuba diving, Dudhsagar trips, dolphin watching, honeymoon packages, and more — Goa Tour Wala is your trusted travel agent for unforgettable Goa experiences." />
+  <meta name="twitter:image" content="%PUBLIC_URL%/seo-preview.jpg" />
+
+  <!-- Structured Data: Travel Agency with Offer Catalog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Goa Tour Wala",
+    "url": "https://GoaTourWala.com",
+    "description": "Goa Tour Wala provides cruises, sightseeing, adventure sports, nature trips, and holiday packages across Goa and nearby destinations.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Goa",
+      "addressRegion": "Goa",
+      "addressCountry": "IN"
+    },
+    "openingHours": "Mo-Su 08:00-20:00",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Goa Tour Wala Packages",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Adventure Cruise" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Adventure Cruise with Water Sports" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Dinner Cruise" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Sunset Cruise" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Yacht on Rent" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Cruise on Rent" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "North Goa Sightseeing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "South Goa Sightseeing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Dolphin Sightseeing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Scuba Diving" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Flyboarding" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Bungee Jumping" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Dudhsagar Waterfall Trip" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Crocodile Trip in Goa" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Scuba Combo Tour at Grand Island" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Scuba & Water Sports at Malvan" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Goa Honeymoon Package" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Goa Tour Packages" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Business Tour Package" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Family Tour Package" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Adventure Tour Package" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Goa to Hampi Tour" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Goa to Murudeshwar Tour" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Wildernest Nature Trip" } },
+        { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Houseboat Stay in Goa" } }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Fonts & Styles -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Michroma&family=Play:wght@400;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- Visible SEO Section for Crawlers -->
+  <div style="display:none;">
+    Goa Tour Wala offers: Adventure Cruise, Adventure Cruise with Water Sports, Dinner Cruise, Sunset Cruise, Yacht on Rent, Cruise on Rent, North Goa Sightseeing, South Goa Sightseeing, Dolphin Sightseeing, Scuba Diving, Flyboarding, Bungee Jumping, Dudhsagar Waterfall Trip, Crocodile Trip in Goa, Scuba Combo Tour at Grand Island, Scuba & Water Sports at Malvan, Goa Honeymoon Package, Goa Tour Packages, Business Tour Package, Family Tour Package, Adventure Tour Package, Goa to Hampi Tour, Goa to Murudeshwar Tour, Wildernest Nature Trip, Houseboat Stay in Goa.
+  </div>
+
+  <div id="root"></div>
+</body>
 </html>

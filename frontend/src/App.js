@@ -10,6 +10,7 @@ import RefundPolicy from './components/RefundPolicy'
 import AboutUs from './components/AboutUs';
 import ScrollToTop from './utils/ScrollToTop';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
 

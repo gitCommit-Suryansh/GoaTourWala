@@ -27,9 +27,18 @@ import Footer from "./Footer";
 import logo from "../assets/logo.png";
 import jsPDF from "jspdf";
 import { Link } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import seoData from "../seoData";
 
 const SubcategoryPage = () => {
   const { subSlug, categorySlug } = useParams();
+  // normalize slug (lowercase, replace spaces if your slug rules differ adjust accordingly)
+  const key = subSlug ? subSlug.toLowerCase() : "";
+  const seo = seoData[key] || seoData.default;
+
+  // canonical url (build carefully in production)
+  const canonical =seo.url || `${window.location.origin}/${categorySlug}/${subSlug}`;
+
   const [searchParams] = useSearchParams();
   const merchantOrderId = searchParams.get("merchantOrderId");
   const [showPaymentModal, setShowPaymentModal] = useState(false);
@@ -55,6 +64,66 @@ const SubcategoryPage = () => {
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
+
+  useEffect(() => {
+    // Function to set or update meta tags
+    const setMetaTag = (attrName, attrValue, content) => {
+      let tag = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attrName, attrValue);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute("content", content);
+    };
+  
+    // Description & Keywords
+    setMetaTag("name", "description", seo.description);
+    setMetaTag("name", "keywords", seo.keywords);
+  
+    // Open Graph tags
+    setMetaTag("property", "og:title", seo.title);
+    setMetaTag("property", "og:description", seo.description);
+    setMetaTag("property", "og:image", seo.image);
+    setMetaTag("property", "og:url", canonical);
+  
+    // Twitter Card
+    setMetaTag("name", "twitter:card", "summary_large_image");
+  
+    // Canonical link
+    let canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link');
+      canonicalTag.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.setAttribute('href', canonical);
+  
+    // JSON-LD Structured Data
+    const ldJsonScriptId = "structured-data";
+    let ldJsonScript = document.getElementById(ldJsonScriptId);
+    if (!ldJsonScript) {
+      ldJsonScript = document.createElement("script");
+      ldJsonScript.type = "application/ld+json";
+      ldJsonScript.id = ldJsonScriptId;
+      document.head.appendChild(ldJsonScript);
+    }
+    ldJsonScript.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      name: seo.title,
+      description: seo.description,
+      image: seo.image,
+      url: canonical,
+      provider: {
+        "@type": "TravelAgency",
+        name: "Goa Tour Wala",
+        url: seoData.default.url,
+      },
+    });
+  
+  }, [seo, canonical]);
+  
 
   useEffect(() => {
     axios
@@ -98,8 +167,6 @@ const SubcategoryPage = () => {
 
     fetchOtherActivities();
   }, [packageType]);
-
-  console.log(otherActivities);
 
   useEffect(() => {
     if (data && activeImageIndex >= data.galleryImages.length) {
@@ -179,7 +246,7 @@ const SubcategoryPage = () => {
   }
 
   const totalPrice = (adults + children) * data.price;
-  console.log(name);
+
   const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(
     /^0+/,
     ""
@@ -416,10 +483,42 @@ const SubcategoryPage = () => {
     }
   };
 
+  
+  
+
   return (
     <>
+      <Helmet prioritizeSeoTags>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} data-rh="true" />
+        <meta name="keywords" content={seo.keywords} data-rh="true" />
+        <meta property="og:title" content={seo.title} data-rh="true" />
+        <meta property="og:description" content={seo.description} data-rh="true"/>
+        <meta property="og:image" content={seo.image} data-rh="true" />
+        <meta property="og:url" content={canonical} data-rh="true" />
+        <meta name="twitter:card" content="summary_large_image" data-rh="true"/>
+        <link rel="canonical" href={canonical} data-rh="true" />
+
+        {/* JSON-LD structured data for the page */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TouristTrip",
+            name: seo.title,
+            description: seo.description,
+            image: seo.image,
+            url: canonical,
+            provider: {
+              "@type": "TravelAgency",
+              name: "Goa Tour Wala",
+              url: seoData.default.url,
+            },
+          })}
+        </script>
+      </Helmet>
+
       <Header />
-      <div className="min-h-screen bg-gray-50 font-sans antialiased">
+      <main className="min-h-screen bg-gray-50 font-sans antialiased">
         <div
           className="relative h-[60vh] md:h-[75vh] overflow-hidden group"
           style={{
@@ -628,7 +727,8 @@ const SubcategoryPage = () => {
               <section className="py-8 md:py-12 bg-slate-50">
                 <div className="container mx-auto px-4">
                   <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
-                    <span style={{color:"#FFBA0A"}}> Discover</span> Other Activities
+                    <span style={{ color: "#FFBA0A" }}> Discover</span> Other
+                    Activities
                   </h2>
                   <p className="text-center text-lg text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto">
                     Expand your horizons with our curated selection of unique
@@ -651,7 +751,8 @@ const SubcategoryPage = () => {
                             <img
                               src={activity.galleryImages[0]}
                               alt={activity.name}
-                              use className="w-full h-44 md:h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                              use
+                              className="w-full h-44 md:h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                             />
                             {/* NEW: Optional gradient overlay for better text readability */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -856,8 +957,6 @@ const SubcategoryPage = () => {
               </div>
             </div>
           </aside>
-
-          
         </div>
 
         {/* Floating contact actions */}
@@ -1124,7 +1223,7 @@ const SubcategoryPage = () => {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Footer />
     </>
   );
