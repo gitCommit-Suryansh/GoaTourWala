@@ -61,14 +61,6 @@ async function sendBookingNotification(bookingData) {
                                   <td style="padding: 8px 0; color: #111827; font-weight: 500;">${bookingData.name}</td>
                               </tr>
                               <tr>
-                                  <td style="padding: 8px 0; font-weight: 600; color: #6b7280;">Email:</td>
-                                  <td style="padding: 8px 0; color: #2563eb; font-weight: 500;">
-                                      <a href="mailto:${bookingData.email}" style="color: #2563eb; text-decoration: none;">
-                                          ${bookingData.email}
-                                      </a>
-                                  </td>
-                              </tr>
-                              <tr>
                                   <td style="padding: 8px 0; font-weight: 600; color: #6b7280;">Phone:</td>
                                   <td style="padding: 8px 0; color: #111827; font-weight: 500;">
                                       <a href="tel:${bookingData.phone}" style="color: #059669; text-decoration: none;">
@@ -113,7 +105,7 @@ async function sendBookingNotification(bookingData) {
       
                       <!-- Action Button -->
                       <div style="text-align: center; margin: 30px 0;">
-                          <a href="#" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: all 0.3s ease;">
+                          <a href="https://admin.goatourwala.com" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: all 0.3s ease;">
                               🏗️ View in Admin Panel
                           </a>
                       </div>
