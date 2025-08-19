@@ -1,4 +1,5 @@
 const Payment = require("../models/Payment");
+const subcategory=require('../models/subcategory')
 
 exports.getAdminStats = async (req, res) => {
   try {
@@ -47,3 +48,14 @@ exports.getRecentPayments = async (req, res) => {
       res.status(500).json({ message: "Failed to fetch recent payments" });
     }
   };
+
+exports.deleteSubcategory=async(req,res)=>{
+  const {id} =req.body;
+  try {
+    await subcategory.findByIdAndDelete(id);
+    res.json({ message: "Subcategory deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting subcategory:", error);
+    res.status(500).json({ message: "Failed to delete subcategory" });
+  }
+}

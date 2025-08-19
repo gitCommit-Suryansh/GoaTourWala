@@ -20,6 +20,7 @@ const ExistingSubcategories = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [newBannerImage, setNewBannerImage] = useState(null);
   const [newGalleryImages, setNewGalleryImages] = useState([]);
   const REACT_APP_BACKEND_URL=process.env.REACT_APP_BACKEND_URL
@@ -75,62 +76,6 @@ const ExistingSubcategories = () => {
     updated.splice(index, 1);
     setSelected({ ...selected, galleryImages: updated });
   };
-
-  // const handleUpdate = async () => {
-  //   setIsUpdating(true);
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("name", selected.name);
-  //     formData.append("description", selected.description || "");
-  //     formData.append("price", selected.price || 0);
-  //     formData.append("duration", selected.duration || "");
-  //     formData.append(
-  //       "features",
-  //       JSON.stringify(
-  //         selected.features
-  //           ? selected.features
-  //               .split(",")
-  //               .map((f) => f.trim())
-  //               .filter(Boolean)
-  //           : []
-  //       )
-  //     );
-  //     formData.append("details", JSON.stringify(selected.details));
-  //     formData.append("galleryImages", JSON.stringify(selected.galleryImages));
-
-  //     if (newBannerImage) {
-  //       formData.append("bannerImage", newBannerImage);
-  //     }
-  //     newGalleryImages.forEach((img) => {
-  //       formData.append("newGalleryImages", img);
-  //     });
-
-  //     const res = await axios.put(
-  //       `${REACT_APP_BACKEND_URL}/api/subcategories/update/${selected._id}`,
-  //       formData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //       }
-  //     );
-
-  //     setMessage(res.data.message || "Subcategory updated successfully!");
-  //     setShowModal(false);
-  //     fetchSubcategories();
-  //     setTimeout(() => setMessage(""), 3000);
-  //   } catch (err) {
-  //     console.error("Update failed:", err);
-  //     setMessage(
-  //       err.response?.data?.error || "Update failed. Please try again."
-  //     );
-  //     setTimeout(() => setMessage(""), 3000);
-  //   } finally {
-  //     setIsUpdating(false);
-  //   }
-  // };
-
- // ======= ✅ FRONTEND FINAL VERSION (React) =======
 
 const handleUpdate = async () => {
   setIsUpdating(true);
@@ -189,6 +134,31 @@ const handleUpdate = async () => {
 };
 
   
+  const handleDelete = async () => {
+    if (!selected?._id) return;
+    const confirmDelete = window.confirm("Are you sure you want to delete this subcategory?");
+    if (!confirmDelete) return;
+
+    setIsDeleting(true);
+    try {
+      const res = await axios.post(
+        `${REACT_APP_BACKEND_URL}/api/admin/deletesubcategory`,
+        { id: selected._id }
+      );
+
+      setMessage(res.data?.message || "Subcategory deleted successfully");
+      setShowModal(false);
+      fetchSubcategories();
+      setTimeout(() => setMessage(""), 3000);
+    } catch (err) {
+      console.error("Delete failed:", err);
+      setMessage(err.response?.data?.message || "Failed to delete subcategory");
+      setTimeout(() => setMessage(""), 3000);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
 
   if (loading && subcategories.length === 0) {
     return (
@@ -476,11 +446,18 @@ const handleUpdate = async () => {
               </div>
 
               {/* Modal Footer */}
-              <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 flex justify-end">
+              <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 flex items-center justify-between">
                 <button
-                  className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+                  className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 disabled:opacity-60"
+                  onClick={handleDelete}
+                  disabled={isDeleting || isUpdating}
+                >
+                  {isDeleting ? "Deleting..." : "Delete"}
+                </button>
+                <button
+                  className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:opacity-60"
                   onClick={handleUpdate}
-                  disabled={isUpdating}
+                  disabled={isUpdating || isDeleting}
                 >
                   {isUpdating ? "Updating..." : "Update Subcategory"}
                 </button>
