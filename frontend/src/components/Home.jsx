@@ -208,7 +208,6 @@ const Home = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
 
         {/* Navbar */}
-        <Header />
 
         {/* Main Hero Content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center px-4 text-center">

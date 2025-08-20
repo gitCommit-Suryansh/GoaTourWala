@@ -9,6 +9,8 @@ import PrivacyPolicy from './components/PrivacyPolicy'
 import RefundPolicy from './components/RefundPolicy'
 import AboutUs from './components/AboutUs';
 import ScrollToTop from './utils/ScrollToTop';
+import ThankYouPage from './components/ThankYouPage';
+import Header from './components/Header';
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Header/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/planYourTrip' element={<PlanTripForm/>}/>
@@ -44,6 +47,7 @@ function App() {
         <Route path='/termsAndConditions' element={<TermsandCondition />} />
         <Route path='/privacyPolicy' element={<PrivacyPolicy />} />
         <Route path='AboutUs' element={<AboutUs/>}/>
+        <Route path='/Thankyou' element={<ThankYouPage/>}/>
 
         <Route path="/:categorySlug/:subSlug" element={<SubcategoryPage />} />
         <Route path='/explore/:slug' element={<ExploreCategory/>}/>

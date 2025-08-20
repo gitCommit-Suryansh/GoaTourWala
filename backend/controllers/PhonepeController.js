@@ -32,7 +32,8 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.REACT_APP_FRONTEND_URL}/${categorySlug}/${subSlug}?merchantOrderId=${merchantOrderId}`,
+            // redirectUrl: `${process.env.REACT_APP_FRONTEND_URL}/${categorySlug}/${subSlug}?merchantOrderId=${merchantOrderId}`,
+            redirectUrl: `${process.env.REACT_APP_FRONTEND_URL}/Thankyou?merchantOrderId=${merchantOrderId}&packageType=${subSlug}`,
           },
         },
       },
@@ -109,6 +110,7 @@ exports.pay = async (req, res) => {
 
 exports.checkPaymentStatus = async (req, res) => {
   const { merchantOrderId } = req.body;
+  console.log(merchantOrderId)
 
   const tokenResult = await generateAccessToken();
   if (!tokenResult.success) {

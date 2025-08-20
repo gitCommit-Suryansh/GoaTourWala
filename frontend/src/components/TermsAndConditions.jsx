@@ -6,7 +6,7 @@ import Footer from './Footer';
 const TermsAndConditions = () => {
   return (
     <div className="mx-auto pt-5">
-      <Header/>
+      
       <div className="text-center mb-8 border-b p-3 mt-14">
         <div className="flex items-center justify-center mb-4">
           <FileText className="w-8 h-8 text-blue-600 mr-3" />

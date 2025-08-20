@@ -58,7 +58,7 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-white">
-        <Header/>
+        
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-700 to-teal-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>

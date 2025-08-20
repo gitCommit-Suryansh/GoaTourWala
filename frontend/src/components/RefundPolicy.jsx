@@ -6,7 +6,7 @@ import Footer from './Footer';
 const RefundPolicy = () => {
   return (
     <div className="mx-auto pt-5">
-      <Header/>
+      
       <div className="text-center mb-8 border-b pb-6 mt-14">
         <div className="flex items-center justify-center mb-4">
           <RefreshCw className="w-8 h-8 text-blue-600 mr-3" />

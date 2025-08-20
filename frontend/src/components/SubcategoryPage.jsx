@@ -24,8 +24,6 @@ import {
 } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
-import logo from "../assets/logo.png";
-import jsPDF from "jspdf";
 import { Link } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import seoData from "../seoData";
@@ -38,16 +36,10 @@ const SubcategoryPage = () => {
   // canonical url (build carefully in production)
   const canonical =
     seo.url || `${window.location.origin}/${categorySlug}/${subSlug}`;
-
-  const [searchParams] = useSearchParams();
-  const merchantOrderId = searchParams.get("merchantOrderId");
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [data, setData] = useState(null);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [mobileNumber, setMobileNumber] = useState("");
-  const [paymentStatus, setPaymentStatus] = useState(null);
-  const [checkingStatus, setCheckingStatus] = useState(false);
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -55,7 +47,6 @@ const SubcategoryPage = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const [hasSavedPayment, setHasSavedPayment] = useState(false);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [otherActivities, setOtherActivities] = useState([]);
@@ -186,47 +177,6 @@ const SubcategoryPage = () => {
     return () => clearInterval(intervalId);
   }, [data?.galleryImages?.length, isCarouselHovered, isModalOpen]);
 
-  useEffect(() => {
-    const fetchPaymentStatus = async () => {
-      if (!merchantOrderId) return;
-      setShowPaymentModal(true);
-      setCheckingStatus(true);
-      try {
-        const res = await axios.post(
-          `${REACT_APP_BACKEND_URL}/api/phonepe/check-payment-status`,
-          { merchantOrderId }
-        );
-        if (res.data.status) {
-          setPaymentStatus(res.data.status);
-        }
-      } catch (err) {
-        console.error("Error fetching payment status:", err);
-      } finally {
-        setCheckingStatus(false);
-      }
-    };
-
-    fetchPaymentStatus();
-  }, [merchantOrderId]);
-
-  useEffect(() => {
-    const savePaymentToDB = async () => {
-      if (!paymentStatus || !data || hasSavedPayment) return;
-
-      try {
-        await axios.post(`${REACT_APP_BACKEND_URL}/api/payment/create`, {
-          ...paymentStatus,
-          tripPackage: subSlug,
-        });
-        setHasSavedPayment(true);
-      } catch (err) {
-        console.error("Error saving payment:", err);
-      }
-    };
-
-    savePaymentToDB();
-  }, [paymentStatus, data, hasSavedPayment]);
-
   if (!data) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -243,7 +193,11 @@ const SubcategoryPage = () => {
     );
   }
 
-  const totalPrice = (adults + children) * data.price;
+  const CHILD_RATE = 0.3; // 30% of adult price for children
+  const adultUnitPrice = Number(data.price) || 0;
+  const childUnitPrice = adultUnitPrice * CHILD_RATE;
+  const totalPrice = adults * adultUnitPrice + children * childUnitPrice;
+  const totalPricePaise = Math.round(totalPrice * 100);
 
   const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,""
   );
@@ -266,7 +220,7 @@ const SubcategoryPage = () => {
       children,
       date: selectedDate,
       mobileNumber,
-      amount: totalPrice * 100,
+      amount: totalPricePaise,
       categorySlug,
       subSlug,
     };
@@ -347,122 +301,6 @@ const SubcategoryPage = () => {
     return text.length > limit ? `${text.slice(0, limit)}...` : text;
   };
 
-    const generatePdfReceipt = async () => {
-    if (!paymentStatus) return;
-  
-    const doc = new jsPDF();
-  
-    // Logo
-    const img = new Image();
-    img.src = logo;
-    await new Promise((resolve) => (img.onload = resolve));
-  
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const logoWidth = 40;
-    const logoHeight = (img.height / img.width) * logoWidth;
-    const logoX = (pageWidth - logoWidth) / 2;
-  
-    doc.addImage(img, "PNG", logoX, 10, logoWidth, logoHeight);
-  
-    let y = 10 + logoHeight + 10;
-  
-    // Title
-    doc.setFontSize(18);
-    doc.setFont("helvetica", "bold");
-    doc.text("GoaTourWala Booking Receipt", pageWidth / 2, y, { align: "center" });
-  
-    y += 12;
-    doc.setDrawColor(0);
-    doc.setLineWidth(0.6);
-    doc.line(20, y, pageWidth - 20, y);
-    y += 10;
-  
-    // Section heading style
-    const addSectionHeading = (title) => {
-      doc.setFontSize(14);
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(0, 102, 204); // blue highlight
-      doc.text(title, 20, y);
-      y += 6;
-      doc.setLineWidth(0.3);
-      doc.line(20, y, pageWidth - 20, y);
-      y += 8;
-      doc.setTextColor(0, 0, 0);
-    };
-  
-    // Key-value line style
-    const addLine = (label, value, highlight = false) => {
-      doc.setFont("helvetica", "bold");
-      doc.text(`${label}:`, 30, y);
-      doc.setFont("helvetica", "normal");
-      if (highlight) {
-        doc.setFont("helvetica", "bold");
-        doc.setTextColor(200, 0, 0); // red highlight
-        doc.setFontSize(13);
-      }
-      doc.text(value, 75, y);
-      if (highlight) {
-        doc.setFontSize(12);
-        doc.setTextColor(0, 0, 0);
-      }
-      y += 8;
-    };
-  
-    // Extract values
-    const name = paymentStatus.metaInfo?.udf1?.split(":")[1] || "N/A";
-    const mobile = paymentStatus.metaInfo?.udf2?.split(":")[1] || "N/A";
-    const tripName = data.name;
-    const tripDate = paymentStatus.metaInfo?.udf4?.split(":")[1] || "N/A";
-    const adults = paymentStatus.metaInfo?.udf5?.split("|")[0].split(":")[1] || "0";
-    const children = paymentStatus.metaInfo?.udf5?.split("|")[1].split(":")[1] || "0";
-    const amount = (paymentStatus.amount / 100).toFixed(2);
-    const orderId = paymentStatus.orderId;
-    const txnId = paymentStatus.paymentDetails?.[0]?.transactionId || "N/A";
-    const status = paymentStatus.state;
-  
-    // Booking Details
-    addSectionHeading("Booking Details");
-    addLine("Customer Name", name);
-    addLine("Mobile Number", mobile);
-    addLine("Package Name", tripName);
-    addLine("Trip Date", tripDate);
-    addLine("Adults", adults);
-    addLine("Children", children);
-  
-    // Payment Details
-    y += 5;
-    addSectionHeading("Payment Details");
-    addLine("Order ID", orderId);
-    addLine("Transaction ID", txnId);
-    addLine("Payment Status", status);
-    addLine("Amount Paid", `INR ${amount}`, true);
-    addLine("Receipt Generated", new Date().toLocaleString());
-  
-    // Footer
-    y += 10;
-    doc.setLineWidth(0.3);
-    doc.line(20, y, pageWidth - 20, y);
-    y += 8;
-  
-    doc.setFontSize(10);
-    doc.setTextColor(50);
-    doc.text("Save this receipt for your reference.", pageWidth / 2, y, { align: "center" });
-    y += 6;
-    doc.text("Our team will contact you shortly to confirm your trip.", pageWidth / 2, y, { align: "center" });
-    y += 12;
-  
-    doc.setFontSize(11);
-    doc.setTextColor(0, 102, 0);
-    doc.text("Thank you for booking with GoaTourWala!", pageWidth / 2, y, { align: "center" });
-  
-    y += 10;
-    doc.setFontSize(9);
-    doc.setTextColor(120);
-    doc.text("www.goatourwala.com | info@goatourwala.com  | +91-8999732703",pageWidth / 2, y, { align: "center" });
-      
-    doc.save(`GoaTourWala_Receipt_${orderId}.pdf`);
-  };
-  
   const getStatusIcon = (state) => {
     switch (state) {
       case "COMPLETED":
@@ -523,8 +361,7 @@ const SubcategoryPage = () => {
           })}
         </script>
       </Helmet>
-
-      <Header />
+      
       <main className="min-h-screen bg-gray-50 font-sans antialiased">
         <div
           className="relative h-[60vh] md:h-[75vh] overflow-hidden group"
@@ -875,9 +712,9 @@ const SubcategoryPage = () => {
                   <div className="flex items-center justify-between p-3 md:p-4 border-2 border-gray-200 rounded-lg bg-gray-50">
                     <div>
                       <div className="font-bold text-gray-800 text-sm md:text-base">
-                        Children
+                        Children <span className="text-red-500">(-70% off)</span>
                       </div>
-                      <div className="text-xs text-gray-600">Age 4-8</div>
+                      <div className="text-xs text-gray-600">Age 5-10</div>
                     </div>
                     <div className="flex items-center gap-2 md:gap-3">
                       <button
@@ -951,20 +788,6 @@ const SubcategoryPage = () => {
                   <Check className="w-4 h-4 md:w-5 md:h-5" />
                   Reserve Your Adventure Now
                 </button>
-                <div className="space-y-2 pt-4 md:pt-5 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-xs text-gray-700">
-                    <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-500 flex-shrink-0" />
-                    <span>Free cancellation up to 24 hours before</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-700">
-                    <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-500 flex-shrink-0" />
-                    <span>Instant confirmation on booking</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-700">
-                    <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-500 flex-shrink-0" />
-                    <span>Best price guarantee for your peace of mind</span>
-                  </div>
-                </div>
               </div>
             </div>
           </aside>
@@ -1023,211 +846,6 @@ const SubcategoryPage = () => {
                 >
                   <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {showPaymentModal && (
-          <div
-            className="fixed mt-2 inset-0 h-screen bg-gradient-to-br to-indigo-100 flex items-center justify-center p-4"
-            style={{ scale: 0.8 }}
-          >
-            {/* Modal Overlay */}
-            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300">
-              {/* Modal Content */}
-              <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 relative overflow-hidden animate-in zoom-in-95 duration-300">
-                {/* Header with close button */}
-                <div className="absolute top-4 right-4 z-10">
-                  <button
-                    className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 hover:scale-110"
-                    onClick={() => setShowPaymentModal(false)}
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Loading State */}
-                {checkingStatus && (
-                  <div className="p-12 flex flex-col items-center gap-6">
-                    <div className="relative">
-                      <div className="w-16 h-16 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin"></div>
-                      <div className="absolute inset-0 rounded-full bg-blue-50 animate-pulse"></div>
-                    </div>
-                    <div className="text-center">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                        Checking Payment Status
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Please wait while we verify your payment...
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Payment Status */}
-                {!checkingStatus && paymentStatus && (
-                  <div className="p-8">
-                    {/* Status Icon and Message */}
-                    <div className="text-center mb-6">
-                      <div className="flex justify-center mb-4">
-                        <div
-                          className={`p-4 rounded-full ${
-                            paymentStatus.state === "COMPLETED"
-                              ? "bg-green-100"
-                              : paymentStatus.state === "FAILED"
-                              ? "bg-red-100"
-                              : "bg-yellow-100"
-                          } animate-in zoom-in duration-500`}
-                        >
-                          {getStatusIcon(paymentStatus.state)}
-                        </div>
-                      </div>
-                      <h2
-                        className={`text-2xl font-bold mb-2 ${
-                          paymentStatus.state === "COMPLETED"
-                            ? "text-green-600"
-                            : paymentStatus.state === "FAILED"
-                            ? "text-red-600"
-                            : "text-yellow-600"
-                        }`}
-                      >
-                        {getStatusMessage(paymentStatus.state)}
-                      </h2>
-                    </div>
-
-                    {/* Payment Details */}
-                    <div className="space-y-4 mb-6">
-                      {/* Order ID */}
-                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium text-gray-600">
-                            Order ID
-                          </span>
-                          <span className="font-mono text-blue-600 font-semibold">
-                            {paymentStatus.orderId}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Amount */}
-                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium text-gray-600">
-                            Amount Paid
-                          </span>
-                          <span className="text-2xl font-bold text-green-700">
-                            ₹{(paymentStatus.amount / 100).toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Customer Details */}
-                      {paymentStatus.metaInfo && (
-                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                          <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            Booking Details
-                          </h3>
-                          <div className="grid grid-cols-2 gap-3 text-sm">
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">Name:</span>
-                              <span className="font-medium text-gray-800">
-                                {paymentStatus.metaInfo.udf1?.split(":")[1] ||
-                                  "N/A"}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">Date:</span>
-                              <span className="font-medium text-gray-800">
-                                {paymentStatus.metaInfo.udf4?.split(":")[1] ||
-                                  "N/A"}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">Adults:</span>
-                              <span className="font-medium text-gray-800">
-                                {paymentStatus.metaInfo.udf5?.split('|')[0].split(":")[1] ||"N/A"}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">Children:</span>
-                              <span className="font-medium text-gray-800">
-                                {paymentStatus.metaInfo.udf5?.split('|')[1].split(":")[1] ||"N/A"}
-                              </span>
-                            </div>
-                            <div className="col-span-2 flex items-center gap-2">
-                              <span className="text-gray-600">Mobile:</span>
-                              <span className="font-medium text-gray-800">
-                                {paymentStatus.metaInfo.udf2?.split(":")[1] ||
-                                  "N/A"}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Transaction ID */}
-                      {paymentStatus.paymentDetails?.[0]?.transactionId && (
-                        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                          <div className="text-center">
-                            <span className="text-xs text-gray-500">
-                              Transaction ID
-                            </span>
-                            <p className="font-mono text-sm text-gray-700 mt-1">
-                              {paymentStatus.paymentDetails[0].transactionId}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Action Buttons and Messages */}
-                    <div className="border-t border-gray-200 pt-6">
-                      <div className="grid grid-cols-2 gap-3 mb-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Save className="w-4 h-4 text-blue-500" />
-                          <span>Save details for reference</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Phone className="w-4 h-4 text-green-500" />
-                          <span>We'll contact you shortly</span>
-                        </div>
-                      </div>
-
-                      <button
-                        onClick={generatePdfReceipt}
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                      >
-                        <Download className="w-5 h-5" />
-                        Download PDF Receipt
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Error State */}
-                {!checkingStatus && !paymentStatus && (
-                  <div className="p-8 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-4 bg-red-100 rounded-full">
-                        <AlertCircle className="w-12 h-12 text-red-500" />
-                      </div>
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                      Unable to fetch payment status
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Please try again or contact support if the issue persists.
-                    </p>
-                    <button
-                      onClick={() => setCheckingStatus(true)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200"
-                    >
-                      Retry
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           </div>
