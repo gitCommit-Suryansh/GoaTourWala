@@ -87,7 +87,7 @@ const ThankYouPage = () => {
           }
           return prev - 1;
         });
-      }, 1000);
+      }, 2000);
 
       return () => clearInterval(interval);
     }

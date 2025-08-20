@@ -301,28 +301,6 @@ const SubcategoryPage = () => {
     return text.length > limit ? `${text.slice(0, limit)}...` : text;
   };
 
-  const getStatusIcon = (state) => {
-    switch (state) {
-      case "COMPLETED":
-        return <Check className="w-16 h-16 text-green-500" />;
-      case "FAILED":
-        return <AlertCircle className="w-16 h-16 text-red-500" />;
-      default:
-        return <Clock className="w-16 h-16 text-yellow-500" />;
-    }
-  };
-
-  const getStatusMessage = (state) => {
-    switch (state) {
-      case "COMPLETED":
-        return "Payment Successful!";
-      case "FAILED":
-        return "Payment Failed";
-      default:
-        return "Payment Processing";
-    }
-  };
-
   return (
     <>
       <Helmet prioritizeSeoTags>
@@ -361,7 +339,7 @@ const SubcategoryPage = () => {
           })}
         </script>
       </Helmet>
-      
+
       <main className="min-h-screen bg-gray-50 font-sans antialiased">
         <div
           className="relative h-[60vh] md:h-[75vh] overflow-hidden group"
@@ -674,6 +652,7 @@ const SubcategoryPage = () => {
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
                     min={new Date().toISOString().split("T")[0]}
+                    lang="en-GB"
                     className="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-300 rounded-lg bg-gray-50 text-sm md:text-base text-gray-800 focus:border-blue-600 focus:ring-blue-600 focus:outline-none transition-all duration-200 shadow-sm"
                   />
                 </div>
