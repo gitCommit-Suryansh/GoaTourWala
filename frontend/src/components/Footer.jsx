@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, MessageCircle } from "lucide-react"; // Added social media icons
 import footerphoto from "../assets/footerphto2.jpg";
 
 const Footer = () => {
@@ -20,8 +20,12 @@ const Footer = () => {
     };
 
     fetchCategories();
-    setIsMobile(window.innerWidth < 640);
-  }, []);
+    // Add a listener for window resize to update isMobile state
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+    return () => window.removeEventListener('resize', handleResize);
+  }, [REACT_APP_BACKEND_URL]); // Added REACT_APP_BACKEND_URL to dependency array
 
   return (
     <footer
@@ -48,9 +52,6 @@ const Footer = () => {
                 <a href="tel:+917709475075" className="hover:underline text-white">
                   +91 7709475075
                 </a>
-                <a href="tel:+918999732703" className="hover:underline text-white">
-                  +91 8999732703
-                </a>
               </div>
             </div>
             {/* Emails */}
@@ -65,12 +66,57 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+            {/* Address */}
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-white" />
               <span className="text-white text-xs md:text-sm">
                 Shop N.7, Marwana Paradyes,Near Green Meddo School Arrais Waddo
                 Nagoa Goa,403516 India
               </span>
+            </div>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="mt-6">
+            <h3 className="text-base md:text-lg font-bold text-white mb-2">Follow Us</h3>
+            <div className="flex gap-4">
+              <a
+                href="https://www.facebook.com/share/1A3YRyu4L5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="text-white hover:text-blue-400 transition-colors"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.instagram.com/goatourwala?igsh=MWtjZGlhazVkY3lhcQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-white hover:text-pink-400 transition-colors"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.threads.com/@goatourwala"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Threads"
+                className="text-white hover:text-gray-400 transition-colors"
+              >
+                {/* Using MessageCircle as a generic icon for Threads, as Threads icon might not be universally available in lucide-react */}
+                <MessageCircle className="w-6 h-6" /> 
+              </a>
+              <a
+                href="https://youtube.com/@goatourwala?si=Ic0E0xdC33mSKLJ8"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="text-white hover:text-red-500 transition-colors"
+              >
+                <Youtube className="w-6 h-6" />
+              </a>
             </div>
           </div>
         </div>
@@ -84,7 +130,7 @@ const Footer = () => {
                 <Link
                   state={{ categoryId: cat._id }}
                   to={`/explore/${cat.slug}`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   {cat.name}
                 </Link>
@@ -100,7 +146,7 @@ const Footer = () => {
               <li>
                 <Link
                   to={`/`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   Home
                 </Link>
@@ -108,7 +154,7 @@ const Footer = () => {
               <li>
                 <Link
                   to={`/AboutUs`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   About us
                 </Link>
@@ -116,7 +162,7 @@ const Footer = () => {
               <li>
                 <Link
                   to={`/TermsAndConditions`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   Terms And Conditions
                 </Link>
@@ -124,7 +170,7 @@ const Footer = () => {
               <li>
                 <Link
                   to={`/PrivacyPolicy`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   Privacy Policy
                 </Link>
@@ -132,7 +178,7 @@ const Footer = () => {
               <li>
                 <Link
                   to={`/RefundPolicy`}
-                  className="text-white hover:text-white transition"
+                  className="text-white hover:text-gray-300 transition"
                 >
                   Refund Policy
                 </Link>
@@ -150,7 +196,7 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Your email"
-              className="flex-1 px-3 py-1.5 md:px-4 md:py-2 border border-gray-300 rounded-md text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-3 py-1.5 md:px-4 md:py-2 border border-gray-300 rounded-md text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-white text-gray-800"
             />
             <button
               type="submit"
@@ -160,7 +206,7 @@ const Footer = () => {
             </button>
           </form>
         </div>
-        <div className="col-span-2 md:col-span-4 text-center text-xs md:text-sm border-t border-gray-200">
+        <div className="col-span-2 md:col-span-4 text-center text-xs md:text-sm border-t border-gray-200 pt-6 mt-6">
           &copy; {new Date().getFullYear()} GoaTourWala. All rights reserved.
         </div>
       </div>

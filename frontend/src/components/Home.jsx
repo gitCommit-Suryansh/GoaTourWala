@@ -17,6 +17,7 @@ import {
   Compass,
   Sparkles,
   ChevronRight,
+  MessageCircle
 } from "lucide-react";
 import { ReactTyped } from "react-typed";
 import planeImg from "../assets/plane.png";
@@ -41,7 +42,7 @@ const Home = () => {
   const [tripPage, setTripPage] = useState(0);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
+  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+917709475075";
   const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,"");
   const whatsappMessage = encodeURIComponent(
     `Hi, I visited GoaTourWala and would like to talk to an expert about my trip.`
@@ -310,6 +311,163 @@ const Home = () => {
       
       </section>
 
+      
+
+      {/* TRIP PACKAGES SECTION */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div
+            className="text-center mb-10"
+            style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+              Goa trip packages
+            </h2>
+          </div>
+          {loadingCategories ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[...Array(pageSize)].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div className="h-64 bg-gray-300"></div>
+                    <div className="p-6">
+                      <div className="h-6 bg-gray-300 rounded mb-4"></div>
+                      <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : tripPackages.length === 0 ? (
+            <p className="text-center text-gray-600">
+              No trip packages available right now.
+            </p>
+          ) : (
+            <div className="relative" style={{ overflowAnchor: "none" }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+                {tripDisplayed
+                  .slice() // Create a shallow copy to avoid mutating the original array
+                  .sort((a, b) => {
+                    return a.price - b.price;
+                  })
+                  .map((pkg) => (
+                    <div
+                      key={pkg._id}
+                      className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                      style={{ scale: 0.9 }}
+                    >
+                      <div className="relative  md:h-44 overflow-hidden">
+                        <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                          <img
+                            src={
+                              pkg.image ||
+                              pkg.bannerImage ||
+                              "/api/placeholder/400/300"
+                            }
+                            alt={pkg.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </Link>
+                      </div>
+                      <div className="p-2 md:p-3">
+                        <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
+                          <div className="text-sm text-gray-600 mb-1">
+                            {pkg.duration || "6 days & 5 nights"}
+                          </div>
+                          <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">
+                            {pkg.name}
+                          </h3>
+                          <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+                            <MapPin className="w-4 h-4" />
+                            <span>{pkg.route || "Goa"}</span>
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center gap-1">
+                              <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                              <span className="text-sm font-medium text-gray-700">
+                                {subcategoryStats[pkg._id]?.rating || "4.5"}
+                              </span>
+                            </div>
+                            <span className="text-sm text-gray-500">
+                              ({subcategoryStats[pkg._id]?.reviews || "1200"}{" "}
+                              reviews)
+                            </span>
+                          </div>
+                        </Link>
+                        <div className="mb-2">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-base md:text-lg text-gray-400 line-through">
+                              INR{" "}
+                              {pkg.price +
+                                (subcategoryStats[pkg._id]?.discount || 1000)}
+                            </span>
+                            <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
+                              SAVE INR{" "}
+                              {subcategoryStats[pkg._id]?.discount || 1000}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xl md:text-2xl font-bold text-gray-900">
+                              INR {pkg.price}
+                            </span>
+                            <span className="text-sm text-gray-600">/Adult</span>
+                          </div>
+                        </div>
+                        <div className="flex gap-3">
+                          <a
+                            href={`tel:${SUPPORT_PHONE}`}
+                            className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
+                          >
+                            <Phone className="w-4 h-4" />
+                          </a>
+                          <Link
+                            className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
+                            style={{ backgroundColor: "#F37002" }}
+                            to={`/${pkg.categorySlug}/${pkg.slug}`}
+                          >
+                            Book Now
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+
+              {tripPackages.length > pageSize && (
+                <div className="flex justify-between items-center mt-6">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTripPage(
+                        (p) => (p - 1 + tripTotalPages) % tripTotalPages
+                      );
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    <ArrowLeft className="w-5 h-5" /> Prev
+                  </button>
+                  <div className="text-sm text-gray-600">
+                    Page {tripPage + 1} of {tripTotalPages}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setTripPage((p) => (p + 1) % tripTotalPages);
+                    }}
+                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
+                  >
+                    Next <ArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* TOUR PACKAGES SECTION */}
       <section className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -448,156 +606,6 @@ const Home = () => {
                     onClick={(e) => {
                       e.currentTarget.blur();
                       setTourPage((p) => (p + 1) % tourTotalPages);
-                    }}
-                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
-                  >
-                    Next <ArrowRight className="w-5 h-5" />
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* TRIP PACKAGES SECTION */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div
-            className="text-center mb-10"
-            style={{ fontFamily: '"Play","Edu NSW ACT Cursive", cursive' }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
-              Goa trip packages
-            </h2>
-          </div>
-          {loadingCategories ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[...Array(pageSize)].map((_, index) => (
-                <div key={index} className="animate-pulse">
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div className="h-64 bg-gray-300"></div>
-                    <div className="p-6">
-                      <div className="h-6 bg-gray-300 rounded mb-4"></div>
-                      <div className="h-4 bg-gray-300 rounded mb-2"></div>
-                      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : tripPackages.length === 0 ? (
-            <p className="text-center text-gray-600">
-              No trip packages available right now.
-            </p>
-          ) : (
-            <div className="relative" style={{ overflowAnchor: "none" }}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
-                {tripDisplayed.map((pkg) => (
-                  <div
-                    key={pkg._id}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-                    style={{ scale: 0.9 }}
-                  >
-                    <div className="relative  md:h-44 overflow-hidden">
-                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
-                        <img
-                          src={
-                            pkg.image ||
-                            pkg.bannerImage ||
-                            "/api/placeholder/400/300"
-                          }
-                          alt={pkg.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </Link>
-                    </div>
-                    <div className="p-2 md:p-3">
-                      <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
-                        <div className="text-sm text-gray-600 mb-1">
-                          {pkg.duration || "6 days & 5 nights"}
-                        </div>
-                        <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-2">
-                          {pkg.name}
-                        </h3>
-                        <div className="text-sm text-gray-600 mb-2 flex items-center gap-2">
-                          <MapPin className="w-4 h-4" />
-                          <span>{pkg.route || "Goa"}</span>
-                        </div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                            <span className="text-sm font-medium text-gray-700">
-                              {subcategoryStats[pkg._id]?.rating || "4.5"}
-                            </span>
-                          </div>
-                          <span className="text-sm text-gray-500">
-                            ({subcategoryStats[pkg._id]?.reviews || "1200"}{" "}
-                            reviews)
-                          </span>
-                        </div>
-                      </Link>
-                      <div className="mb-2">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-base md:text-lg text-gray-400 line-through">
-                            INR{" "}
-                            {pkg.price +
-                              (subcategoryStats[pkg._id]?.discount || 1000)}
-                          </span>
-                          <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
-                            SAVE INR{" "}
-                            {subcategoryStats[pkg._id]?.discount || 1000}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl md:text-2xl font-bold text-gray-900">
-                            INR {pkg.price}
-                          </span>
-                          <span className="text-sm text-gray-600">/Adult</span>
-                        </div>
-                      </div>
-                      <div className="flex gap-3">
-                        <a
-                          href={`tel:${SUPPORT_PHONE}`}
-                          className="flex-1 bg-white border border-orange-500 text-orange-500 py-2 px-4 rounded-lg font-medium hover:bg-orange-50 transition-colors flex items-center justify-center gap-2"
-                        >
-                          <Phone className="w-4 h-4" />
-                        </a>
-                        <Link
-                          className="flex-1 text-white py-2 px- text-center rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-200"
-                          style={{ backgroundColor: "#F37002" }}
-                          to={`/${pkg.categorySlug}/${pkg.slug}`}
-                        >
-                          Book Now
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {tripPackages.length > pageSize && (
-                <div className="flex justify-between items-center mt-6">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.currentTarget.blur();
-                      setTripPage(
-                        (p) => (p - 1 + tripTotalPages) % tripTotalPages
-                      );
-                    }}
-                    className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
-                  >
-                    <ArrowLeft className="w-5 h-5" /> Prev
-                  </button>
-                  <div className="text-sm text-gray-600">
-                    Page {tripPage + 1} of {tripTotalPages}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.currentTarget.blur();
-                      setTripPage((p) => (p + 1) % tripTotalPages);
                     }}
                     className="inline-flex items-center gap-2 bg-white border px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50"
                   >
@@ -994,6 +1002,27 @@ const Home = () => {
       </section>
 
       <Footer />
+
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+          <a
+            href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span className="font-semibold">WhatsApp</span>
+          </a>
+          <a
+            href={`tel:${SUPPORT_PHONE}`}
+            className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
+            aria-label="Call now"
+          >
+            <Phone className="w-5 h-5" />
+            <span className="font-semibold">Call</span>
+          </a>
+        </div>
 
       {/* EXISTING STYLES */}
       <style>{`

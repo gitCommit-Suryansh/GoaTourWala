@@ -54,7 +54,7 @@ const SubcategoryPage = () => {
   const [packageType, setpackageType] = useState(null);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+918999732703";
+  const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+917709475075";
 
   useEffect(() => {
     // Function to set or update meta tags
