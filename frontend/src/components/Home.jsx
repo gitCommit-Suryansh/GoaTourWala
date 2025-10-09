@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import adventurevideo from "../assets/adventure.mp4";
 import Header from "./Header";
 import Footer from "./Footer"; // 👈 Add this import
@@ -23,6 +23,24 @@ import { ReactTyped } from "react-typed";
 import planeImg from "../assets/plane.png";
 import { Link } from "react-router-dom";
 
+// Place this helper function right below your imports
+const optimizeCloudinaryUrl = (url, width) => {
+  // First, check if the URL is valid and is a Cloudinary URL
+  if (!url || !url.includes("res.cloudinary.com")) {
+    return url || "/api/placeholder/400/300";
+  }
+  const transformations = `f_webp,q_auto,w_${width}`;
+
+  // Split the URL at the /upload/ part and insert the transformations
+  const parts = url.split("/upload/");
+  if (parts.length === 2) {
+    return `${parts[0]}/upload/${transformations}/${parts[1]}`;
+  }
+
+  // If the split fails for some reason, return the original URL
+  return url;
+};
+
 const slideOptions = ["Wildlife", "Heritage", "Religious", "Nature"];
 
 const Home = () => {
@@ -36,14 +54,14 @@ const Home = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [subcategoryStats, setSubcategoryStats] = useState({});
-  const [categoriesWithSubcategories, setCategoriesWithSubcategories] =useState([]);
+  const [categoriesWithSubcategories, setCategoriesWithSubcategories] = useState([]);
   const [categoryActiveSlide, setCategoryActiveSlide] = useState(0);
   const [tourPage, setTourPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const SUPPORT_PHONE = process.env.REACT_APP_SUPPORT_PHONE || "+917709475075";
-  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,"");
+  const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/, "");
   const whatsappMessage = encodeURIComponent(
     `Hi, I visited GoaTourWala and would like to talk to an expert about my trip.`
   );
@@ -98,7 +116,7 @@ const Home = () => {
     fetchData();
   }, []);
 
-  
+
 
   // Add auto-carousel for categories
   useEffect(() => {
@@ -167,9 +185,8 @@ const Home = () => {
         {/* INTRO OVERLAY */}
         {showIntro && (
           <div
-            className={`fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-1000 ${
-              hideIntro ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
+            className={`fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-1000 ${hideIntro ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
           >
             {/* Animated Plane (Always Rendered While Intro Is On) */}
             <img
@@ -308,10 +325,10 @@ const Home = () => {
           </div>
         </div>
 
-      
+
       </section>
 
-      
+
 
       {/* TRIP PACKAGES SECTION */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -360,12 +377,12 @@ const Home = () => {
                       <div className="relative  md:h-44 overflow-hidden">
                         <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                           <img
-                            src={
-                              pkg.image ||
-                              pkg.bannerImage ||
-                              "/api/placeholder/400/300"
-                            }
+                            src={optimizeCloudinaryUrl(
+                              pkg.image || pkg.bannerImage,
+                              400
+                            )}
                             alt={pkg.name}
+                            loading="lazy" // Keep your lazy loading!
                             className="w-full h-full object-cover"
                           />
                         </Link>
@@ -510,13 +527,13 @@ const Home = () => {
                     <div className="relative md:h-44 overflow-hidden">
                       <Link to={`/${pkg.categorySlug}/${pkg.slug}`}>
                         <img
-                          src={
-                            pkg.image ||
-                            pkg.bannerImage ||
-                            "/api/placeholder/400/300"
-                          }
+                          src={optimizeCloudinaryUrl(
+                            pkg.image || pkg.bannerImage,
+                            400
+                          )}
+                          loading="lazy"
                           alt={pkg.name}
-                          className="w-full h-full object-fit"
+                          className="w-full h-full object-cover" // Changed to object-cover for better fit
                         />
                       </Link>
                     </div>
@@ -684,19 +701,12 @@ const Home = () => {
                             >
                               <div className="relative h-44 md:h-56 overflow-hidden">
                                 <img
-                                  src={
-                                    subcat.bannerImage &&
-                                    subcat.bannerImage.startsWith("http")
-                                      ? subcat.bannerImage
-                                      : "https://via.placeholder.com/400x300?text=No+Image"
-                                  }
+                                  src={optimizeCloudinaryUrl(
+                                    subcat.bannerImage,
+                                    600
+                                  )}
                                   alt={subcat.name}
                                   className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src =
-                                      "https://via.placeholder.com/400x300?text=No+Image";
-                                  }}
                                   loading="lazy"
                                 />
 
@@ -777,11 +787,10 @@ const Home = () => {
                   <button
                     key={index}
                     onClick={() => setCategoryActiveSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === categoryActiveSlide
-                        ? "bg-orange-500"
-                        : "bg-gray-300"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === categoryActiveSlide
+                      ? "bg-orange-500"
+                      : "bg-gray-300"
+                      }`}
                   />
                 ))}
               </div>
@@ -958,15 +967,14 @@ const Home = () => {
                 {["A", "S", "R", "+"].map((char, i) => (
                   <div
                     key={i}
-                    className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-sm font-bold ${
-                      i === 0
-                        ? "bg-gradient-to-br from-blue-400 to-blue-600"
-                        : i === 1
+                    className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-sm font-bold ${i === 0
+                      ? "bg-gradient-to-br from-blue-400 to-blue-600"
+                      : i === 1
                         ? "bg-gradient-to-br from-green-400 to-green-600"
                         : i === 2
-                        ? "bg-gradient-to-br from-purple-400 to-purple-600"
-                        : "bg-gradient-to-br from-orange-400 to-orange-600"
-                    }`}
+                          ? "bg-gradient-to-br from-purple-400 to-purple-600"
+                          : "bg-gradient-to-br from-orange-400 to-orange-600"
+                      }`}
                   >
                     {char}
                   </div>
@@ -1004,25 +1012,25 @@ const Home = () => {
       <Footer />
 
       <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
-          <a
-            href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
-            aria-label="Chat on WhatsApp"
-          >
-            <MessageCircle className="w-5 h-5" />
-            <span className="font-semibold">WhatsApp</span>
-          </a>
-          <a
-            href={`tel:${SUPPORT_PHONE}`}
-            className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
-            aria-label="Call now"
-          >
-            <Phone className="w-5 h-5" />
-            <span className="font-semibold">Call</span>
-          </a>
-        </div>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 shadow-lg transition-colors"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="font-semibold">WhatsApp</span>
+        </a>
+        <a
+          href={`tel:${SUPPORT_PHONE}`}
+          className="group inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 shadow-lg transition-colors"
+          aria-label="Call now"
+        >
+          <Phone className="w-5 h-5" />
+          <span className="font-semibold">Call</span>
+        </a>
+      </div>
 
       {/* EXISTING STYLES */}
       <style>{`
