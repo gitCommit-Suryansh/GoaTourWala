@@ -201,7 +201,7 @@ const SubcategoryPage = () => {
 
   const whatsappNumber = SUPPORT_PHONE.replace(/[^0-9]/g, "").replace(/^0+/,""
   );
-  const whatsappMessage = encodeURIComponent(`Hi, I'm interested in ${data.name} on ${selectedDate} for ${adults} adult(s) and ${children} child(ren). Here is the link: ${typeof window !== "undefined" ? window.location.href : ""}`
+  const whatsappMessage = encodeURIComponent(`Hi, I'm interested in ${data.name} on ${selectedDate} for ${adults} adult(s) and ${children} child(ren)`
   );
   const handleBooking = async () => {
     if (!mobileNumber || mobileNumber.length < 10) {
