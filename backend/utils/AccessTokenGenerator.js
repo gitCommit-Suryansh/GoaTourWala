@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 
 const generateAccessToken = async () => {
   try {
@@ -13,28 +13,31 @@ const generateAccessToken = async () => {
         client_id,
         client_version,
         client_secret,
-        grant_type
+        grant_type,
       },
       {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      },
     );
 
     if (tokenResponse.status === 200) {
       return {
         success: true,
-        accessToken: tokenResponse.data.access_token
+        accessToken: tokenResponse.data.access_token,
       };
     } else {
-      throw new Error('Failed to generate access token');
+      throw new Error("Failed to generate access token");
     }
   } catch (error) {
-    console.error('Error generating access token:', error.response?.data || error.message);
+    console.error(
+      "Error generating access token:",
+      error.response?.data || error.message,
+    );
     return {
       success: false,
-      error: error.response?.data || error.message
+      error: error.response?.data || error.message,
     };
   }
 };

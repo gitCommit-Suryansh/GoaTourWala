@@ -13,7 +13,18 @@ const generateMerchantOrderId = () => {
 };
 
 // Function to complete payment
-const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrderId,children,adults,date,subSlug,categorySlug) => {
+const complete_payment = async (
+  accessToken,
+  name,
+  mobileNumber,
+  amount,
+  merchantOrderId,
+  children,
+  adults,
+  date,
+  subSlug,
+  categorySlug,
+) => {
   try {
     const paymentResponse = await axios.post(
       `${process.env.CREATE_PAYMENT_URL}${process.env.CREATE_PAYMENT_ENDPOINT}`,
@@ -42,7 +53,7 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
           "Content-Type": "application/json",
           Authorization: `O-Bearer ${accessToken}`,
         },
-      }
+      },
     );
 
     const redirectUrl = paymentResponse.data.redirectUrl;
@@ -56,7 +67,7 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
   } catch (error) {
     console.error(
       "Error in complete_payment:",
-      error.response?.data || error.message
+      error.response?.data || error.message,
     );
     throw error;
   }
@@ -64,8 +75,17 @@ const complete_payment = async (accessToken,name,mobileNumber,amount,merchantOrd
 
 exports.pay = async (req, res) => {
   try {
-    const {name,amount,mobileNumber,adults,children,date,subSlug,categorySlug,} = req.body;
-    
+    const {
+      name,
+      amount,
+      mobileNumber,
+      adults,
+      children,
+      date,
+      subSlug,
+      categorySlug,
+    } = req.body;
+
     const merchantOrderId = generateMerchantOrderId();
 
     // Get access token using the new function
@@ -74,7 +94,7 @@ exports.pay = async (req, res) => {
       throw new Error(tokenResult.error);
     }
     const accessToken = tokenResult.accessToken;
-    console.log(accessToken)
+    console.log(accessToken);
 
     // Call complete_payment function
     const paymentResponse = await complete_payment(
@@ -87,7 +107,7 @@ exports.pay = async (req, res) => {
       adults,
       date,
       subSlug,
-      categorySlug
+      categorySlug,
     );
 
     res.status(200).json({
@@ -98,7 +118,7 @@ exports.pay = async (req, res) => {
   } catch (error) {
     console.error(
       "Error processing payment:",
-      error.response?.data || error.message
+      error.response?.data || error.message,
     );
     res.status(500).json({
       success: false,
@@ -110,7 +130,7 @@ exports.pay = async (req, res) => {
 
 exports.checkPaymentStatus = async (req, res) => {
   const { merchantOrderId } = req.body;
-  console.log(merchantOrderId)
+  console.log(merchantOrderId);
 
   const tokenResult = await generateAccessToken();
   if (!tokenResult.success) {
@@ -125,7 +145,7 @@ exports.checkPaymentStatus = async (req, res) => {
         "Content-Type": "application/json",
         Authorization: `O-Bearer ${accessToken}`,
       },
-    }
+    },
   );
 
   const status = response.data; // like COMPLETED or FAILED
